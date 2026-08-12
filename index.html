@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TKS Model UN — Term Leaderboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --chamber:#0A2540; --chamber-deep:#061A2E; --chamber-line:#16395C;
+    --placard:#F7F5F0; --placard-dim:#DFDCD4;
+    --un:#4A9FD8; --gavel:#C8A44D; --gavel-dim:#8A7233;
+    --ink:#0A2540; --ink-soft:#4A5C6E; --present:#3E9C74; --warn:#C86A4D;
+    --t0:#8A99A8; --t1:#4A9FD8; --t2:#3E9C74; --t3:#C8A44D; --t4:#E8C86A;
+    --display:'Oswald',Impact,sans-serif;
+    --body:'IBM Plex Sans',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--chamber);color:var(--placard);font-family:var(--body);
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 16px 72px}
+
+  .adminbar{background:var(--gavel);color:var(--chamber-deep);font-family:var(--mono);
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:center;
+    padding:6px 12px;font-weight:600}
+  .draftbar{background:var(--warn);color:#fff;font-family:var(--mono);font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:6px 12px;font-weight:600}
+
+  .chamber-bar{border-bottom:1px solid var(--chamber-line);
+    background:linear-gradient(180deg,var(--chamber-deep),var(--chamber));padding:22px 0 18px}
+  .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--un);margin:0 0 6px}
+  .chamber-bar h1{font-family:var(--display);font-weight:500;font-size:clamp(28px,7vw,42px);
+    letter-spacing:.02em;text-transform:uppercase;margin:0;line-height:1}
+  .chamber-bar h1 .thin{font-weight:300;color:var(--placard-dim)}
+  .session-strip{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;margin-top:12px;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--placard-dim)}
+  .session-strip b{color:var(--gavel);font-weight:600}
+
+  nav.tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--chamber-line);
+    margin-bottom:24px;scrollbar-width:none}
+  nav.tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;appearance:none;background:none;border:0;border-bottom:2px solid transparent;
+    color:var(--placard-dim);font-family:var(--display);font-weight:400;font-size:14px;
+    letter-spacing:.12em;text-transform:uppercase;padding:14px 13px 11px;cursor:pointer;
+    transition:color .18s,border-color .18s}
+  .tab:hover{color:var(--placard)}
+  .tab[aria-selected="true"]{color:var(--gavel);border-bottom-color:var(--gavel)}
+  .tab:focus-visible{outline:2px solid var(--un);outline-offset:-4px}
+
+  h2.sec{font-family:var(--display);font-weight:400;font-size:15px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--un);margin:26px 0 4px}
+  h2.sec:first-child{margin-top:0}
+  p.sub{color:var(--placard-dim);font-size:13.5px;margin:0 0 18px;max-width:62ch}
+
+  .seg{display:inline-flex;border:1px solid var(--chamber-line);border-radius:2px;
+    overflow:hidden;margin:0 10px 16px 0;vertical-align:top}
+  .seg button{appearance:none;background:transparent;border:0;color:var(--placard-dim);
+    font-family:var(--display);font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+    padding:9px 16px;cursor:pointer;transition:background .16s,color .16s}
+  .seg button[aria-pressed="true"]{background:var(--gavel);color:var(--chamber-deep);font-weight:500}
+  .seg button:focus-visible{outline:2px solid var(--un);outline-offset:-3px}
+
+  input,select{background:var(--chamber-deep);border:1px solid var(--chamber-line);
+    color:var(--placard);font-family:var(--body);font-size:14px;padding:9px 11px;border-radius:2px}
+  input:focus,select:focus{outline:2px solid var(--un);outline-offset:-1px}
+  input::placeholder{color:#6B7F92}
+  .search{width:100%;max-width:320px;margin-bottom:16px}
+
+  .btn{appearance:none;cursor:pointer;background:var(--un);color:var(--chamber-deep);border:0;
+    border-radius:2px;font-family:var(--display);font-size:13px;letter-spacing:.1em;
+    text-transform:uppercase;font-weight:500;padding:10px 16px;transition:filter .16s}
+  .btn:hover{filter:brightness(1.12)}
+  .btn.gold{background:var(--gavel)}
+  .btn.ghost{background:transparent;border:1px solid var(--chamber-line);color:var(--placard-dim)}
+  .btn.ghost:hover{border-color:var(--un);color:var(--placard)}
+  .btn:focus-visible{outline:2px solid var(--gavel);outline-offset:2px}
+
+  .empty{border:1px dashed var(--chamber-line);border-radius:3px;padding:28px 22px;
+    text-align:center;color:var(--placard-dim);font-size:14px}
+  .empty strong{display:block;font-family:var(--display);font-size:16px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--placard);margin-bottom:6px;font-weight:400}
+
+  .highlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:9px;margin-bottom:8px}
+  .hl{background:var(--chamber-deep);border:1px solid var(--chamber-line);border-radius:2px;
+    padding:13px 14px;position:relative;overflow:hidden}
+  .hl .lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--un);margin-bottom:5px}
+  .hl .val{font-family:var(--display);font-weight:500;font-size:19px;letter-spacing:.03em;
+    text-transform:uppercase;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hl .val.none{color:var(--ink-soft);font-weight:300;font-size:16px}
+  .hl .fig{font-family:var(--mono);font-size:11px;color:var(--gavel);margin-top:4px;letter-spacing:.05em}
+  .hl .emo{position:absolute;right:10px;top:9px;font-size:15px;opacity:.5}
+
+  .promos{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 4px}
+  .promo{font-family:var(--mono);font-size:11px;letter-spacing:.06em;background:var(--chamber-deep);
+    border:1px solid var(--gavel-dim);color:var(--gavel);border-radius:2px;padding:5px 9px}
+
+  .board{display:flex;flex-direction:column;gap:7px}
+  .placard{position:relative;display:grid;grid-template-columns:46px 1fr auto;align-items:center;
+    gap:12px;background:var(--placard);color:var(--ink);border-radius:2px 2px 3px 3px;
+    padding:12px 14px 12px 0;
+    box-shadow:0 1px 0 rgba(0,0,0,.35),0 6px 14px -10px rgba(0,0,0,.9)}
+  .rank{font-family:var(--mono);font-weight:600;font-size:15px;text-align:center;
+    color:var(--ink-soft);border-right:1px solid var(--placard-dim);padding:4px 0;
+    align-self:stretch;display:flex;align-items:center;justify-content:center}
+  .placard.medal .rank{background:var(--gavel);color:var(--chamber-deep)}
+  .placard.medal{box-shadow:0 1px 0 rgba(0,0,0,.35),0 6px 14px -10px rgba(0,0,0,.9),
+    inset 3px 0 0 var(--gavel-dim)}
+  .placard.sg{box-shadow:0 1px 0 rgba(0,0,0,.35),0 8px 18px -10px rgba(0,0,0,.9),
+    0 0 0 1.5px var(--t4),inset 3px 0 0 var(--gavel-dim)}
+  .who{min-width:0}
+  .name{font-family:var(--display);font-weight:500;font-size:18px;letter-spacing:.05em;
+    text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tierbadge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.11em;
+    padding:1.5px 6px;border-radius:2px;margin-left:7px;vertical-align:2px;color:#fff;font-weight:600}
+  .novice-flag{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;
+    background:var(--ink-soft);color:#fff;padding:1px 5px;border-radius:2px;margin-left:5px;vertical-align:2px}
+  .meta{font-size:11px;color:var(--ink-soft);font-family:var(--mono);letter-spacing:.05em;margin-top:2px}
+  .pts{font-family:var(--mono);font-weight:600;font-size:20px;color:var(--ink);white-space:nowrap}
+  .pts small{font-size:10px;color:var(--ink-soft);font-weight:400;margin-left:3px;letter-spacing:.08em}
+  .bar{grid-column:2 / -1;height:4px;background:var(--placard-dim);border-radius:2px;
+    overflow:hidden;margin-top:7px}
+  .bar i{display:block;height:100%;border-radius:2px}
+
+  .teamrow{display:grid;grid-template-columns:28px 1fr auto;gap:11px;align-items:center;
+    padding:10px 0;border-bottom:1px solid rgba(22,57,92,.6)}
+  .teamrow .tr{font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+  .teamrow .tn{font-family:var(--display);font-size:16px;letter-spacing:.06em;text-transform:uppercase}
+  .teamrow .tb{height:3px;background:var(--chamber-line);border-radius:2px;overflow:hidden;margin-top:6px}
+  .teamrow .tb i{display:block;height:100%;background:var(--un);border-radius:2px}
+  .teamrow .tp{font-family:var(--mono);font-weight:600;font-size:16px;color:var(--gavel)}
+  .teamrow .tm{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.05em;margin-top:1px}
+
+  .cttl{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:26px 0 3px}
+  .cttl h3{font-family:var(--display);font-weight:500;font-size:22px;letter-spacing:.06em;
+    text-transform:uppercase;margin:0;color:var(--placard)}
+  .cttl span{font-family:var(--mono);font-size:11.5px;color:var(--placard-dim);letter-spacing:.04em}
+  .teams{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:10px;margin-top:12px}
+  .team{background:var(--chamber-deep);border:1px solid var(--chamber-line);
+    border-top:3px solid var(--un);border-radius:0 0 2px 2px;padding:13px 14px}
+  .team .th1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .team .tname{font-family:var(--display);font-weight:500;font-size:17px;letter-spacing:.07em;
+    text-transform:uppercase}
+  .team .tpts{font-family:var(--mono);font-weight:600;font-size:15px;color:var(--gavel)}
+  .team .tline{font-size:12px;color:var(--placard-dim);margin:5px 0 11px;line-height:1.45}
+  .slot{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+    padding:6px 0;border-top:1px solid rgba(22,57,92,.7)}
+  .slot .cty{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--un);flex:0 0 auto}
+  .slot .dg{font-family:var(--display);font-size:15px;letter-spacing:.04em;text-transform:uppercase;
+    text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .slot.open .dg{color:var(--warn);font-weight:300}
+  .slot .p{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-left:6px}
+  .ledger{margin-top:18px;border-top:1px solid var(--chamber-line);padding-top:12px}
+  .led-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;
+    padding:7px 0;border-bottom:1px solid rgba(22,57,92,.5);font-size:13px}
+  .led-row .lw{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--un)}
+  .led-row .lp{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--gavel)}
+  .del{appearance:none;background:none;border:1px solid var(--chamber-line);border-radius:2px;
+    cursor:pointer;color:var(--ink-soft);font-family:var(--mono);font-size:10.5px;
+    letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;transition:all .16s}
+  .del:hover{border-color:var(--warn);color:var(--warn)}
+  .danger{border-left:3px solid var(--warn);background:var(--chamber-deep);padding:13px 15px;
+    margin:20px 0;font-size:13.5px;color:var(--placard-dim);border-radius:0 2px 2px 0}
+  .danger b{color:var(--warn);font-weight:600}
+  .btn.warn{background:var(--warn);color:#fff}
+  .bench{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin-bottom:8px}
+  .exec{background:var(--chamber-deep);border:1px solid var(--chamber-line);
+    border-top:3px solid var(--gavel);border-radius:2px;padding:12px 13px}
+  .exec .t{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gavel);margin-bottom:4px}
+  .exec .n{font-family:var(--display);font-weight:500;font-size:17px;letter-spacing:.04em;
+    text-transform:uppercase;line-height:1.1}
+  .exec.officer{border-top-color:var(--un)}
+  .exec.officer .t{color:var(--un)}
+
+  .picker{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+  .chip{appearance:none;cursor:pointer;background:var(--chamber-deep);
+    border:1px solid var(--chamber-line);color:var(--placard-dim);border-radius:2px;
+    font-family:var(--display);font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+    padding:8px 11px;transition:all .16s}
+  .chip:hover{border-color:var(--un);color:var(--placard)}
+  .chip[aria-pressed="true"]{background:var(--placard);color:var(--ink);
+    border-color:var(--placard);font-weight:500}
+  .chip.att[aria-pressed="true"]{background:var(--present);border-color:var(--present);color:#fff}
+  .chip .n{font-family:var(--mono);font-size:11px;opacity:.7;margin-left:6px}
+  .chip:focus-visible{outline:2px solid var(--gavel);outline-offset:2px}
+
+  .actions{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:8px}
+  .act{appearance:none;cursor:pointer;text-align:left;background:var(--chamber-deep);
+    border:1px solid var(--chamber-line);border-radius:2px;padding:12px 13px;display:flex;
+    justify-content:space-between;align-items:center;gap:10px;color:var(--placard);
+    font-family:var(--body);font-size:13.5px;transition:border-color .16s,background .16s}
+  .act:hover:not(:disabled){border-color:var(--gavel);background:#0B2A48}
+  .act:disabled{opacity:.35;cursor:not-allowed}
+  .act .v{font-family:var(--mono);font-weight:600;font-size:14px;color:var(--gavel)}
+  .act .cap{display:block;font-size:10.5px;color:var(--ink-soft);font-family:var(--mono);
+    letter-spacing:.05em;margin-top:2px}
+
+  .feed{margin-top:26px;border-top:1px solid var(--chamber-line);padding-top:14px}
+  .feed-row{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:8px 0;border-bottom:1px solid rgba(22,57,92,.5);font-size:13px}
+  .feed-row .d{font-family:var(--mono);color:var(--gavel);font-weight:600;font-size:12.5px}
+  .undo{appearance:none;background:none;border:0;cursor:pointer;color:var(--ink-soft);
+    font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:4px 6px}
+  .undo:hover{color:var(--warn)}
+
+  .roster-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 0;
+    border-bottom:1px solid var(--chamber-line)}
+  .roster-row .rn{font-family:var(--display);font-size:16px;letter-spacing:.05em;
+    text-transform:uppercase;flex:1 1 150px;min-width:0}
+  .roster-row input[data-team]{width:128px}
+  .addbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+  .addbar input[name=name]{flex:1 1 180px}
+
+  .awards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+  .award{background:var(--chamber-deep);border:1px solid var(--chamber-line);
+    border-left:3px solid var(--gavel);border-radius:2px;padding:14px 15px}
+  .award.fun{border-left-color:var(--un)}
+  .award h3{font-family:var(--display);font-weight:400;font-size:13px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--placard-dim);margin:0 0 7px}
+  .award .winner{font-family:var(--display);font-weight:500;font-size:21px;letter-spacing:.03em;
+    text-transform:uppercase;color:var(--placard);line-height:1.1}
+  .award .basis{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;
+    color:var(--ink-soft);margin-top:6px}
+  .award .winner.none{color:var(--ink-soft);font-weight:300}
+
+  table.rules{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.rules th{text-align:left;font-family:var(--display);font-weight:400;font-size:11.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--un);padding:0 0 8px;
+    border-bottom:1px solid var(--chamber-line)}
+  table.rules td{padding:10px 0;border-bottom:1px solid rgba(22,57,92,.55);vertical-align:top}
+  table.rules td:last-child{text-align:right;font-family:var(--mono);font-weight:600;
+    color:var(--gavel);white-space:nowrap}
+  table.rules .note{display:block;font-size:11.5px;color:var(--ink-soft);margin-top:2px}
+  .tierline{display:flex;align-items:center;gap:11px;padding:9px 0;
+    border-bottom:1px solid rgba(22,57,92,.55)}
+  .tierline .sw{width:5px;height:26px;border-radius:2px;flex:0 0 auto}
+  .tierline .tnm{font-family:var(--display);font-size:17px;letter-spacing:.06em;
+    text-transform:uppercase;flex:1}
+  .tierline .trg{font-family:var(--mono);font-size:12px;color:var(--gavel)}
+  .callout{border-left:3px solid var(--un);background:var(--chamber-deep);padding:13px 15px;
+    margin:20px 0;font-size:13.5px;color:var(--placard-dim);border-radius:0 2px 2px 0}
+  .callout b{color:var(--placard);font-weight:600}
+  .callout.gold{border-left-color:var(--gavel)}
+
+  textarea{width:100%;min-height:150px;background:var(--chamber-deep);color:var(--placard);
+    border:1px solid var(--chamber-line);border-radius:2px;font-family:var(--mono);
+    font-size:11.5px;padding:11px;resize:vertical}
+
+  #toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);
+    background:var(--placard);color:var(--ink);font-family:var(--display);font-size:14px;
+    letter-spacing:.06em;text-transform:uppercase;padding:11px 20px;border-radius:2px;
+    box-shadow:0 10px 30px -8px rgba(0,0,0,.8);opacity:0;pointer-events:none;
+    transition:opacity .22s,transform .22s;z-index:50}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .footer-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;padding-top:18px;
+    border-top:1px solid var(--chamber-line)}
+  .tally{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-soft);
+    margin:-8px 0 14px}
+  footer.credit{text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+    color:var(--ink-soft);text-transform:uppercase;padding:34px 16px 0}
+
+  @media (max-width:520px){
+    .placard{grid-template-columns:38px 1fr auto;gap:9px;padding-right:11px}
+    .name{font-size:16px}.pts{font-size:18px}.actions{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<div id="banner"></div>
+
+<div class="chamber-bar">
+  <div class="wrap">
+    <p class="eyebrow">The King's School · Parramatta</p>
+    <h1>Model UN <span class="thin">Term Leaderboard</span></h1>
+    <div class="session-strip">
+      <span>Current sitting · <b id="sessLabel">—</b></span>
+      <span>Delegates · <b id="sessCount">0</b></span>
+      <span id="hereWrap">Present today · <b id="sessHere">0</b></span>
+      <span>Points awarded · <b id="sessPts">0</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <main id="panel"><div class="empty"><strong>Loading</strong>Fetching the current standings.</div></main>
+  <footer class="credit">TKS Model UN · Updated by the executive</footer>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =========================================================================
+   TKS MUN LEADERBOARD
+   Public visitors see a read-only board built from data.json.
+   Add #admin to the URL for the logging console. Admin edits are saved
+   only in that browser until "Publish" is used to update data.json.
+   ========================================================================= */
+
+const DRAFT_KEY='tks_mun_draft_v1';
+
+const TIERS=[
+  {n:'Rookie',            min:0,  max:10,       c:'var(--t0)'},
+  {n:'Delegate',          min:11, max:25,       c:'var(--t1)'},
+  {n:'Diplomat',          min:26, max:45,       c:'var(--t2)'},
+  {n:'Ambassador',        min:46, max:70,       c:'var(--t3)'},
+  {n:'Secretary-General', min:71, max:Infinity, c:'var(--t4)'}
+];
+const tierIdx=p=>{let i=0;TIERS.forEach((t,j)=>{if(p>=t.min)i=j});return i};
+const tierOf=p=>TIERS[tierIdx(p)];
+function tierProgress(p){
+  const i=tierIdx(p), t=TIERS[i];
+  if(i===TIERS.length-1) return {pct:100,toNext:0,next:null};
+  const span=(t.max+1)-t.min;
+  return {pct:Math.round((p-t.min)/span*100),toNext:(t.max+1)-p,next:TIERS[i+1].n};
+}
+
+const ACTIONS=[
+  {k:'attend',    l:'Attended the sitting',              p:1, cap:1, grp:'core'},
+  {k:'speech',    l:'Delivered a speech',                p:2,        grp:'core'},
+  {k:'poi',       l:'POI asked (chair-recognised)',      p:1, cap:3, grp:'core'},
+  {k:'poiAns',    l:'Answered a POI well',               p:1, cap:3, grp:'core'},
+  {k:'amendSub',  l:'Amendment submitted',               p:1,        grp:'paper'},
+  {k:'amendPass', l:'Amendment passed',                  p:3,        grp:'paper'},
+  {k:'paper',     l:'Working paper / resolution author', p:4,        grp:'paper'},
+  {k:'bestDel',   l:'Best Delegate (this sitting)',      p:5, cap:1, grp:'honours'},
+  {k:'honourable',l:'Honourable mention',                p:3, cap:1, grp:'honours'},
+  {k:'chair',     l:'Chaired the sitting',               p:4, cap:1, grp:'honours'},
+  {k:'recruit',   l:'Recruit confirmed (3 sittings)',    p:2,        grp:'club'},
+  {k:'external',  l:"Represented King's externally",     p:5,        grp:'club'},
+  {k:'extAward',  l:'Award at an external conference',   p:3,        grp:'club'},
+  {k:'tksmun',    l:'TksMUN 2027 organising shift',      p:5,        grp:'club'}
+];
+const AMAP=Object.fromEntries(ACTIONS.map(a=>[a.k,a]));
+const ROLES={captain:'Captain',vice:'Vice Captain',officer:'Officer',delegate:'Delegate'};
+
+/* fallback so the page still works if data.json can't be fetched
+   (for example when opening the file directly instead of via a server) */
+const FALLBACK={seq:100,currentSession:'s1',sessions:[{id:'s1',label:'Sitting 1',chairId:null}],
+  events:[],members:[
+  ['Austin Xu','captain'],['Jerry Zhang','vice'],['Vasisht Guruprakash','officer'],
+  ['Samuel Hong','officer'],['Ethan Zhang','officer'],
+  ...['Aaron Song','Agastya Vegunta','Akash Konduru','Akshat Sahdev','Ali Sarangpurwala',
+  'Avinash Shekhar','Carston Kwan','Charlie Shannon','Daniel Baird-Gunning','Edward Zhang',
+  'Ethan Tsui','Eugene Chen','Felson Ji','Franklin Du','Hugo Hughes','Jack Horwood','Jack Wang',
+  'Jacob Ball','Jacob Davies','Jacob Yao','Jayden Zhao','Jeffrey Shi','Jeremy Le','Jones Burley',
+  'Juwon Park','Kai Ding','Keethan Jeyarajah','Levi Zeng','Lucas Liu','Matheen Deen','Maximus Lee',
+  'Maxwell Zhu','Panayiotis Hatzistamatiou','Raaghav Gore','Rayn Javed','Reyaansh Kumar',
+  'Sam Harvey','Sam Tehrani','Tedon Yin','Vikrant Madan','Vincent del Villar','Wesley Wong']
+  .map(n=>[n,'delegate'])].map((x,i)=>({id:'m'+(i+1),name:x[0],year:'',division:'open',role:x[1],team:''}))};
+
+let S=null, PUBLISHED=null;
+let ADMIN=location.hash.toLowerCase().includes('admin');
+let hasDraft=false;
+let tab='board', division='open', selected=null, mode='attend', q='', qr='';
+
+/* ---------- loading ---------- */
+async function boot(){
+  try{
+    const r=await fetch('data.json',{cache:'no-store'});
+    PUBLISHED=await r.json();
+  }catch(e){
+    PUBLISHED=JSON.parse(JSON.stringify(FALLBACK));
+  }
+  PUBLISHED.members.forEach(m=>{if(m.team===undefined)m.team=''});
+  if(!PUBLISHED.committees) PUBLISHED.committees={};
+
+  if(ADMIN){
+    const d=localStorage.getItem(DRAFT_KEY);
+    if(d){ try{ S=JSON.parse(d); hasDraft=true;
+      if(!S.committees) S.committees=clone(PUBLISHED.committees);
+    }catch(e){ S=clone(PUBLISHED) } }
+    else S=clone(PUBLISHED);
+  }else{
+    S=PUBLISHED;
+  }
+  buildTabs(); render();
+}
+const clone=o=>JSON.parse(JSON.stringify(o));
+function saveDraft(){
+  if(!ADMIN) return;
+  hasDraft=true;
+  try{ localStorage.setItem(DRAFT_KEY,JSON.stringify(S)); }catch(e){}
+}
+
+/* ---------- data ---------- */
+const byId=id=>S.members.find(m=>m.id===id);
+const isExec=m=>m.role!=='delegate';
+const delegates=()=>S.members.filter(m=>!isExec(m));
+const execs=()=>S.members.filter(isExec)
+  .sort((a,b)=>['captain','vice','officer'].indexOf(a.role)-['captain','vice','officer'].indexOf(b.role));
+const curSession=()=>S.sessions.find(s=>s.id===S.currentSession);
+const uid=p=>p+(S.seq++);
+
+function total(id){return S.events.filter(e=>e.memberId===id).reduce((a,e)=>a+e.points,0)}
+function totalIn(id,k){return S.events.filter(e=>e.memberId===id&&k.includes(e.action)).reduce((a,e)=>a+e.points,0)}
+function countIn(id,k){return S.events.filter(e=>e.memberId===id&&k.includes(e.action)).length}
+function sessCount(id,a){return S.events.filter(e=>e.memberId===id&&e.action===a&&e.sessionId===S.currentSession).length}
+function sessPoints(id,keys){return S.events.filter(e=>e.memberId===id&&e.sessionId===S.currentSession&&(!keys||keys.includes(e.action))).reduce((a,e)=>a+e.points,0)}
+function pointsBeforeCurrent(id){return S.events.filter(e=>e.memberId===id&&e.sessionId!==S.currentSession).reduce((a,e)=>a+e.points,0)}
+const isPresent=id=>sessCount(id,'attend')>0;
+
+function ranked(div){
+  return delegates().filter(m=>div==='all'||m.division===div)
+    .map(m=>({...m,pts:total(m.id)})).sort((a,b)=>b.pts-a.pts||a.name.localeCompare(b.name));
+}
+const weekCommittees=sid=>(S.committees&&S.committees[sid])||[];
+function assignmentFor(memberId,sid){
+  for(const c of weekCommittees(sid))
+    for(const t of c.teams)
+      for(const s of t.members)
+        if(s.id===memberId) return {committee:c.name,team:t.name,country:s.country};
+  return null;
+}
+function placedIds(sid){
+  const set=new Set();
+  weekCommittees(sid).forEach(c=>c.teams.forEach(t=>t.members.forEach(s=>{if(s.id)set.add(s.id)})));
+  return set;
+}
+function unplaced(sid){
+  const p=placedIds(sid);
+  return delegates().filter(m=>!p.has(m.id));
+}
+function teamWeekPoints(team,sid){
+  return team.members.reduce((a,s)=>a+(s.id?S.events.filter(e=>e.memberId===s.id&&e.sessionId===sid).reduce((x,e)=>x+e.points,0):0),0);
+}
+function teams(){
+  const sid=S.currentSession, cs=weekCommittees(sid);
+  if(cs.length){
+    const out=[];
+    cs.forEach(c=>c.teams.forEach(t=>out.push({
+      name:c.name+' '+t.name.replace(/^Team /,''),
+      pts:teamWeekPoints(t,sid),
+      n:t.members.filter(s=>s.id).length})));
+    return out.sort((a,b)=>b.pts-a.pts||a.name.localeCompare(b.name));
+  }
+  const map={};
+  delegates().forEach(m=>{const t=(m.team||'').trim(); if(!t)return;
+    if(!map[t])map[t]={name:t,pts:0,n:0}; map[t].pts+=total(m.id); map[t].n++});
+  return Object.values(map).sort((a,b)=>b.pts-a.pts||a.name.localeCompare(b.name));
+}
+function biggestMover(){let b=null;delegates().forEach(m=>{const v=sessPoints(m.id);if(v>0&&(!b||v>b.v))b={m,v}});return b}
+function speakerOfWeek(){let b=null;delegates().forEach(m=>{const v=sessPoints(m.id,['speech']);if(v>0&&(!b||v>b.v))b={m,v}});return b}
+function promotions(){
+  return delegates().map(m=>{
+    const before=pointsBeforeCurrent(m.id), now=total(m.id);
+    return tierIdx(now)>tierIdx(before)&&sessPoints(m.id)>0?{name:m.name,tier:tierOf(now).n}:null;
+  }).filter(Boolean);
+}
+function improved(){
+  const ss=S.sessions.map(s=>s.id); if(ss.length<4)return null;
+  const mid=Math.floor(ss.length/2), f=ss.slice(0,mid), s2=ss.slice(mid);
+  let best=null;
+  delegates().forEach(m=>{
+    const a=S.events.filter(e=>e.memberId===m.id&&f.includes(e.sessionId)).reduce((x,e)=>x+e.points,0);
+    const b=S.events.filter(e=>e.memberId===m.id&&s2.includes(e.sessionId)).reduce((x,e)=>x+e.points,0);
+    if(b-a>0&&(!best||b-a>best.d))best={m,d:b-a};
+  });
+  return best;
+}
+function topBy(fn,div){let b=null;delegates().filter(m=>!div||m.division===div)
+  .forEach(m=>{const v=fn(m.id);if(v>0&&(!b||v>b.v))b={m,v}});return b}
+
+/* ---------- helpers ---------- */
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let toastT;
+function toast(m){
+  const t=document.getElementById('toast');
+  t.textContent=m; t.classList.add('show');
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),1600);
+}
+const match=(n,t)=>n.toLowerCase().includes(t.toLowerCase());
+
+function banner(){
+  const b=document.getElementById('banner');
+  if(!ADMIN){b.innerHTML='';return}
+  b.innerHTML=`<div class="adminbar">Admin console — changes are saved on this device only</div>`+
+    (hasDraft?`<div class="draftbar">Unpublished changes · publish from the Publish tab to update the live site</div>`:'');
+}
+function strip(){
+  const s=curSession();
+  document.getElementById('sessLabel').textContent=s?s.label:'—';
+  document.getElementById('sessCount').textContent=delegates().length;
+  document.getElementById('sessHere').textContent=delegates().filter(m=>isPresent(m.id)).length;
+  document.getElementById('sessPts').textContent=S.events.reduce((a,e)=>a+e.points,0);
+}
+function buildTabs(){
+  const pub=[['board','Standings'],['cttee','Committees'],['awards','Term awards'],['rules','Scoring']];
+  const adm=[['board','Standings'],['cttee','Committees'],['log','Log points'],['roster','Roster'],
+             ['awards','Term awards'],['rules','Scoring'],['publish','Publish']];
+  document.getElementById('tabs').innerHTML=(ADMIN?adm:pub)
+    .map(([k,l])=>`<button class="tab" role="tab" data-tab="${k}">${l}</button>`).join('');
+}
+
+/* ---------- render ---------- */
+function render(){
+  banner(); strip();
+  document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));
+  const views={board:vBoard,cttee:vCommittees,awards:vAwards,rules:vRules,
+               log:vLog,roster:vRoster,publish:vPublish};
+  if(!ADMIN&&['log','roster','publish'].includes(tab)) tab='board';
+  document.getElementById('panel').innerHTML=views[tab]();
+  wire();
+}
+
+function vBoard(){
+  if(!delegates().length) return empty('No delegates yet','The roster is empty.');
+  const list=ranked(division);
+  const mv=biggestMover(), sp=speakerOfWeek(), tm=teams(), promo=promotions();
+
+  const hl=`<div class="highlights">
+    <div class="hl"><span class="emo">🔥</span><div class="lbl">Biggest mover</div>
+      <div class="val${mv?'':' none'}">${mv?esc(mv.m.name):'Nothing logged yet'}</div>
+      ${mv?`<div class="fig">+${mv.v} this sitting</div>`:''}</div>
+    <div class="hl"><span class="emo">🎤</span><div class="lbl">Speaker of the week</div>
+      <div class="val${sp?'':' none'}">${sp?esc(sp.m.name):'No speeches yet'}</div>
+      ${sp?`<div class="fig">${sp.v/2} ${sp.v/2===1?'speech':'speeches'} delivered</div>`:''}</div>
+    <div class="hl"><span class="emo">🌍</span><div class="lbl">Leading team</div>
+      <div class="val${tm.length?'':' none'}">${tm.length?esc(tm[0].name):'No teams assigned'}</div>
+      ${tm.length?`<div class="fig">${tm[0].pts} pts · ${tm[0].n} delegates</div>`:''}</div></div>`;
+
+  const promoHtml=promo.length?`<div class="promos">${promo.map(p=>`<span class="promo">▲ ${esc(p.name)} → ${esc(p.tier)}</span>`).join('')}</div>`:'';
+
+  const rows=list.map((m,i)=>{
+    const t=tierOf(m.pts), pr=tierProgress(m.pts), sg=tierIdx(m.pts)===TIERS.length-1;
+    const medal=i<3&&m.pts>0?' medal':'';
+    return `<div class="placard${medal}${sg?' sg':''}">
+      <div class="rank">${String(i+1).padStart(2,'0')}</div>
+      <div class="who">
+        <div class="name">${esc(m.name)}<span class="tierbadge" style="background:${t.c};${tierIdx(m.pts)>=3?'color:#0A2540':''}">${t.n.toUpperCase()}</span>${m.division==='novice'?'<span class="novice-flag">NOVICE</span>':''}</div>
+        <div class="meta">${m.team?esc(m.team)+' · ':''}${pr.next?`${pr.toNext} to ${pr.next}`:'Top rank held'} · ${countIn(m.id,['speech'])} speeches</div>
+        <div class="bar"><i style="width:${Math.max(pr.pct,2)}%;background:${t.c}"></i></div>
+      </div><div class="pts">${m.pts}<small>PTS</small></div></div>`;
+  }).join('');
+
+  const teamRows=tm.length?tm.map((t,i)=>{const max=tm[0].pts||1;
+    return `<div class="teamrow"><span class="tr">${String(i+1).padStart(2,'0')}</span>
+      <div><div class="tn">${esc(t.name)}</div><div class="tm">${t.n} ${t.n===1?'delegate':'delegates'}</div>
+      <div class="tb"><i style="width:${Math.round(t.pts/max*100)}%"></i></div></div>
+      <span class="tp">${t.pts}</span></div>`}).join('')
+    :empty('No teams yet','Countries have not been assigned.');
+
+  const bench=execs().map(m=>`<div class="exec${m.role==='officer'?' officer':''}">
+    <div class="t">${ROLES[m.role]}</div><div class="n">${esc(m.name)}</div></div>`).join('');
+
+  return `<h2 class="sec">This sitting</h2>${hl}${promoHtml}
+    <h2 class="sec">Standings</h2>
+    <p class="sub">The bar tracks progress to your next rank, not the gap to first place — everyone always has something within reach.</p>
+    <div class="seg" id="divSeg">
+      <button data-div="open" aria-pressed="${division==='open'}">Open</button>
+      <button data-div="novice" aria-pressed="${division==='novice'}">Novice</button>
+      <button data-div="all" aria-pressed="${division==='all'}">Everyone</button></div>
+    <div class="board">${rows||empty('Nobody in this division','')}</div>
+    <h2 class="sec">Team standings</h2><div>${teamRows}</div>
+    <h2 class="sec">The bench</h2>
+    <p class="sub">Executive chair the sittings and adjudicate points, so they sit outside the competition.</p>
+    <div class="bench">${bench}</div>
+    <div class="footer-actions">
+      <button class="btn" id="copyWeek">Copy this week's post</button>
+      <button class="btn ghost" id="copyBoard">Copy top 10</button></div>`;
+}
+
+function vLog(){
+  const opts=S.sessions.map(s=>`<option value="${s.id}" ${s.id===S.currentSession?'selected':''}>${esc(s.label)}</option>`).join('');
+  const chairOpts=`<option value="">Chair — not set</option>`+
+    execs().map(m=>`<option value="${m.id}" ${curSession()&&curSession().chairId===m.id?'selected':''}>${esc(m.name)}</option>`).join('');
+  const pool=delegates().filter(m=>!q||match(m.name,q));
+  let body='';
+
+  if(mode==='attend'){
+    const here=delegates().filter(m=>isPresent(m.id)).length;
+    body=`<p class="tally">${here} of ${delegates().length} marked present · tap a name to toggle</p>
+      <div class="picker">${pool.map(m=>`<button class="chip att" data-att="${m.id}" aria-pressed="${isPresent(m.id)}">${esc(m.name)}</button>`).join('')||'<div class="empty">No delegate matches that search.</div>'}</div>
+      <div class="footer-actions"><button class="btn ghost" id="allIn">Mark everyone present</button>
+      <button class="btn ghost" id="allOut">Clear attendance</button></div>`;
+  }else{
+    const chips=pool.map(m=>`<button class="chip" data-sel="${m.id}" aria-pressed="${selected===m.id}">${esc(m.name)}<span class="n">${total(m.id)}</span></button>`).join('');
+    let acts='',head='',ledger='';
+    if(selected&&byId(selected)){
+      acts=ACTIONS.map(a=>{const used=a.cap?sessCount(selected,a.k):0,blocked=a.cap&&used>=a.cap;
+        return `<button class="act" data-act="${a.k}" ${blocked?'disabled':''}>
+          <span>${esc(a.l)}${a.cap?`<span class="cap">${used}/${a.cap} this sitting</span>`:''}</span>
+          <span class="v">+${a.p}</span></button>`}).join('');
+      const m=byId(selected), pr=tierProgress(total(m.id)), t=tierOf(total(m.id));
+      head=`<h2 class="sec" style="margin-top:0">Award to ${esc(m.name)}</h2>
+        <p class="tally">${t.n} · ${total(m.id)} pts${pr.next?` · ${pr.toNext} to ${pr.next}`:' · top rank'}</p>`;
+      const own=S.events.filter(e=>e.memberId===selected).reverse();
+      ledger=own.length?`<div class="ledger">
+        <h2 class="sec" style="margin-bottom:4px">Everything ${esc(m.name.split(' ')[0])} has earned</h2>
+        <p class="sub" style="margin-bottom:10px">Remove anything logged by mistake, from any week.</p>
+        ${own.map(e=>{
+          const s=S.sessions.find(x=>x.id===e.sessionId);
+          return `<div class="led-row">
+            <span>${esc(AMAP[e.action]?AMAP[e.action].l:e.action)}
+              <span class="lw"> · ${s?esc(s.label):'—'}</span></span>
+            <span class="lp">+${e.points}</span>
+            <button class="del" data-undo="${e.id}">Delete</button></div>`}).join('')}
+        <div class="footer-actions"><button class="btn ghost" data-wipe="${selected}">Remove all of ${esc(m.name.split(' ')[0])}'s points</button></div>
+      </div>`:`<div class="ledger"><p class="tally">Nothing logged for ${esc(m.name.split(' ')[0])} yet.</p></div>`;
+    }
+    body=`<div class="picker">${chips||'<div class="empty">No delegate matches that search.</div>'}</div>
+      ${selected&&byId(selected)?head+`<div class="actions">${acts}</div>`+ledger
+        :`<div class="empty">Select a delegate above to award or remove points.</div>`}`;
+  }
+
+  const recent=S.events.slice(-8).reverse().map(e=>{const m=byId(e.memberId);
+    return `<div class="feed-row"><span>${m?esc(m.name):'—'} · ${esc(AMAP[e.action]?AMAP[e.action].l:e.action)}</span>
+      <span><span class="d">+${e.points}</span> <button class="undo" data-undo="${e.id}">Undo</button></span></div>`}).join('');
+
+  return `<h2 class="sec">Log points</h2>
+    <p class="sub">Take the roll first, then switch to awards. Nothing here is visible to anyone else until you publish.</p>
+    <div class="addbar"><select id="sessSel">${opts}</select><select id="chairSel">${chairOpts}</select>
+      <button class="btn ghost" id="newSess">Start next sitting</button></div>
+    <div class="seg" id="modeSeg">
+      <button data-mode="attend" aria-pressed="${mode==='attend'}">Attendance</button>
+      <button data-mode="award" aria-pressed="${mode==='award'}">Award points</button></div>
+    <input class="search" id="q" placeholder="Search delegates" value="${esc(q)}" autocomplete="off">
+    ${body}${recent?`<div class="feed"><h2 class="sec" style="margin-bottom:10px">Recent</h2>${recent}</div>`:''}`;
+}
+
+function vRoster(){
+  const bench=execs().map(m=>`<div class="exec${m.role==='officer'?' officer':''}">
+    <div class="t">${ROLES[m.role]}</div><div class="n">${esc(m.name)}</div></div>`).join('');
+  const pool=delegates().filter(m=>!qr||match(m.name,qr));
+  const teamList=[...new Set(delegates().map(m=>(m.team||'').trim()).filter(Boolean))].sort();
+  const dl=`<datalist id="teamOpts">${teamList.map(t=>`<option value="${esc(t)}">`).join('')}</datalist>`;
+  const rows=pool.map(m=>`<div class="roster-row">
+      <span class="rn">${esc(m.name)}</span>
+      <input data-team="${m.id}" list="teamOpts" placeholder="Team / country" value="${esc(m.team||'')}" autocomplete="off">
+      <select data-year="${m.id}" style="width:94px">${['','7','8','9','10','11','12'].map(y=>`<option value="${y}" ${m.year===y?'selected':''}>${y?'Year '+y:'Year —'}</option>`).join('')}</select>
+      <select data-divsel="${m.id}" style="width:104px">
+        <option value="open" ${m.division==='open'?'selected':''}>Open</option>
+        <option value="novice" ${m.division==='novice'?'selected':''}>Novice</option></select>
+      <select data-role="${m.id}" style="width:116px">${Object.entries(ROLES).map(([k,v])=>`<option value="${k}" ${m.role===k?'selected':''}>${v}</option>`).join('')}</select>
+      <button class="undo" data-del="${m.id}">Remove</button></div>`).join('');
+  return `${dl}<h2 class="sec">Executive</h2>
+    <p class="sub">Admins. They chair, adjudicate and don't appear in the standings.</p>
+    <div class="bench">${bench}</div>
+    <h2 class="sec">Delegates <span style="color:var(--ink-soft);font-size:12px">(${delegates().length})</span></h2>
+    <p class="sub">Type the same team name across several delegates to build a bloc.</p>
+    <div class="addbar">
+      <input name="name" id="newName" placeholder="Delegate name" autocomplete="off">
+      <input id="newTeam" list="teamOpts" placeholder="Team / country" style="width:150px" autocomplete="off">
+      <select id="newYear" style="width:100px">${['','7','8','9','10','11','12'].map(y=>`<option value="${y}">${y?'Year '+y:'Year —'}</option>`).join('')}</select>
+      <select id="newDiv" style="width:104px"><option value="novice">Novice</option><option value="open">Open</option></select>
+      <button class="btn" id="addMember">Add delegate</button></div>
+    <input class="search" id="qr" placeholder="Search roster" value="${esc(qr)}" autocomplete="off">
+    ${rows||empty('No match','Try a different name.')}`;
+}
+
+function vCommittees(){
+  const sid=S.currentSession;
+  const weekBtns=S.sessions.map(s=>`<button class="chip" data-week="${s.id}" aria-pressed="${s.id===sid}">${esc(s.label)}</button>`).join('');
+  const cs=weekCommittees(sid);
+
+  const body=cs.length?cs.map(c=>{
+    const teamCards=c.teams.map(t=>{
+      const slots=t.members.map(s=>{
+        const m=s.id?byId(s.id):null;
+        return `<div class="slot${m?'':' open'}">
+          <span class="cty">${esc(s.country)}</span>
+          <span class="dg">${m?esc(m.name)+`<span class="p">${total(m.id)}</span>`:'Slot open'}</span></div>`;
+      }).join('');
+      return `<div class="team"><div class="th1"><span class="tname">${esc(t.name)}</span>
+        <span class="tpts">${teamWeekPoints(t,sid)} pts</span></div>
+        <div class="tline">${esc(t.line||'')}</div>${slots}</div>`;
+    }).join('');
+    return `<div class="cttl"><h3>${esc(c.name)}</h3><span>${esc(c.topic||'')}</span></div>
+      <div class="teams">${teamCards}</div>`;
+  }).join(''):empty('Not yet assigned','Committees for this week have not been set.');
+
+  const up=unplaced(sid);
+  const upHtml=cs.length?`<h2 class="sec">Unplaced <span style="color:var(--ink-soft);font-size:12px">(${up.length})</span></h2>
+    <p class="sub">Available for the open slots above, or for a second committee.</p>
+    <div class="picker">${up.map(m=>`<span class="chip" style="cursor:default">${esc(m.name)}<span class="n">${total(m.id)}</span></span>`).join('')||'<div class="empty">Everyone is placed.</div>'}</div>`:'';
+
+  return `<h2 class="sec">Committees</h2>
+    <p class="sub">Teams and countries run week by week. Points earned still feed the term leaderboard.</p>
+    <div class="picker">${weekBtns}</div>
+    ${body}${upHtml}`;
+}
+
+function vAwards(){
+  const sp=topBy(id=>totalIn(id,['speech']));
+  const neg=topBy(id=>totalIn(id,['amendSub','amendPass','paper']));
+  const openTop=ranked('open')[0], novTop=ranked('novice')[0];
+  const chaos=topBy(id=>countIn(id,['poi'])), imp=improved();
+  const dip=topBy(id=>countIn(id,['recruit','tksmun'])), tm=teams();
+  const card=(t,w,b,fun)=>`<div class="award${fun?' fun':''}"><h3>${t}</h3>
+    <div class="winner${w?'':' none'}">${w?esc(w):'Not yet awarded'}</div><div class="basis">${b}</div></div>`;
+  return `<h2 class="sec">Term awards</h2>
+    <p class="sub">Computed live from the log. The joke awards matter as much as the serious ones.</p>
+    <div class="awards">
+      ${card('Best Delegate',openTop&&openTop.pts>0?openTop.name:null,'Highest total, Open division')}
+      ${card('Best Speaker',sp?sp.m.name:null,'Most points from speeches')}
+      ${card('Best Negotiator',neg?neg.m.name:null,'Most points from amendments and papers')}
+      ${card('Best New Delegate',novTop&&novTop.pts>0?novTop.name:null,'Highest total, Novice division')}
+      ${card('Most Improved',imp?imp.m.name:null,imp?`+${imp.d} points across the back half of term`:'Needs at least four sittings')}
+      ${card('Champion Bloc',tm.length?tm[0].name:null,tm.length?`${tm[0].pts} points across ${tm[0].n} delegates`:'Teams not yet assigned')}
+      ${card('Most Chaotic Delegate',chaos?chaos.m.name:null,chaos?`${chaos.v} points of information raised`:'Most POIs raised',true)}
+      ${card('Best Diplomat',dip?dip.m.name:null,'Recruiting and TksMUN service',true)}</div>
+    <div class="footer-actions"><button class="btn ghost" id="copyAwards">Copy awards list</button></div>`;
+}
+
+function vRules(){
+  const grp=(n,k)=>`<tr><th colspan="2" style="padding-top:18px">${n}</th></tr>`+
+    ACTIONS.filter(a=>k.includes(a.grp)).map(a=>`<tr><td>${esc(a.l)}${a.cap?`<span class="note">Capped at ${a.cap} per sitting</span>`:''}</td><td>+${a.p}</td></tr>`).join('');
+  const tierRows=TIERS.map(t=>`<div class="tierline"><span class="sw" style="background:${t.c}"></span>
+    <span class="tnm">${t.n}</span><span class="trg">${t.max===Infinity?t.min+'+':t.min+'–'+t.max} pts</span></div>`).join('');
+  return `<h2 class="sec">Ranks</h2>
+    <p class="sub">Ranks never go down within a term. Once you make Diplomat you stay one — the ladder only climbs.</p>
+    ${tierRows}<h2 class="sec">Scoring</h2>
+    <p class="sub">Every award is chair-adjudicated. If the chair didn't recognise it, it didn't happen.</p>
+    <table class="rules"><tr><th>Action</th><th style="text-align:right">Points</th></tr>
+    ${grp('In the chamber',['core'])}${grp('Paper and drafting',['paper'])}
+    ${grp('Honours',['honours'])}${grp('Club service',['club'])}</table>
+    <div class="callout"><b>Three rules that stop the board breaking.</b>
+      Attendance is the floor, not the ladder. A recruit only scores once they've come to three sittings.
+      POIs are capped so the incentive is a good question, not a fast hand.</div>`;
+}
+
+function vPublish(){
+  return `<h2 class="sec">Publish</h2>
+    <p class="sub">Everything you log stays on this device until you publish. Publishing means replacing the contents of <code>data.json</code> in your GitHub repository.</p>
+    <div class="callout gold"><b>Four steps.</b>
+      1. Press Copy below. 2. Open your repo on GitHub and click <b>data.json</b>.
+      3. Click the pencil icon, select all, paste, then Commit changes.
+      4. Vercel rebuilds automatically — the live site updates in about a minute.</div>
+    <div class="footer-actions" style="margin-top:0;border:0;padding-top:0">
+      <button class="btn gold" id="copyJson">Copy data.json</button>
+      <button class="btn ghost" id="dlJson">Download file</button>
+      <button class="btn ghost" id="discard">Discard local changes</button></div>
+    <h2 class="sec">Contents</h2>
+    <textarea id="jsonOut" readonly>${esc(JSON.stringify(S,null,2))}</textarea>
+    <h2 class="sec">Resetting</h2>
+    <p class="sub">Both actions change only your device until you publish. Nothing is lost on the live site until you paste into GitHub.</p>
+    <div class="danger"><b>Clear this week only.</b>
+      Wipes every point logged in ${esc(curSession()?curSession().label:'this week')} and leaves all other weeks untouched.
+      Use this if a sitting was logged wrongly from the start.</div>
+    <div class="footer-actions" style="margin-top:0;border:0;padding-top:0">
+      <button class="btn ghost" id="clearWeek">Clear ${esc(curSession()?curSession().label:'this week')}</button></div>
+    <div class="danger"><b>Clear the whole term.</b>
+      Removes every point from every week for all ${delegates().length} delegates. The roster, committees and weeks stay.
+      Do this once at the end of term, after you have announced the awards and saved a copy of the standings.</div>
+    <div class="footer-actions" style="margin-top:0;border:0;padding-top:0">
+      <input id="wipeWord" placeholder="Type CLEAR to confirm" style="width:210px" autocomplete="off">
+      <button class="btn warn" id="resetAll">Clear all points</button></div>`;
+}
+
+function empty(t,s){return `<div class="empty"><strong>${esc(t)}</strong>${esc(s)}</div>`}
+
+/* ---------- admin actions ---------- */
+function award(id,key){
+  const a=AMAP[key];
+  if(a.cap&&sessCount(id,key)>=a.cap){toast('Cap reached this sitting');return}
+  const before=tierIdx(total(id));
+  S.events.push({id:uid('e'),sessionId:S.currentSession,memberId:id,action:key,points:a.p,ts:Date.now()});
+  saveDraft();
+  const after=tierIdx(total(id));
+  toast(after>before?byId(id).name.split(' ')[0]+' → '+TIERS[after].n:byId(id).name.split(' ')[0]+' +'+a.p);
+  render();
+}
+function toggleAttend(id){
+  const ev=S.events.find(e=>e.memberId===id&&e.action==='attend'&&e.sessionId===S.currentSession);
+  if(ev) S.events=S.events.filter(e=>e.id!==ev.id);
+  else S.events.push({id:uid('e'),sessionId:S.currentSession,memberId:id,action:'attend',points:1,ts:Date.now()});
+  saveDraft(); render();
+}
+function weeklyPost(){
+  const s=curSession(), mv=biggestMover(), sp=speakerOfWeek(), tm=teams(), promo=promotions();
+  let out='TKS MODEL UN — '+(s?s.label.toUpperCase():'THIS SITTING')+'\n\n';
+  out+='🔥 Biggest mover: '+(mv?`${mv.m.name} +${mv.v}`:'—')+'\n';
+  out+='🎤 Speaker of the Week: '+(sp?sp.m.name:'—')+'\n';
+  out+='🌍 Leading team: '+(tm.length?`${tm[0].name} — ${tm[0].pts}`:'—')+'\n';
+  if(promo.length) out+='\nPROMOTIONS\n'+promo.map(p=>`▲ ${p.name} → ${p.tier}`).join('\n')+'\n';
+  out+='\nTOP 5\n'+ranked('open').slice(0,5).map((m,i)=>`${i+1}. ${m.name} — ${m.pts} pts (${tierOf(m.pts).n})`).join('\n');
+  return out;
+}
+
+function wire(){
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+
+  $$('.tab').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;q='';qr='';render()});
+  $$('#divSeg button').forEach(b=>b.onclick=()=>{division=b.dataset.div;render()});
+  $$('[data-week]').forEach(b=>b.onclick=()=>{S.currentSession=b.dataset.week;if(ADMIN)saveDraft();render()});
+
+  const cw=$('#copyWeek');  if(cw) cw.onclick=()=>copy(weeklyPost());
+  const cb=$('#copyBoard'); if(cb) cb.onclick=()=>copy('TKS MODEL UN — TERM STANDINGS\n\n'+
+    ranked(division).slice(0,10).map((m,i)=>`${i+1}. ${m.name} — ${m.pts} pts (${tierOf(m.pts).n})`).join('\n'));
+  const ca=$('#copyAwards');if(ca) ca.onclick=()=>copy('TKS MODEL UN — TERM AWARDS\n\n'+
+    $$('.award').map(a=>`${a.querySelector('h3').textContent}: ${a.querySelector('.winner').textContent}`).join('\n'));
+
+  if(!ADMIN) return;
+
+  $$('#modeSeg button').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;selected=null;render()});
+  const keepFocus=id=>{const n=document.getElementById(id);if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length)}};
+  const qi=$('#q');   if(qi)  qi.oninput=()=>{q=qi.value;render();keepFocus('q')};
+  const qri=$('#qr'); if(qri) qri.oninput=()=>{qr=qri.value;render();keepFocus('qr')};
+
+  $$('[data-att]').forEach(b=>b.onclick=()=>toggleAttend(b.dataset.att));
+  $$('[data-sel]').forEach(b=>b.onclick=()=>{selected=selected===b.dataset.sel?null:b.dataset.sel;render()});
+  $$('[data-act]').forEach(b=>b.onclick=()=>award(selected,b.dataset.act));
+  $$('[data-undo]').forEach(b=>b.onclick=()=>{S.events=S.events.filter(e=>e.id!==b.dataset.undo);saveDraft();toast('Removed');render()});
+
+  const ai=$('#allIn'); if(ai) ai.onclick=()=>{
+    delegates().forEach(m=>{if(!isPresent(m.id))
+      S.events.push({id:uid('e'),sessionId:S.currentSession,memberId:m.id,action:'attend',points:1,ts:Date.now()})});
+    saveDraft(); toast('Full house'); render()};
+  const ao=$('#allOut'); if(ao) ao.onclick=()=>{
+    if(!confirm('Clear attendance for this sitting?'))return;
+    S.events=S.events.filter(e=>!(e.action==='attend'&&e.sessionId===S.currentSession));
+    saveDraft(); toast('Attendance cleared'); render()};
+
+  const ss=$('#sessSel'); if(ss) ss.onchange=()=>{S.currentSession=ss.value;saveDraft();render()};
+  const cs=$('#chairSel');if(cs) cs.onchange=()=>{curSession().chairId=cs.value||null;saveDraft();toast('Chair set')};
+  const ns=$('#newSess'); if(ns) ns.onclick=()=>{
+    const s={id:uid('s'),label:'Sitting '+(S.sessions.length+1),chairId:null};
+    S.sessions.push(s); S.currentSession=s.id; selected=null; saveDraft(); toast(s.label+' open'); render()};
+
+  const am=$('#addMember'); if(am) am.onclick=()=>{
+    const n=$('#newName').value.trim(); if(!n){toast('Name required');return}
+    S.members.push({id:uid('m'),name:n,year:$('#newYear').value,division:$('#newDiv').value,
+      role:'delegate',team:$('#newTeam').value.trim()});
+    saveDraft(); toast(n+' added'); render()};
+  const nn=$('#newName'); if(nn) nn.onkeydown=e=>{if(e.key==='Enter')document.getElementById('addMember').click()};
+
+  $$('[data-team]').forEach(i=>i.onchange=()=>{byId(i.dataset.team).team=i.value.trim();saveDraft();toast('Team set')});
+  $$('[data-year]').forEach(s=>s.onchange=()=>{byId(s.dataset.year).year=s.value;saveDraft()});
+  $$('[data-divsel]').forEach(s=>s.onchange=()=>{byId(s.dataset.divsel).division=s.value;saveDraft();render()});
+  $$('[data-role]').forEach(s=>s.onchange=()=>{byId(s.dataset.role).role=s.value;saveDraft();render()});
+  $$('[data-del]').forEach(b=>b.onclick=()=>{
+    const m=byId(b.dataset.del);
+    if(!confirm('Remove '+m.name+' and all their points?'))return;
+    S.members=S.members.filter(x=>x.id!==b.dataset.del);
+    S.events=S.events.filter(e=>e.memberId!==b.dataset.del);
+    if(selected===b.dataset.del) selected=null;
+    saveDraft(); toast('Removed'); render()});
+
+  const cj=$('#copyJson'); if(cj) cj.onclick=()=>copy(JSON.stringify(S,null,2));
+  const dj=$('#dlJson');   if(dj) dj.onclick=()=>{
+    const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
+    URL.revokeObjectURL(a.href); toast('Downloaded')};
+  const dc=$('#discard');  if(dc) dc.onclick=()=>{
+    if(!confirm('Discard everything logged since the last publish?'))return;
+    localStorage.removeItem(DRAFT_KEY); S=clone(PUBLISHED); hasDraft=false;
+    toast('Back to published'); render()};
+
+  $$('[data-wipe]').forEach(b=>b.onclick=()=>{
+    const m=byId(b.dataset.wipe);
+    if(!confirm('Remove every point '+m.name+' has earned this term?'))return;
+    S.events=S.events.filter(e=>e.memberId!==b.dataset.wipe);
+    saveDraft(); toast(m.name.split(' ')[0]+' reset to zero'); render()});
+
+  const cwk=$('#clearWeek'); if(cwk) cwk.onclick=()=>{
+    const s=curSession(); if(!s)return;
+    const n=S.events.filter(e=>e.sessionId===s.id).length;
+    if(!n){toast('Nothing logged that week');return}
+    if(!confirm('Delete all '+n+' entries from '+s.label+'? Other weeks are untouched.'))return;
+    S.events=S.events.filter(e=>e.sessionId!==s.id);
+    saveDraft(); toast(s.label+' cleared'); render()};
+
+  const ra=$('#resetAll'); if(ra) ra.onclick=()=>{
+    const w=$('#wipeWord');
+    if(!w||w.value.trim().toUpperCase()!=='CLEAR'){toast('Type CLEAR to confirm');return}
+    if(!confirm('Delete every point from every week for all delegates? This cannot be undone.'))return;
+    S.events=[]; saveDraft(); toast('All points cleared'); render()};
+}
+
+function copy(t){
+  navigator.clipboard.writeText(t).then(()=>toast('Copied'),()=>{
+    const ta=document.getElementById('jsonOut');
+    if(ta){ta.select();document.execCommand('copy');toast('Copied')}else toast('Copy failed')});
+}
+
+window.addEventListener('hashchange',()=>location.reload());
+boot();
+</script>
+</body>
+</html>
