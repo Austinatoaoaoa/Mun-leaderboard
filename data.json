@@ -2,13 +2,41 @@
   "seq": 200,
   "currentSession": "w4",
   "sessions": [
-    { "id": "w4",  "label": "Week 4",  "chairId": null },
-    { "id": "w5",  "label": "Week 5",  "chairId": null },
-    { "id": "w6",  "label": "Week 6",  "chairId": null },
-    { "id": "w7",  "label": "Week 7",  "chairId": null },
-    { "id": "w8",  "label": "Week 8",  "chairId": null },
-    { "id": "w9",  "label": "Week 9",  "chairId": null },
-    { "id": "w10", "label": "Week 10", "chairId": null }
+    {
+      "id": "w4",
+      "label": "Week 4",
+      "chairId": null
+    },
+    {
+      "id": "w5",
+      "label": "Week 5",
+      "chairId": null
+    },
+    {
+      "id": "w6",
+      "label": "Week 6",
+      "chairId": null
+    },
+    {
+      "id": "w7",
+      "label": "Week 7",
+      "chairId": null
+    },
+    {
+      "id": "w8",
+      "label": "Week 8",
+      "chairId": null
+    },
+    {
+      "id": "w9",
+      "label": "Week 9",
+      "chairId": null
+    },
+    {
+      "id": "w10",
+      "label": "Week 10",
+      "chairId": null
+    }
   ],
   "committees": {
     "w4": [
@@ -20,36 +48,72 @@
             "name": "Team Alpha",
             "line": "Coordinated international action, AI cooperation, a strong UCTF",
             "members": [
-              { "id": "m21", "country": "United States" },
-              { "id": "m39", "country": "Australia" },
-              { "id": "m47", "country": "Japan" }
+              {
+                "id": "m21",
+                "country": "United States"
+              },
+              {
+                "id": "m39",
+                "country": "Australia"
+              },
+              {
+                "id": "m47",
+                "country": "Japan"
+              }
             ]
           },
           {
             "name": "Team Beta",
             "line": "Defeat the Constructs, but resist Western control of the UCTF",
             "members": [
-              { "id": "m18", "country": "China" },
-              { "id": "m13", "country": "Russia" },
-              { "id": "m20", "country": "Iran" }
+              {
+                "id": "m18",
+                "country": "China"
+              },
+              {
+                "id": "m13",
+                "country": "Russia"
+              },
+              {
+                "id": "m20",
+                "country": "Iran"
+              }
             ]
           },
           {
             "name": "Team Charlie",
             "line": "Civilian protection, human control, no nuclear escalation",
             "members": [
-              { "id": "m46", "country": "France" },
-              { "id": "m17", "country": "Brazil" },
-              { "id": "m31", "country": "Mexico" }
+              {
+                "id": "m46",
+                "country": "France"
+              },
+              {
+                "id": "m17",
+                "country": "Brazil"
+              },
+              {
+                "id": "m31",
+                "country": "Mexico"
+              }
             ]
           },
           {
             "name": "Team Delta",
             "line": "Occupied states must have real power over the response",
             "members": [
-              { "id": "m37", "country": "India" },
-              { "id": "m27", "country": "Nigeria" },
-              { "id": "m23", "country": "South Africa" }
+              {
+                "id": "m37",
+                "country": "India"
+              },
+              {
+                "id": "m27",
+                "country": "Nigeria"
+              },
+              {
+                "id": "m23",
+                "country": "South Africa"
+              }
             ]
           }
         ]
@@ -62,92 +126,465 @@
             "name": "Team Alpha",
             "line": "Support access, but protect innovation and intellectual property",
             "members": [
-              { "id": "m30", "country": "United States" },
-              { "id": "m29", "country": "Germany" },
-              { "id": "m35", "country": "Switzerland" }
+              {
+                "id": "m30",
+                "country": "United States"
+              },
+              {
+                "id": "m29",
+                "country": "Germany"
+              },
+              {
+                "id": "m35",
+                "country": "Switzerland"
+              }
             ]
           },
           {
             "name": "Team Beta",
             "line": "Manufacturing capacity, not charity — technology transfer",
             "members": [
-              { "id": "m16", "country": "India" },
-              { "id": "m14", "country": "China" },
-              { "id": "m15", "country": "North Korea" },
-              { "id": "m12", "country": "Brazil" }
+              {
+                "id": "m16",
+                "country": "India"
+              },
+              {
+                "id": "m14",
+                "country": "China"
+              },
+              {
+                "id": "m15",
+                "country": "North Korea"
+              },
+              {
+                "id": "m12",
+                "country": "Brazil"
+              }
             ]
           },
           {
             "name": "Team Charlie",
             "line": "Poorer states should not wait their turn during a pandemic",
             "members": [
-              { "id": "m38", "country": "South Africa" },
-              { "id": "m19", "country": "Kenya" },
-              { "id": null,  "country": "Nigeria" }
+              {
+                "id": "m38",
+                "country": "South Africa"
+              },
+              {
+                "id": "m19",
+                "country": "Kenya"
+              },
+              {
+                "id": "m24",
+                "country": "Nigeria"
+              }
             ]
           },
           {
             "name": "Team Delta",
             "line": "The swing bloc — make the mechanism actually workable",
             "members": [
-              { "id": null,  "country": "United Kingdom" },
-              { "id": "m26", "country": "Indonesia" },
-              { "id": "m42", "country": "Australia" }
+              {
+                "id": "m36",
+                "country": "United Kingdom"
+              },
+              {
+                "id": "m26",
+                "country": "Indonesia"
+              },
+              {
+                "id": "m42",
+                "country": "Australia"
+              }
             ]
           }
         ]
       }
     ],
-    "w5": [], "w6": [], "w7": [], "w8": [], "w9": [], "w10": []
+    "w5": [],
+    "w6": [],
+    "w7": [],
+    "w8": [],
+    "w9": [],
+    "w10": []
   },
   "events": [],
   "members": [
-    { "id": "m1", "name": "Austin Xu", "year": "", "division": "open", "role": "captain", "team": "" },
-    { "id": "m2", "name": "Jerry Zhang", "year": "", "division": "open", "role": "vice", "team": "" },
-    { "id": "m3", "name": "Vasisht Guruprakash", "year": "", "division": "open", "role": "officer", "team": "" },
-    { "id": "m4", "name": "Samuel Hong", "year": "", "division": "open", "role": "officer", "team": "" },
-    { "id": "m5", "name": "Ethan Zhang", "year": "", "division": "open", "role": "officer", "team": "" },
-    { "id": "m6", "name": "Aaron Song", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m7", "name": "Agastya Vegunta", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m8", "name": "Akash Konduru", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m9", "name": "Akshat Sahdev", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m10", "name": "Ali Sarangpurwala", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m11", "name": "Avinash Shekhar", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m12", "name": "Carston Kwan", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m13", "name": "Charlie Shannon", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m14", "name": "Daniel Baird-Gunning", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m15", "name": "Edward Zhang", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m16", "name": "Ethan Tsui", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m17", "name": "Eugene Chen", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m18", "name": "Felson Ji", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m19", "name": "Franklin Du", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m20", "name": "Hugo Hughes", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m21", "name": "Jack Horwood", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m22", "name": "Jack Wang", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m23", "name": "Jacob Ball", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m24", "name": "Jacob Davies", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m25", "name": "Jacob Yao", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m26", "name": "Jayden Zhao", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m27", "name": "Jeffrey Shi", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m28", "name": "Jeremy Le", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m29", "name": "Jones Burley", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m30", "name": "Juwon Park", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m31", "name": "Kai Ding", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m32", "name": "Keethan Jeyarajah", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m33", "name": "Levi Zeng", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m34", "name": "Lucas Liu", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m35", "name": "Matheen Deen", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m36", "name": "Maximus Lee", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m37", "name": "Maxwell Zhu", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m38", "name": "Panayiotis Hatzistamatiou", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m39", "name": "Raaghav Gore", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m40", "name": "Rayn Javed", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m41", "name": "Reyaansh Kumar", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m42", "name": "Sam Harvey", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m43", "name": "Sam Tehrani", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m44", "name": "Tedon Yin", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m45", "name": "Vikrant Madan", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m46", "name": "Vincent del Villar", "year": "", "division": "open", "role": "delegate", "team": "" },
-    { "id": "m47", "name": "Wesley Wong", "year": "", "division": "open", "role": "delegate", "team": "" }
+    {
+      "id": "m1",
+      "name": "Austin Xu",
+      "year": "",
+      "division": "open",
+      "role": "captain",
+      "team": ""
+    },
+    {
+      "id": "m2",
+      "name": "Jerry Zhang",
+      "year": "",
+      "division": "open",
+      "role": "vice",
+      "team": ""
+    },
+    {
+      "id": "m3",
+      "name": "Vasisht Guruprakash",
+      "year": "",
+      "division": "open",
+      "role": "officer",
+      "team": ""
+    },
+    {
+      "id": "m4",
+      "name": "Samuel Hong",
+      "year": "",
+      "division": "open",
+      "role": "officer",
+      "team": ""
+    },
+    {
+      "id": "m5",
+      "name": "Ethan Zhang",
+      "year": "",
+      "division": "open",
+      "role": "officer",
+      "team": ""
+    },
+    {
+      "id": "m6",
+      "name": "Aaron Song",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m7",
+      "name": "Agastya Vegunta",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m8",
+      "name": "Akash Konduru",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m9",
+      "name": "Akshat Sahdev",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m10",
+      "name": "Ali Sarangpurwala",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m11",
+      "name": "Avinash Shekhar",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m12",
+      "name": "Carston Kwan",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m13",
+      "name": "Charlie Shannon",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m14",
+      "name": "Daniel Baird-Gunning",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m15",
+      "name": "Edward Zhang",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m16",
+      "name": "Ethan Tsui",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m17",
+      "name": "Eugene Chen",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m18",
+      "name": "Felson Ji",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m19",
+      "name": "Franklin Du",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m20",
+      "name": "Hugo Hughes",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m21",
+      "name": "Jack Horwood",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m22",
+      "name": "Jack Wang",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m23",
+      "name": "Jacob Ball",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m24",
+      "name": "Jacob Davies",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m25",
+      "name": "Jacob Yao",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m26",
+      "name": "Jayden Zhao",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m27",
+      "name": "Jeffrey Shi",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m28",
+      "name": "Jeremy Le",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m29",
+      "name": "Jones Burley",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m30",
+      "name": "Juwon Park",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m31",
+      "name": "Kai Ding",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m32",
+      "name": "Keethan Jeyarajah",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m33",
+      "name": "Levi Zeng",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m34",
+      "name": "Lucas Liu",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m35",
+      "name": "Matheen Deen",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m36",
+      "name": "Maximus Lee",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m37",
+      "name": "Maxwell Zhu",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m38",
+      "name": "Panayiotis Hatzistamatiou",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m39",
+      "name": "Raaghav Gore",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m40",
+      "name": "Rayn Javed",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m41",
+      "name": "Reyaansh Kumar",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m42",
+      "name": "Sam Harvey",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m43",
+      "name": "Sam Tehrani",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m44",
+      "name": "Tedon Yin",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m45",
+      "name": "Vikrant Madan",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m46",
+      "name": "Vincent del Villar",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m47",
+      "name": "Wesley Wong",
+      "year": "",
+      "division": "open",
+      "role": "delegate",
+      "team": ""
+    }
   ]
 }
