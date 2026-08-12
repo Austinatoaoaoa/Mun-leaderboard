@@ -170,6 +170,15 @@
     margin:20px 0;font-size:13.5px;color:var(--placard-dim);border-radius:0 2px 2px 0}
   .danger b{color:var(--warn);font-weight:600}
   .btn.warn{background:var(--warn);color:#fff}
+  .erow{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:7px}
+  .erow input{flex:1 1 130px;min-width:0}
+  .ecname{font-family:var(--display);font-size:17px;letter-spacing:.05em;text-transform:uppercase;flex:1 1 160px}
+  .etname{font-family:var(--display);font-size:15px;letter-spacing:.05em;text-transform:uppercase}
+  .eline{width:100%;font-size:12.5px;margin-bottom:10px}
+  .eslot{display:grid;grid-template-columns:1fr 1fr auto;gap:6px;align-items:center;
+    padding:5px 0;border-top:1px solid rgba(22,57,92,.7)}
+  .ecty{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+  .eslot select{font-size:13px;padding:8px 9px;min-width:0}
   .bench{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin-bottom:8px}
   .exec{background:var(--chamber-deep);border:1px solid var(--chamber-line);
     border-top:3px solid var(--gavel);border-radius:2px;padding:12px 13px}
@@ -363,7 +372,7 @@ const FALLBACK={seq:100,currentSession:'s1',sessions:[{id:'s1',label:'Sitting 1'
 let S=null, PUBLISHED=null;
 let ADMIN=location.hash.toLowerCase().includes('admin');
 let hasDraft=false;
-let tab='board', division='open', selected=null, mode='attend', q='', qr='';
+let tab='board', division='open', selected=null, mode='attend', q='', qr='', editing=false;
 
 /* ---------- loading ---------- */
 async function boot(){
@@ -663,32 +672,64 @@ function vCommittees(){
   const sid=S.currentSession;
   const weekBtns=S.sessions.map(s=>`<button class="chip" data-week="${s.id}" aria-pressed="${s.id===sid}">${esc(s.label)}</button>`).join('');
   const cs=weekCommittees(sid);
-
-  const body=cs.length?cs.map(c=>{
-    const teamCards=c.teams.map(t=>{
-      const slots=t.members.map(s=>{
-        const m=s.id?byId(s.id):null;
-        return `<div class="slot${m?'':' open'}">
-          <span class="cty">${esc(s.country)}</span>
-          <span class="dg">${m?esc(m.name)+`<span class="p">${total(m.id)}</span>`:'Slot open'}</span></div>`;
-      }).join('');
-      return `<div class="team"><div class="th1"><span class="tname">${esc(t.name)}</span>
-        <span class="tpts">${teamWeekPoints(t,sid)} pts</span></div>
-        <div class="tline">${esc(t.line||'')}</div>${slots}</div>`;
-    }).join('');
-    return `<div class="cttl"><h3>${esc(c.name)}</h3><span>${esc(c.topic||'')}</span></div>
-      <div class="teams">${teamCards}</div>`;
-  }).join(''):empty('Not yet assigned','Committees for this week have not been set.');
-
   const up=unplaced(sid);
+
+  const editBar=ADMIN?`<div class="footer-actions" style="margin:0 0 18px;border:0;padding:0">
+      <button class="btn ${editing?'gold':'ghost'}" id="editToggle">${editing?'Done editing':'Edit this week'}</button>
+      ${editing?`<button class="btn ghost" id="addCttee">Add committee</button>
+        <button class="btn ghost" id="copyWeekFrom">Copy from another week</button>`:''}
+    </div>`:'';
+
+  let body;
+  if(!cs.length){
+    body=empty('Not yet assigned',ADMIN?'Press Edit this week, then Add committee.':'Committees for this week have not been set.');
+  }else{
+    body=cs.map((c,ci)=>{
+      const teamCards=c.teams.map((t,ti)=>{
+        const slots=t.members.map((s,si)=>{
+          const m=s.id?byId(s.id):null;
+          if(!editing) return `<div class="slot${m?'':' open'}">
+            <span class="cty">${esc(s.country)}</span>
+            <span class="dg">${m?esc(m.name)+`<span class="p">${total(m.id)}</span>`:'Slot open'}</span></div>`;
+          const opts=[`<option value="">— empty —</option>`]
+            .concat(up.map(u=>`<option value="${u.id}">${esc(u.name)}</option>`));
+          if(m) opts.splice(1,0,`<option value="${m.id}" selected>${esc(m.name)}</option>`);
+          return `<div class="eslot">
+            <input class="ecty" data-country="${ci}-${ti}-${si}" value="${esc(s.country)}" placeholder="Country">
+            <select data-assign="${ci}-${ti}-${si}">${opts.join('')}</select>
+            <button class="del" data-slotdel="${ci}-${ti}-${si}" title="Remove slot">×</button></div>`;
+        }).join('');
+        const head=editing
+          ? `<div class="erow"><input class="etname" data-tname="${ci}-${ti}" value="${esc(t.name)}" placeholder="Team name">
+             <button class="del" data-teamdel="${ci}-${ti}">Delete team</button></div>
+             <input class="eline" data-tline="${ci}-${ti}" value="${esc(t.line||'')}" placeholder="Strategy line">`
+          : `<div class="th1"><span class="tname">${esc(t.name)}</span>
+             <span class="tpts">${teamWeekPoints(t,sid)} pts</span></div>
+             <div class="tline">${esc(t.line||'')}</div>`;
+        return `<div class="team">${head}${slots}
+          ${editing?`<div class="footer-actions" style="margin:10px 0 0;border:0;padding:0">
+            <button class="btn ghost" data-slotadd="${ci}-${ti}">Add country</button></div>`:''}</div>`;
+      }).join('');
+      const title=editing
+        ? `<div class="erow" style="margin:26px 0 6px">
+            <input class="ecname" data-cname="${ci}" value="${esc(c.name)}" placeholder="Committee name">
+            <input class="ectopic" data-ctopic="${ci}" value="${esc(c.topic||'')}" placeholder="Topic">
+            <button class="del" data-ctdel="${ci}">Delete</button></div>`
+        : `<div class="cttl"><h3>${esc(c.name)}</h3><span>${esc(c.topic||'')}</span></div>`;
+      return `${title}<div class="teams">${teamCards}</div>
+        ${editing?`<div class="footer-actions" style="margin:10px 0 0;border:0;padding:0">
+          <button class="btn ghost" data-teamadd="${ci}">Add team</button></div>`:''}`;
+    }).join('');
+  }
+
   const upHtml=cs.length?`<h2 class="sec">Unplaced <span style="color:var(--ink-soft);font-size:12px">(${up.length})</span></h2>
-    <p class="sub">Available for the open slots above, or for a second committee.</p>
+    <p class="sub">${editing?'Assign these from the dropdowns above. Names disappear from here once placed.':'Available for the open slots above, or for a second committee.'}</p>
     <div class="picker">${up.map(m=>`<span class="chip" style="cursor:default">${esc(m.name)}<span class="n">${total(m.id)}</span></span>`).join('')||'<div class="empty">Everyone is placed.</div>'}</div>`:'';
 
   return `<h2 class="sec">Committees</h2>
     <p class="sub">Teams and countries run week by week. Points earned still feed the term leaderboard.</p>
     <div class="picker">${weekBtns}</div>
-    ${body}${upHtml}`;
+    ${editBar}${body}${upHtml}`;
 }
 
 function vAwards(){
@@ -857,6 +898,48 @@ function wire(){
     if(!confirm('Discard everything logged since the last publish?'))return;
     localStorage.removeItem(DRAFT_KEY); S=clone(PUBLISHED); hasDraft=false;
     toast('Back to published'); render()};
+
+  const P=s=>s.split('-').map(Number);
+  const CL=()=>{const sid=S.currentSession; if(!S.committees[sid])S.committees[sid]=[]; return S.committees[sid]};
+
+  const et=$('#editToggle'); if(et) et.onclick=()=>{editing=!editing;render()};
+  const ac=$('#addCttee');   if(ac) ac.onclick=()=>{
+    CL().push({name:'New committee',topic:'',teams:[]}); saveDraft(); toast('Committee added'); render()};
+  const cf=$('#copyWeekFrom'); if(cf) cf.onclick=()=>{
+    const from=prompt('Copy committees from which week? Type the number, e.g. 4');
+    if(!from)return;
+    const src=S.sessions.find(s=>s.label.replace(/\D/g,'')===String(from).replace(/\D/g,''));
+    if(!src||!S.committees[src.id]||!S.committees[src.id].length){toast('Nothing to copy');return}
+    if(CL().length&&!confirm('Replace this week\u2019s committees with a copy of '+src.label+'?'))return;
+    S.committees[S.currentSession]=clone(S.committees[src.id]);
+    saveDraft(); toast('Copied from '+src.label); render()};
+
+  $$('[data-cname]').forEach(i=>i.onchange=()=>{CL()[+i.dataset.cname].name=i.value.trim()||'Committee';saveDraft();render()});
+  $$('[data-ctopic]').forEach(i=>i.onchange=()=>{CL()[+i.dataset.ctopic].topic=i.value.trim();saveDraft()});
+  $$('[data-ctdel]').forEach(b=>b.onclick=()=>{
+    const c=CL()[+b.dataset.ctdel];
+    if(!confirm('Delete '+c.name+' and all its teams for this week?'))return;
+    CL().splice(+b.dataset.ctdel,1); saveDraft(); toast('Committee deleted'); render()});
+
+  $$('[data-teamadd]').forEach(b=>b.onclick=()=>{
+    CL()[+b.dataset.teamadd].teams.push({name:'New team',line:'',members:[]});
+    saveDraft(); render()});
+  $$('[data-tname]').forEach(i=>i.onchange=()=>{const[c,t]=P(i.dataset.tname);
+    CL()[c].teams[t].name=i.value.trim()||'Team';saveDraft();render()});
+  $$('[data-tline]').forEach(i=>i.onchange=()=>{const[c,t]=P(i.dataset.tline);
+    CL()[c].teams[t].line=i.value.trim();saveDraft()});
+  $$('[data-teamdel]').forEach(b=>b.onclick=()=>{const[c,t]=P(b.dataset.teamdel);
+    if(!confirm('Delete '+CL()[c].teams[t].name+'?'))return;
+    CL()[c].teams.splice(t,1); saveDraft(); toast('Team deleted'); render()});
+
+  $$('[data-slotadd]').forEach(b=>b.onclick=()=>{const[c,t]=P(b.dataset.slotadd);
+    CL()[c].teams[t].members.push({id:null,country:''}); saveDraft(); render()});
+  $$('[data-country]').forEach(i=>i.onchange=()=>{const[c,t,s]=P(i.dataset.country);
+    CL()[c].teams[t].members[s].country=i.value.trim();saveDraft()});
+  $$('[data-assign]').forEach(sel=>sel.onchange=()=>{const[c,t,s]=P(sel.dataset.assign);
+    CL()[c].teams[t].members[s].id=sel.value||null; saveDraft(); render()});
+  $$('[data-slotdel]').forEach(b=>b.onclick=()=>{const[c,t,s]=P(b.dataset.slotdel);
+    CL()[c].teams[t].members.splice(s,1); saveDraft(); render()});
 
   $$('[data-wipe]').forEach(b=>b.onclick=()=>{
     const m=byId(b.dataset.wipe);
