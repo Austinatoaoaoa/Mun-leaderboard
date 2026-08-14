@@ -27,6 +27,8 @@
   .adminbar{background:var(--gavel);color:var(--chamber-deep);font-family:var(--mono);
     font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:center;
     padding:6px 12px;font-weight:600}
+  .syncbar{background:var(--present);color:#fff;font-family:var(--mono);font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:6px 12px;font-weight:600}
   .draftbar{background:var(--warn);color:#fff;font-family:var(--mono);font-size:11px;
     letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:6px 12px;font-weight:600}
 
@@ -396,20 +398,38 @@ async function boot(){
 
   if(ADMIN){
     const d=localStorage.getItem(DRAFT_KEY);
-    if(d){ try{ S=JSON.parse(d); hasDraft=true;
+    if(d){ try{ S=JSON.parse(d);
       if(!S.committees) S.committees=clone(PUBLISHED.committees);
     }catch(e){ S=clone(PUBLISHED) } }
     else S=clone(PUBLISHED);
+    refreshDraftState();
   }else{
     S=PUBLISHED;
   }
   buildTabs(); render();
 }
 const clone=o=>JSON.parse(JSON.stringify(o));
+
+/* A draft only counts as unpublished if its actual content differs from the
+   file currently on GitHub. Browsing between weeks is a view preference, not
+   an edit, so currentSession and seq are excluded from the comparison. */
+function signature(o){
+  if(!o) return '';
+  return JSON.stringify({
+    members:o.members,
+    sessions:(o.sessions||[]).map(s=>({id:s.id,label:s.label,chairId:s.chairId})),
+    committees:o.committees,
+    events:(o.events||[]).map(e=>[e.sessionId,e.memberId,e.action,e.points]).sort()
+  });
+}
+function refreshDraftState(){
+  hasDraft = ADMIN && signature(S)!==signature(PUBLISHED);
+  if(ADMIN && !hasDraft){ try{ localStorage.removeItem(DRAFT_KEY) }catch(e){} }
+}
 function saveDraft(){
   if(!ADMIN) return;
-  hasDraft=true;
   try{ localStorage.setItem(DRAFT_KEY,JSON.stringify(S)); }catch(e){}
+  refreshDraftState();
 }
 
 /* ---------- data ---------- */
@@ -506,7 +526,9 @@ function banner(){
   const b=document.getElementById('banner');
   if(!ADMIN){b.innerHTML='';return}
   b.innerHTML=`<div class="adminbar">Admin console — changes are saved on this device only</div>`+
-    (hasDraft?`<div class="draftbar">Unpublished changes · publish from the Publish tab to update the live site</div>`:'');
+    (hasDraft
+      ? `<div class="draftbar">Unpublished changes · publish from the Publish tab to update the live site</div>`
+      : `<div class="syncbar">In sync with the live site</div>`);
 }
 function strip(){
   const s=curSession();
@@ -793,16 +815,21 @@ function vRules(){
 }
 
 function vPublish(){
+  const synced=!hasDraft;
   return `<h2 class="sec">Publish</h2>
-    <p class="sub">Everything you log stays on this device until you publish. Publishing means replacing the contents of <code>data.json</code> in your GitHub repository.</p>
-    <div class="callout gold"><b>Four steps.</b>
+    <p class="sub">${synced
+      ? 'This device matches the live site. Nothing is waiting to be published.'
+      : 'Everything you log stays on this device until you publish. Publishing means replacing the contents of <code>data.json</code> in your GitHub repository.'}</p>
+    ${synced?'':`<div class="callout gold"><b>Four steps.</b>
       1. Press Copy below. 2. Open your repo on GitHub and click <b>data.json</b>.
       3. Click the pencil icon, select all, paste, then Commit changes.
-      4. Vercel rebuilds automatically — the live site updates in about a minute.</div>
+      4. Vercel rebuilds automatically — the live site updates in about a minute.</div>`}
     <div class="footer-actions" style="margin-top:0;border:0;padding-top:0">
-      <button class="btn gold" id="copyJson">Copy data.json</button>
+      <button class="btn ${synced?'ghost':'gold'}" id="copyJson">Copy data.json</button>
       <button class="btn ghost" id="dlJson">Download file</button>
-      <button class="btn ghost" id="discard">Discard local changes</button></div>
+      <button class="btn ghost" id="recheck">Check live site</button>
+      ${synced?'':`<button class="btn ghost" id="discard">Discard local changes</button>`}</div>
+    ${synced?'':`<p class="tally" style="margin-top:14px">After committing on GitHub, wait a minute and press <b>Check live site</b> — the bar turns green once the two match.</p>`}
     <h2 class="sec">Contents</h2>
     <textarea id="jsonOut" readonly>${esc(JSON.stringify(S,null,2))}</textarea>
     <h2 class="sec">Resetting</h2>
@@ -915,6 +942,20 @@ function wire(){
     const a=document.createElement('a');
     a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
     URL.revokeObjectURL(a.href); toast('Downloaded')};
+  const rc=$('#recheck'); if(rc) rc.onclick=async()=>{
+    rc.textContent='Checking…';
+    try{
+      const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'});
+      const fresh=await r.json();
+      fresh.members.forEach(m=>{if(m.team===undefined)m.team=''});
+      if(!fresh.committees) fresh.committees={};
+      PUBLISHED=fresh;
+      refreshDraftState();
+      toast(hasDraft?'Still unpublished':'In sync with the live site');
+    }catch(e){ toast('Could not reach the live site') }
+    render();
+  };
+
   const dc=$('#discard');  if(dc) dc.onclick=()=>{
     if(!confirm('Discard everything logged since the last publish?'))return;
     localStorage.removeItem(DRAFT_KEY); S=clone(PUBLISHED); hasDraft=false;
