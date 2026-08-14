@@ -13,7 +13,7 @@
     --placard:#F7F5F0; --placard-dim:#DFDCD4;
     --un:#4A9FD8; --gavel:#C8A44D; --gavel-dim:#8A7233;
     --ink:#0A2540; --ink-soft:#4A5C6E; --present:#3E9C74; --warn:#C86A4D;
-    --t0:#8A99A8; --t1:#4A9FD8; --t2:#3E9C74; --t3:#C8A44D; --t4:#E8C86A;
+    --t0:#8A99A8; --t1:#4A9FD8; --t2:#3E9C74; --t3:#B8794A; --t4:#C8A44D; --t5:#E8C86A;
     --display:'Oswald',Impact,sans-serif;
     --body:'IBM Plex Sans',system-ui,sans-serif;
     --mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -258,6 +258,8 @@
   .tierline .sw{width:5px;height:26px;border-radius:2px;flex:0 0 auto}
   .tierline .tnm{font-family:var(--display);font-size:17px;letter-spacing:.06em;
     text-transform:uppercase;flex:1}
+  .tierline .perk{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;
+    text-transform:none;color:var(--un);margin-top:2px}
   .tierline .trg{font-family:var(--mono);font-size:12px;color:var(--gavel)}
   .callout{border-left:3px solid var(--un);background:var(--chamber-deep);padding:13px 15px;
     margin:20px 0;font-size:13.5px;color:var(--placard-dim);border-radius:0 2px 2px 0}
@@ -325,11 +327,12 @@
 const DRAFT_KEY='tks_mun_draft_v1';
 
 const TIERS=[
-  {n:'Rookie',            min:0,  max:10,       c:'var(--t0)'},
-  {n:'Delegate',          min:11, max:25,       c:'var(--t1)'},
-  {n:'Diplomat',          min:26, max:45,       c:'var(--t2)'},
-  {n:'Ambassador',        min:46, max:70,       c:'var(--t3)'},
-  {n:'Secretary-General', min:71, max:Infinity, c:'var(--t4)'}
+  {n:'Rookie',            min:0,   max:10,       c:'var(--t0)'},
+  {n:'Delegate',          min:11,  max:25,       c:'var(--t1)'},
+  {n:'Diplomat',          min:26,  max:45,       c:'var(--t2)'},
+  {n:'Deputy Chair',      min:46,  max:70,       c:'var(--t3)'},
+  {n:'Chair',             min:71,  max:99,       c:'var(--t4)'},
+  {n:'Secretary-General', min:100, max:Infinity, c:'var(--t5)'}
 ];
 const tierIdx=p=>{let i=0;TIERS.forEach((t,j)=>{if(p>=t.min)i=j});return i};
 const tierOf=p=>TIERS[tierIdx(p)];
@@ -452,12 +455,14 @@ function teamWeekPoints(team,sid){
 function teams(){
   const sid=S.currentSession, cs=weekCommittees(sid);
   if(cs.length){
-    const out=[];
-    cs.forEach(c=>c.teams.forEach(t=>out.push({
-      name:c.name+' '+t.name.replace(/^Team /,''),
-      pts:teamWeekPoints(t,sid),
-      n:t.members.filter(s=>s.id).length})));
-    return out.sort((a,b)=>b.pts-a.pts||a.name.localeCompare(b.name));
+    const map={};
+    cs.forEach(c=>c.teams.forEach(t=>{
+      const key=t.name.trim();
+      if(!map[key]) map[key]={name:key,pts:0,n:0};
+      map[key].pts+=teamWeekPoints(t,sid);
+      map[key].n+=t.members.filter(s=>s.id).length;
+    }));
+    return Object.values(map).sort((a,b)=>b.pts-a.pts||a.name.localeCompare(b.name));
   }
   const map={};
   delegates().forEach(m=>{const t=(m.team||'').trim(); if(!t)return;
@@ -552,7 +557,7 @@ function vBoard(){
     return `<div class="placard${medal}${sg?' sg':''}">
       <div class="rank">${String(i+1).padStart(2,'0')}</div>
       <div class="who">
-        <div class="name">${esc(m.name)}<span class="tierbadge" style="background:${t.c};${tierIdx(m.pts)>=3?'color:#0A2540':''}">${t.n.toUpperCase()}</span>${m.division==='novice'?'<span class="novice-flag">NOVICE</span>':''}</div>
+        <div class="name">${esc(m.name)}<span class="tierbadge" style="background:${t.c};${tierIdx(m.pts)>=4?'color:#0A2540':''}">${t.n.toUpperCase()}</span>${m.division==='novice'?'<span class="novice-flag">NOVICE</span>':''}</div>
         <div class="meta">${m.team?esc(m.team)+' · ':''}${pr.next?`${pr.toNext} to ${pr.next}`:'Top rank held'} · ${countIn(m.id,['speech'])} speeches</div>
         <div class="bar"><i style="width:${Math.max(pr.pct,2)}%;background:${t.c}"></i></div>
       </div><div class="pts">${m.pts}<small>PTS</small></div></div>`;
@@ -762,11 +767,20 @@ function vAwards(){
 function vRules(){
   const grp=(n,k)=>`<tr><th colspan="2" style="padding-top:18px">${n}</th></tr>`+
     ACTIONS.filter(a=>k.includes(a.grp)).map(a=>`<tr><td>${esc(a.l)}${a.cap?`<span class="note">Capped at ${a.cap} per sitting</span>`:''}</td><td>+${a.p}</td></tr>`).join('');
+  const perks={
+    'Deputy Chair':'Eligible to deputy chair a sitting',
+    'Chair':'Eligible to chair a sitting and take a TksMUN chairing slot',
+    'Secretary-General':'Senior chairing and first pick of committee'
+  };
   const tierRows=TIERS.map(t=>`<div class="tierline"><span class="sw" style="background:${t.c}"></span>
-    <span class="tnm">${t.n}</span><span class="trg">${t.max===Infinity?t.min+'+':t.min+'–'+t.max} pts</span></div>`).join('');
+    <span class="tnm">${t.n}${perks[t.n]?`<span class="perk">${perks[t.n]}</span>`:''}</span>
+    <span class="trg">${t.max===Infinity?t.min+'+':t.min+'–'+t.max} pts</span></div>`).join('');
   return `<h2 class="sec">Ranks</h2>
-    <p class="sub">Ranks never go down within a term. Once you make Diplomat you stay one — the ladder only climbs.</p>
-    ${tierRows}<h2 class="sec">Scoring</h2>
+    <p class="sub">Ranks never go down within a term. Once you make Diplomat you stay one — the ladder only climbs. From Deputy Chair upward the rank is a qualification, not just a title: earn it and you are eligible to run the room.</p>
+    ${tierRows}
+    <div class="callout"><b>Chairing is the reward.</b> Anyone who reaches Chair should be given a real sitting to run,
+      and chairing itself pays +4. The executive still decides who chairs on the day, but the rank is how you qualify.</div>
+    <h2 class="sec">Scoring</h2>
     <p class="sub">Every award is chair-adjudicated. If the chair didn't recognise it, it didn't happen.</p>
     <table class="rules"><tr><th>Action</th><th style="text-align:right">Points</th></tr>
     ${grp('In the chamber',['core'])}${grp('Paper and drafting',['paper'])}
