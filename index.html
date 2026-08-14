@@ -386,13 +386,21 @@ let hasDraft=false;
 let tab='board', division='open', selected=null, mode='attend', q='', qr='', editing=false;
 
 /* ---------- loading ---------- */
-async function boot(){
-  try{
-    const r=await fetch('data.json',{cache:'no-store'});
-    PUBLISHED=await r.json();
-  }catch(e){
-    PUBLISHED=JSON.parse(JSON.stringify(FALLBACK));
+async function fetchPublished(){
+  const tries=['data.json','./data.json','/data.json','data.json?t='+Date.now()];
+  for(const url of tries){
+    try{
+      const r=await fetch(url,{cache:'no-store'});
+      if(!r.ok) continue;
+      const j=JSON.parse(await r.text());
+      if(j&&j.members) return j;
+    }catch(e){}
   }
+  return null;
+}
+async function boot(){
+  const got=await fetchPublished();
+  PUBLISHED = got || JSON.parse(JSON.stringify(FALLBACK));
   PUBLISHED.members.forEach(m=>{if(m.team===undefined)m.team=''});
   if(!PUBLISHED.committees) PUBLISHED.committees={};
 
@@ -944,15 +952,27 @@ function wire(){
     URL.revokeObjectURL(a.href); toast('Downloaded')};
   const rc=$('#recheck'); if(rc) rc.onclick=async()=>{
     rc.textContent='Checking…';
-    try{
-      const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'});
-      const fresh=await r.json();
+    const tries=['data.json?t='+Date.now(),'data.json','./data.json','/data.json'];
+    let fresh=null, err='';
+    for(const url of tries){
+      try{
+        const r=await fetch(url,{cache:'no-store'});
+        if(!r.ok){ err='HTTP '+r.status; continue }
+        const txt=await r.text();
+        try{ fresh=JSON.parse(txt); }catch(pe){ err='Not valid JSON'; continue }
+        if(fresh&&fresh.members) break;
+        err='Unexpected file contents'; fresh=null;
+      }catch(e){ err=e&&e.message?e.message:'Network error' }
+    }
+    if(fresh){
       fresh.members.forEach(m=>{if(m.team===undefined)m.team=''});
       if(!fresh.committees) fresh.committees={};
       PUBLISHED=fresh;
       refreshDraftState();
       toast(hasDraft?'Still unpublished':'In sync with the live site');
-    }catch(e){ toast('Could not reach the live site') }
+    }else{
+      toast('Check failed · '+err);
+    }
     render();
   };
 
