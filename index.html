@@ -13,7 +13,7 @@
     --placard:#F7F5F0; --placard-dim:#DFDCD4;
     --un:#4A9FD8; --gavel:#C8A44D; --gavel-dim:#8A7233;
     --ink:#0A2540; --ink-soft:#4A5C6E; --present:#3E9C74; --warn:#C86A4D;
-    --t0:#8A99A8; --t1:#4A9FD8; --t2:#3E9C74; --t3:#B8794A; --t4:#C8A44D; --t5:#E8C86A;
+    --t0:#8A99A8; --t1:#4A9FD8; --t2:#3E9C74; --t3:#8A7BC8; --t4:#B8794A; --t5:#C8A44D; --t6:#E8C86A;
     --display:'Oswald',Impact,sans-serif;
     --body:'IBM Plex Sans',system-ui,sans-serif;
     --mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -327,12 +327,13 @@
 const DRAFT_KEY='tks_mun_draft_v1';
 
 const TIERS=[
-  {n:'Rookie',            min:0,   max:10,       c:'var(--t0)'},
-  {n:'Delegate',          min:11,  max:25,       c:'var(--t1)'},
-  {n:'Diplomat',          min:26,  max:45,       c:'var(--t2)'},
-  {n:'Deputy Chair',      min:46,  max:70,       c:'var(--t3)'},
-  {n:'Chair',             min:71,  max:99,       c:'var(--t4)'},
-  {n:'Secretary-General', min:100, max:Infinity, c:'var(--t5)'}
+  {n:'Rookie',              min:0,  max:10,       c:'var(--t0)'},
+  {n:'Delegate',            min:11, max:20,       c:'var(--t1)'},
+  {n:'Diplomat',            min:21, max:29,       c:'var(--t2)'},
+  {n:'Team Leader',         min:30, max:44,       c:'var(--t3)'},
+  {n:'Organising Committee',min:45, max:59,       c:'var(--t4)'},
+  {n:'Deputy Chair',        min:60, max:79,       c:'var(--t5)'},
+  {n:'Chair',               min:80, max:Infinity, c:'var(--t6)'}
 ];
 const tierIdx=p=>{let i=0;TIERS.forEach((t,j)=>{if(p>=t.min)i=j});return i};
 const tierOf=p=>TIERS[tierIdx(p)];
@@ -557,7 +558,7 @@ function vBoard(){
     return `<div class="placard${medal}${sg?' sg':''}">
       <div class="rank">${String(i+1).padStart(2,'0')}</div>
       <div class="who">
-        <div class="name">${esc(m.name)}<span class="tierbadge" style="background:${t.c};${tierIdx(m.pts)>=4?'color:#0A2540':''}">${t.n.toUpperCase()}</span>${m.division==='novice'?'<span class="novice-flag">NOVICE</span>':''}</div>
+        <div class="name">${esc(m.name)}<span class="tierbadge" style="background:${t.c};${tierIdx(m.pts)>=5?'color:#0A2540':''}">${t.n.toUpperCase()}</span>${m.division==='novice'?'<span class="novice-flag">NOVICE</span>':''}</div>
         <div class="meta">${m.team?esc(m.team)+' · ':''}${pr.next?`${pr.toNext} to ${pr.next}`:'Top rank held'} · ${countIn(m.id,['speech'])} speeches</div>
         <div class="bar"><i style="width:${Math.max(pr.pct,2)}%;background:${t.c}"></i></div>
       </div><div class="pts">${m.pts}<small>PTS</small></div></div>`;
@@ -768,15 +769,16 @@ function vRules(){
   const grp=(n,k)=>`<tr><th colspan="2" style="padding-top:18px">${n}</th></tr>`+
     ACTIONS.filter(a=>k.includes(a.grp)).map(a=>`<tr><td>${esc(a.l)}${a.cap?`<span class="note">Capped at ${a.cap} per sitting</span>`:''}</td><td>+${a.p}</td></tr>`).join('');
   const perks={
+    'Team Leader':'Can lead a bloc and speak for it in negotiation',
+    'Organising Committee':'Joins the TksMUN 2027 organising roster',
     'Deputy Chair':'Eligible to deputy chair a sitting',
-    'Chair':'Eligible to chair a sitting and take a TksMUN chairing slot',
-    'Secretary-General':'Senior chairing and first pick of committee'
+    'Chair':'Eligible to chair a sitting and take a TksMUN chairing slot'
   };
   const tierRows=TIERS.map(t=>`<div class="tierline"><span class="sw" style="background:${t.c}"></span>
     <span class="tnm">${t.n}${perks[t.n]?`<span class="perk">${perks[t.n]}</span>`:''}</span>
     <span class="trg">${t.max===Infinity?t.min+'+':t.min+'–'+t.max} pts</span></div>`).join('');
   return `<h2 class="sec">Ranks</h2>
-    <p class="sub">Ranks never go down within a term. Once you make Diplomat you stay one — the ladder only climbs. From Deputy Chair upward the rank is a qualification, not just a title: earn it and you are eligible to run the room.</p>
+    <p class="sub">Ranks never go down within a term. Once you make Diplomat you stay one — the ladder only climbs. From Team Leader upward the rank is a qualification, not just a title: earn it and you are eligible for the role.</p>
     ${tierRows}
     <div class="callout"><b>Chairing is the reward.</b> Anyone who reaches Chair should be given a real sitting to run,
       and chairing itself pays +4. The executive still decides who chairs on the day, but the rank is how you qualify.</div>
