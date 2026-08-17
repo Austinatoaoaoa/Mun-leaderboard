@@ -1,5 +1,5 @@
 {
-  "seq": 242,
+  "seq": 251,
   "currentSession": "w4",
   "sessions": [
     {
@@ -703,7 +703,7 @@
       "id": "m6",
       "name": "Aaron Song",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -711,7 +711,7 @@
       "id": "m7",
       "name": "Agastya Vegunta",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -727,7 +727,7 @@
       "id": "m9",
       "name": "Akshat Sahdev",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -735,7 +735,7 @@
       "id": "m10",
       "name": "Ali Sarangpurwala",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -807,7 +807,7 @@
       "id": "m19",
       "name": "Franklin Du",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -831,7 +831,7 @@
       "id": "m22",
       "name": "Jack Wang",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -855,7 +855,7 @@
       "id": "m25",
       "name": "Jacob Yao",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -879,7 +879,7 @@
       "id": "m28",
       "name": "Jeremy Le",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -911,7 +911,7 @@
       "id": "m32",
       "name": "Keethan Jeyarajah",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -919,7 +919,7 @@
       "id": "m33",
       "name": "Levi Zeng",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -927,7 +927,7 @@
       "id": "m34",
       "name": "Lucas Liu",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -975,7 +975,7 @@
       "id": "m40",
       "name": "Rayn Javed",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -983,7 +983,7 @@
       "id": "m41",
       "name": "Reyaansh Kumar",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -999,7 +999,7 @@
       "id": "m43",
       "name": "Sam Tehrani",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -1007,7 +1007,7 @@
       "id": "m44",
       "name": "Tedon Yin",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -1015,7 +1015,7 @@
       "id": "m45",
       "name": "Vikrant Madan",
       "year": "",
-      "division": "open",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     },
@@ -1032,6 +1032,78 @@
       "name": "Wesley Wong",
       "year": "",
       "division": "open",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m242",
+      "name": "Dion Azar",
+      "year": "",
+      "division": "novice",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m243",
+      "name": "Charlie Morrison",
+      "year": "",
+      "division": "novice",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m244",
+      "name": "Andrew Allen",
+      "year": "",
+      "division": "novice",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m245",
+      "name": "Edward Madson",
+      "year": "",
+      "division": "novice",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m246",
+      "name": "Ryan Lin",
+      "year": "",
+      "division": "novice",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m247",
+      "name": "Hugo Zhuang",
+      "year": "",
+      "division": "novice",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m248",
+      "name": "Vihaan Gupta",
+      "year": "",
+      "division": "novice",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m249",
+      "name": "Henry Zheng",
+      "year": "",
+      "division": "novice",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m250",
+      "name": "Lee Helmrich",
+      "year": "",
+      "division": "novice",
       "role": "delegate",
       "team": ""
     }
