@@ -1,6 +1,6 @@
 {
-  "seq": 235,
-  "currentSession": "w5",
+  "seq": 242,
+  "currentSession": "w4",
   "sessions": [
     {
       "id": "w4",
@@ -624,6 +624,38 @@
       "action": "attend",
       "points": 1,
       "ts": 1786661005282
+    },
+    {
+      "id": "e236",
+      "sessionId": "w5",
+      "memberId": "m13",
+      "action": "recruit",
+      "points": 2,
+      "ts": 1786928520553
+    },
+    {
+      "id": "e238",
+      "sessionId": "w5",
+      "memberId": "m37",
+      "action": "recruit",
+      "points": 2,
+      "ts": 1786928553217
+    },
+    {
+      "id": "e239",
+      "sessionId": "w5",
+      "memberId": "m37",
+      "action": "recruit",
+      "points": 2,
+      "ts": 1786928553449
+    },
+    {
+      "id": "e241",
+      "sessionId": "w4",
+      "memberId": "m13",
+      "action": "bestDel",
+      "points": 5,
+      "ts": 1786928938874
     }
   ],
   "members": [
