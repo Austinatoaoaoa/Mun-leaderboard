@@ -87,6 +87,29 @@
   .empty strong{display:block;font-family:var(--display);font-size:16px;letter-spacing:.08em;
     text-transform:uppercase;color:var(--placard);margin-bottom:6px;font-weight:400}
 
+  .sechead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:26px 0 4px}
+  .sechead:first-child{margin-top:0}
+  .sechead h2.sec{margin:0}
+  .sectag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);border:1px solid var(--chamber-line);border-radius:2px;padding:2px 7px}
+
+  .termbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    border:1px solid var(--chamber-line);border-radius:2px;overflow:hidden;margin-bottom:4px}
+  .st{padding:10px 13px;border-right:1px solid var(--chamber-line);min-width:0}
+  .st:last-child{border-right:0}
+  .stl{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:3px}
+  .stv{font-family:var(--display);font-weight:500;font-size:15px;letter-spacing:.04em;
+    text-transform:uppercase;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .stv.none{color:var(--ink-soft);font-weight:300}
+  .stf{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--un);margin-top:2px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  @media (max-width:560px){
+    .termbar{grid-template-columns:1fr 1fr}
+    .st:nth-child(2n){border-right:0}
+    .st:nth-child(-n+2){border-bottom:1px solid var(--chamber-line)}
+  }
+
   .highlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:9px;margin-bottom:8px}
   .hl{background:var(--chamber-deep);border:1px solid var(--chamber-line);border-radius:2px;
     padding:13px 14px;position:relative;overflow:hidden}
@@ -149,7 +172,12 @@
   .team .th1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
   .team .tname{font-family:var(--display);font-weight:500;font-size:17px;letter-spacing:.07em;
     text-transform:uppercase}
-  .team .tpts{font-family:var(--mono);font-weight:600;font-size:15px;color:var(--gavel)}
+  .team .tpts{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--un);white-space:nowrap}
+  .team .tpts small{font-size:8.5px;letter-spacing:.1em;color:var(--ink-soft);
+    font-weight:400;margin:0 5px 0 2px;text-transform:uppercase}
+  .team .tpts b{color:var(--gavel);font-size:15px;font-weight:600}
+  .teamrow .tp small{display:block;font-size:8.5px;letter-spacing:.12em;color:var(--ink-soft);
+    font-weight:400;text-align:right;margin-top:-2px}
   .team .tline{font-size:12px;color:var(--placard-dim);margin:5px 0 11px;line-height:1.45}
   .slot{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
     padding:6px 0;border-top:1px solid rgba(22,57,92,.7)}
@@ -481,6 +509,37 @@ function unplaced(sid){
 function teamWeekPoints(team,sid){
   return team.members.reduce((a,s)=>a+(s.id?S.events.filter(e=>e.memberId===s.id&&e.sessionId===sid).reduce((x,e)=>x+e.points,0):0),0);
 }
+/* A bloc's term total is the sum of what it earned in every week it appeared,
+   so a delegate who switches blocs contributes to whichever one he sat in. */
+function teamTermPoints(name){
+  let total=0;
+  S.sessions.forEach(s=>weekCommittees(s.id).forEach(c=>c.teams.forEach(t=>{
+    if(t.name.trim()===name) total+=teamWeekPoints(t,s.id);
+  })));
+  return total;
+}
+function allTeamNames(){
+  const set=new Set();
+  S.sessions.forEach(s=>weekCommittees(s.id).forEach(c=>c.teams.forEach(t=>set.add(t.name.trim()))));
+  return [...set];
+}
+/* Term standings for blocs: every bloc that has ever run, ranked on term total. */
+function teamsTerm(){
+  const sid=S.currentSession;
+  const here={};
+  weekCommittees(sid).forEach(c=>c.teams.forEach(t=>{
+    const k=t.name.trim();
+    if(!here[k]) here[k]={week:0,n:0};
+    here[k].week+=teamWeekPoints(t,sid);
+    here[k].n+=t.members.filter(s=>s.id).length;
+  }));
+  return allTeamNames().map(n=>({
+    name:n, pts:teamTermPoints(n),
+    week:here[n]?here[n].week:0,
+    n:here[n]?here[n].n:0,
+    active:!!here[n]
+  })).sort((a,b)=>b.pts-a.pts||a.name.localeCompare(b.name));
+}
 function teams(){
   const sid=S.currentSession, cs=weekCommittees(sid);
   if(cs.length){
@@ -519,6 +578,16 @@ function improved(){
 }
 function topBy(fn,div){let b=null;delegates().filter(m=>!div||m.division===div)
   .forEach(m=>{const v=fn(m.id);if(v>0&&(!b||v>b.v))b={m,v}});return b}
+
+/* term-wide figures for the overall strip */
+function termStats(){
+  const leader=ranked('open')[0];
+  const speaker=topBy(id=>countIn(id,['speech']));
+  const drafter=topBy(id=>countIn(id,['amendSub','amendPass','paper']));
+  const attender=topBy(id=>countIn(id,['attend']));
+  const sittings=S.sessions.filter(s=>S.events.some(e=>e.sessionId===s.id)).length;
+  return {leader,speaker,drafter,attender,sittings};
+}
 
 /* ---------- helpers ---------- */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -567,7 +636,9 @@ function render(){
 function vBoard(){
   if(!delegates().length) return empty('No delegates yet','The roster is empty.');
   const list=ranked(division);
-  const mv=biggestMover(), sp=speakerOfWeek(), tm=teams(), promo=promotions();
+  const mv=biggestMover(), sp=speakerOfWeek(), promo=promotions();
+  const tmTerm=teamsTerm();
+  const tmWeek=tmTerm.filter(t=>t.active).slice().sort((a,b)=>b.week-a.week||a.name.localeCompare(b.name));
 
   const hl=`<div class="highlights">
     <div class="hl"><span class="emo">🔥</span><div class="lbl">Biggest mover</div>
@@ -576,9 +647,24 @@ function vBoard(){
     <div class="hl"><span class="emo">🎤</span><div class="lbl">Speaker of the week</div>
       <div class="val${sp?'':' none'}">${sp?esc(sp.m.name):'No speeches yet'}</div>
       ${sp?`<div class="fig">${sp.v/2} ${sp.v/2===1?'speech':'speeches'} delivered</div>`:''}</div>
-    <div class="hl"><span class="emo">🌍</span><div class="lbl">Leading team</div>
-      <div class="val${tm.length?'':' none'}">${tm.length?esc(tm[0].name):'No teams assigned'}</div>
-      ${tm.length?`<div class="fig">${tm[0].pts} pts · ${tm[0].n} delegates</div>`:''}</div></div>`;
+    <div class="hl"><span class="emo">🌍</span><div class="lbl">Leading bloc</div>
+      <div class="val${tmWeek.length?'':' none'}">${tmWeek.length?esc(tmWeek[0].name):'No teams assigned'}</div>
+      ${tmWeek.length?`<div class="fig">${tmWeek[0].week} pts this week · ${tmWeek[0].n} delegates</div>`:''}</div></div>`;
+
+  const ts=termStats();
+  const stat=(lbl,who,fig)=>`<div class="st"><div class="stl">${lbl}</div>
+    <div class="stv${who?'':' none'}">${who?esc(who):'\u2014'}</div>
+    <div class="stf">${who?fig:'Not yet'}</div></div>`;
+  const termStrip=`<div class="termbar">
+    ${stat('Leading delegate', ts.leader&&ts.leader.pts?ts.leader.name:null,
+      ts.leader&&ts.leader.pts?`${ts.leader.pts} pts \u00b7 ${tierOf(ts.leader.pts).n}`:'')}
+    ${stat('Most speeches', ts.speaker?ts.speaker.m.name:null,
+      ts.speaker?`${ts.speaker.v} across the term`:'')}
+    ${stat('Most drafting', ts.drafter?ts.drafter.m.name:null,
+      ts.drafter?`${ts.drafter.v} amendments and papers`:'')}
+    ${stat('Best attendance', ts.attender?ts.attender.m.name:null,
+      ts.attender?`${ts.attender.v} of ${ts.sittings||1} sittings`:'')}
+  </div>`;
 
   const promoHtml=promo.length?`<div class="promos">${promo.map(p=>`<span class="promo">▲ ${esc(p.name)} → ${esc(p.tier)}</span>`).join('')}</div>`:'';
 
@@ -594,17 +680,20 @@ function vBoard(){
       </div><div class="pts">${m.pts}<small>PTS</small></div></div>`;
   }).join('');
 
-  const teamRows=tm.length?tm.map((t,i)=>{const max=tm[0].pts||1;
+  const teamRows=tmTerm.length?tmTerm.map((t,i)=>{const max=tmTerm[0].pts||1;
     return `<div class="teamrow"><span class="tr">${String(i+1).padStart(2,'0')}</span>
-      <div><div class="tn">${esc(t.name)}</div><div class="tm">${t.n} ${t.n===1?'delegate':'delegates'}</div>
+      <div><div class="tn">${esc(t.name)}</div>
+      <div class="tm">${t.active?`${t.n} ${t.n===1?'delegate':'delegates'} this week`:'not sitting this week'}${t.week?` · +${t.week}`:''}</div>
       <div class="tb"><i style="width:${Math.round(t.pts/max*100)}%"></i></div></div>
-      <span class="tp">${t.pts}</span></div>`}).join('')
-    :empty('No teams yet','Countries have not been assigned.');
+      <span class="tp">${t.pts}<small>TERM</small></span></div>`}).join('')
+    :empty('No blocs yet','Countries have not been assigned.');
 
   const bench=execs().map(m=>`<div class="exec${m.role==='officer'?' officer':''}">
     <div class="t">${ROLES[m.role]}</div><div class="n">${esc(m.name)}</div></div>`).join('');
 
-  return `<h2 class="sec">This sitting</h2>${hl}${promoHtml}
+  const sName=curSession()?curSession().label:'This sitting';
+  return `<div class="sechead"><h2 class="sec">${esc(sName)}</h2><span class="sectag">this sitting</span></div>${hl}${promoHtml}
+    <div class="sechead"><h2 class="sec">Across the term</h2><span class="sectag">${ts.sittings} ${ts.sittings===1?'sitting':'sittings'} logged</span></div>${termStrip}
     <h2 class="sec">Standings</h2>
     <p class="sub">The bar tracks progress to your next rank, not the gap to first place — everyone always has something within reach.</p>
     <div class="seg" id="divSeg">
@@ -612,7 +701,7 @@ function vBoard(){
       <button data-div="novice" aria-pressed="${division==='novice'}">Novice</button>
       <button data-div="all" aria-pressed="${division==='all'}">Everyone</button></div>
     <div class="board">${rows||empty('Nobody in this division','')}</div>
-    <h2 class="sec">Team standings</h2><div>${teamRows}</div>
+    <div class="sechead"><h2 class="sec">Bloc standings</h2><span class="sectag">term total</span></div><div>${teamRows}</div>
     <h2 class="sec">The bench</h2>
     <p class="sub">Executive chair the sittings and adjudicate points, so they sit outside the competition.</p>
     <div class="bench">${bench}</div>
@@ -745,7 +834,8 @@ function vCommittees(){
              <button class="del" data-teamdel="${ci}-${ti}">Delete team</button></div>
              <textarea class="eline" data-tline="${ci}-${ti}" placeholder="Strategy line">${esc(t.line||'')}</textarea>`
           : `<div class="th1"><span class="tname">${esc(t.name)}</span>
-             <span class="tpts">${teamWeekPoints(t,sid)} pts</span></div>
+             <span class="tpts">+${teamWeekPoints(t,sid)}<small>wk</small>
+               <b>${teamTermPoints(t.name.trim())}</b><small>term</small></span></div>
              <div class="tline">${esc(t.line||'')}</div>`;
         return `<div class="team">${head}${slots}
           ${editing?`<div class="footer-actions" style="margin:10px 0 0;border:0;padding:0">
@@ -789,7 +879,7 @@ function vAwards(){
       ${card('Best Negotiator',neg?neg.m.name:null,'Most points from amendments and papers')}
       ${card('Best New Delegate',novTop&&novTop.pts>0?novTop.name:null,'Highest total, Novice division')}
       ${card('Most Improved',imp?imp.m.name:null,imp?`+${imp.d} points across the back half of term`:'Needs at least four sittings')}
-      ${card('Champion Bloc',tm.length?tm[0].name:null,tm.length?`${tm[0].pts} points across ${tm[0].n} delegates`:'Teams not yet assigned')}
+      ${(()=>{const tt=teamsTerm();return card('Champion Bloc',tt.length&&tt[0].pts?tt[0].name:null,tt.length&&tt[0].pts?`${tt[0].pts} points across the term`:'Teams not yet assigned')})()}
       ${card('Most Chaotic Delegate',chaos?chaos.m.name:null,chaos?`${chaos.v} points of information raised`:'Most POIs raised',true)}
       ${card('Best Diplomat',dip?dip.m.name:null,'Recruiting and TksMUN service',true)}</div>
     <div class="footer-actions"><button class="btn ghost" id="copyAwards">Copy awards list</button></div>`;
@@ -879,7 +969,8 @@ function weeklyPost(){
   let out='TKS MODEL UN — '+(s?s.label.toUpperCase():'THIS SITTING')+'\n\n';
   out+='🔥 Biggest mover: '+(mv?`${mv.m.name} +${mv.v}`:'—')+'\n';
   out+='🎤 Speaker of the Week: '+(sp?sp.m.name:'—')+'\n';
-  out+='🌍 Leading team: '+(tm.length?`${tm[0].name} — ${tm[0].pts}`:'—')+'\n';
+  const tmW=teamsTerm().filter(t=>t.active).sort((a,b)=>b.week-a.week);
+  out+='🌍 Leading bloc: '+(tmW.length?`${tmW[0].name} — +${tmW[0].week} this week (${tmW[0].pts} term)`:'—')+'\n';
   if(promo.length) out+='\nPROMOTIONS\n'+promo.map(p=>`▲ ${p.name} → ${p.tier}`).join('\n')+'\n';
   out+='\nTOP 5\n'+ranked('open').slice(0,5).map((m,i)=>`${i+1}. ${m.name} — ${m.pts} pts (${tierOf(m.pts).n})`).join('\n');
   return out;
