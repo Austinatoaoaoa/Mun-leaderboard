@@ -346,7 +346,178 @@
         ]
       }
     ],
-    "w6": [],
+    "w6": [
+      {
+        "name": "WHO",
+        "topic": "Resolution on Equitable Vaccine Distribution Systems",
+        "teams": [
+          {
+            "name": "Team Alpha",
+            "line": "Support access, but protect innovation and intellectual property",
+            "members": [
+              {
+                "id": "m30",
+                "country": "United States"
+              },
+              {
+                "id": "m29",
+                "country": "Germany"
+              },
+              {
+                "id": "m35",
+                "country": "Switzerland"
+              },
+              {
+                "id": "m21",
+                "country": "Japan"
+              },
+              {
+                "id": "m39",
+                "country": "Canada"
+              },
+              {
+                "id": "m47",
+                "country": "France"
+              },
+              {
+                "id": "m242",
+                "country": "Netherlands"
+              },
+              {
+                "id": "m243",
+                "country": "Belgium"
+              },
+              {
+                "id": "m244",
+                "country": "Denmark"
+              }
+            ]
+          },
+          {
+            "name": "Team Beta",
+            "line": "Manufacturing capacity, not charity — technology transfer",
+            "members": [
+              {
+                "id": "m16",
+                "country": "India"
+              },
+              {
+                "id": "m14",
+                "country": "China"
+              },
+              {
+                "id": "m15",
+                "country": "North Korea"
+              },
+              {
+                "id": "m12",
+                "country": "Brazil"
+              },
+              {
+                "id": "m18",
+                "country": "Russia"
+              },
+              {
+                "id": "m13",
+                "country": "Mexico"
+              },
+              {
+                "id": "m20",
+                "country": "Türkiye"
+              },
+              {
+                "id": "m245",
+                "country": "Cuba"
+              },
+              {
+                "id": "m246",
+                "country": "Iran"
+              }
+            ]
+          },
+          {
+            "name": "Team Charlie",
+            "line": "Poorer states should not wait their turn during a pandemic",
+            "members": [
+              {
+                "id": "m38",
+                "country": "South Africa"
+              },
+              {
+                "id": "m11",
+                "country": "Kenya"
+              },
+              {
+                "id": "m24",
+                "country": "Nigeria"
+              },
+              {
+                "id": "m46",
+                "country": "Pakistan"
+              },
+              {
+                "id": "m17",
+                "country": "Egypt"
+              },
+              {
+                "id": "m31",
+                "country": "Philippines"
+              },
+              {
+                "id": "m8",
+                "country": "Vietnam"
+              },
+              {
+                "id": "m247",
+                "country": "Bangladesh"
+              }
+            ]
+          },
+          {
+            "name": "Team Delta",
+            "line": "The swing bloc — make the mechanism actually workable",
+            "members": [
+              {
+                "id": "m36",
+                "country": "United Kingdom"
+              },
+              {
+                "id": "m26",
+                "country": "Indonesia"
+              },
+              {
+                "id": "m42",
+                "country": "Australia"
+              },
+              {
+                "id": "m37",
+                "country": "Singapore"
+              },
+              {
+                "id": "m27",
+                "country": "South Korea"
+              },
+              {
+                "id": "m23",
+                "country": "Spain"
+              },
+              {
+                "id": "m248",
+                "country": "New Zealand"
+              },
+              {
+                "id": "m249",
+                "country": "Norway"
+              },
+              {
+                "id": "m250",
+                "country": "Ireland"
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "w7": [],
     "w8": [],
     "w9": [],
@@ -1093,7 +1264,7 @@
     },
     {
       "id": "m249",
-      "name": "Henry Zheng",
+      "name": "Henry Zhang",
       "year": "",
       "division": "novice",
       "role": "delegate",
