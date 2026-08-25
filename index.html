@@ -412,6 +412,9 @@ let S=null, PUBLISHED=null;
 let ADMIN=location.hash.toLowerCase().includes('admin');
 let hasDraft=false;
 let tab='board', division='open', selected=null, mode='attend', q='', qr='', editing=false;
+/* Which week the Committees tab is showing. Separate from S.currentSession,
+   which decides where logged points land — browsing must never move that. */
+let ctWeek=null;
 
 /* ---------- loading ---------- */
 async function fetchPublished(){
@@ -490,6 +493,17 @@ function ranked(div){
     .map(m=>({...m,pts:total(m.id)})).sort((a,b)=>b.pts-a.pts||a.name.localeCompare(b.name));
 }
 const weekCommittees=sid=>(S.committees&&S.committees[sid])||[];
+function latestAssignedWeek(){
+  for(let i=S.sessions.length-1;i>=0;i--){
+    const s=S.sessions[i];
+    if(weekCommittees(s.id).some(c=>c.teams&&c.teams.length)) return s.id;
+  }
+  return S.currentSession;
+}
+function committeeWeek(){
+  if(ctWeek&&S.sessions.some(s=>s.id===ctWeek)) return ctWeek;
+  return latestAssignedWeek();
+}
 function assignmentFor(memberId,sid){
   for(const c of weekCommittees(sid))
     for(const t of c.teams)
@@ -799,7 +813,7 @@ function vRoster(){
 }
 
 function vCommittees(){
-  const sid=S.currentSession;
+  const sid=committeeWeek();
   const weekBtns=S.sessions.map(s=>`<button class="chip" data-week="${s.id}" aria-pressed="${s.id===sid}">${esc(s.label)}</button>`).join('');
   const cs=weekCommittees(sid);
   const up=unplaced(sid);
@@ -857,7 +871,9 @@ function vCommittees(){
     <p class="sub">${editing?'Assign these from the dropdowns above. Names disappear from here once placed.':'Available for the open slots above, or for a second committee.'}</p>
     <div class="picker">${up.map(m=>`<span class="chip" style="cursor:default">${esc(m.name)}<span class="n">${total(m.id)}</span></span>`).join('')||'<div class="empty">Everyone is placed.</div>'}</div>`:'';
 
-  return `<h2 class="sec">Committees</h2>
+  const logging=curSession();
+  return `<div class="sechead"><h2 class="sec">Committees</h2>
+      ${logging&&logging.id!==sid?`<span class="sectag">points are logging to ${esc(logging.label)}</span>`:''}</div>
     <p class="sub">Teams and countries run week by week. Points earned still feed the term leaderboard.</p>
     <div class="picker">${weekBtns}</div>
     ${editBar}${body}${upHtml}`;
@@ -979,9 +995,11 @@ function weeklyPost(){
 function wire(){
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 
-  $$('.tab').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;q='';qr='';render()});
+  $$('.tab').forEach(b=>b.onclick=()=>{
+    if(b.dataset.tab==='cttee'&&tab!=='cttee'){ctWeek=latestAssignedWeek();editing=false}
+    tab=b.dataset.tab;q='';qr='';render()});
   $$('#divSeg button').forEach(b=>b.onclick=()=>{division=b.dataset.div;render()});
-  $$('[data-week]').forEach(b=>b.onclick=()=>{S.currentSession=b.dataset.week;if(ADMIN)saveDraft();render()});
+  $$('[data-week]').forEach(b=>b.onclick=()=>{ctWeek=b.dataset.week;render()});
 
   const cw=$('#copyWeek');  if(cw) cw.onclick=()=>copy(weeklyPost());
   const cb=$('#copyBoard'); if(cb) cb.onclick=()=>copy('TKS MODEL UN — TERM STANDINGS\n\n'+
@@ -1073,7 +1091,7 @@ function wire(){
     toast('Back to published'); render()};
 
   const P=s=>s.split('-').map(Number);
-  const CL=()=>{const sid=S.currentSession; if(!S.committees[sid])S.committees[sid]=[]; return S.committees[sid]};
+  const CL=()=>{const sid=committeeWeek(); if(!S.committees[sid])S.committees[sid]=[]; return S.committees[sid]};
 
   const et=$('#editToggle'); if(et) et.onclick=()=>{editing=!editing;render()};
   const ac=$('#addCttee');   if(ac) ac.onclick=()=>{
