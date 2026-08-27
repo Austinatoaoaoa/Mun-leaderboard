@@ -1,5 +1,5 @@
 {
-  "seq": 310,
+  "seq": 311,
   "currentSession": "w6",
   "sessions": [
     {
@@ -1283,6 +1283,14 @@
       "action": "poi",
       "points": 1,
       "ts": 1787870691170
+    },
+    {
+      "id": "e310",
+      "sessionId": "w6",
+      "memberId": "m245",
+      "action": "attend",
+      "points": 1,
+      "ts": 1787872098944
     }
   ],
   "members": [
