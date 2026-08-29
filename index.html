@@ -110,6 +110,49 @@
     .st:nth-child(-n+2){border-bottom:1px solid var(--chamber-line)}
   }
 
+  /* ---- statistics ---- */
+  .movers{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:9px;margin-bottom:9px}
+  .mv{display:grid;grid-template-columns:26px 1fr auto;gap:11px;align-items:center;
+    background:var(--chamber-deep);border:1px solid var(--chamber-line);
+    border-left:3px solid var(--un);border-radius:2px;padding:13px 14px}
+  .mv.lead{border-left-color:var(--gavel)}
+  .mvr{font-family:var(--mono);font-size:13px;color:var(--ink-soft);text-align:center}
+  .mv.lead .mvr{color:var(--gavel);font-weight:600}
+  .mvn{font-family:var(--display);font-weight:500;font-size:17px;letter-spacing:.04em;
+    text-transform:uppercase;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mvs{font-family:var(--mono);font-size:10px;color:var(--ink-soft);letter-spacing:.05em;margin-top:2px}
+  .mvg{font-family:var(--mono);font-weight:600;font-size:21px;color:var(--gavel)}
+  .mlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0 18px;margin-bottom:6px}
+  .mrow{display:flex;justify-content:space-between;gap:10px;padding:6px 0;
+    border-bottom:1px solid rgba(22,57,92,.5);font-size:13px}
+  .mrow .mg{font-family:var(--mono);color:var(--un);font-weight:600;font-size:12.5px}
+
+  .chart{width:100%;height:auto;display:block;margin:4px 0 8px;overflow:visible}
+  .axl{font-family:var(--mono);font-size:10px;fill:var(--ink-soft);letter-spacing:.06em}
+  .axn{font-family:var(--display);font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+
+  .legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:12px}
+  .lg{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--placard-dim);display:inline-flex;align-items:center;gap:5px}
+  .lg i{width:9px;height:9px;border-radius:1px;display:inline-block}
+  .mixrow{display:grid;grid-template-columns:minmax(90px,150px) 1fr 34px;gap:10px;align-items:center;
+    padding:6px 0;border-bottom:1px solid rgba(22,57,92,.5)}
+  .mixn{font-family:var(--display);font-size:14px;letter-spacing:.04em;text-transform:uppercase;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mixbar{display:flex;height:11px;border-radius:2px;overflow:hidden;background:var(--chamber-line)}
+  .mixbar .seg{display:block;height:100%}
+  .mixt{font-family:var(--mono);font-size:12px;color:var(--gavel);text-align:right;font-weight:600}
+
+  .pulsewrap{display:flex;gap:10px;align-items:flex-end;overflow-x:auto;padding-bottom:4px}
+  .pulse{flex:1 1 0;min-width:56px;text-align:center}
+  .pb{height:96px;display:flex;align-items:flex-end;background:var(--chamber-deep);
+    border:1px solid var(--chamber-line);border-radius:2px;overflow:hidden}
+  .pb i{display:block;width:100%;background:linear-gradient(180deg,var(--un),#2C6E9C)}
+  .pl{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--placard-dim);margin-top:6px}
+  .pv{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--gavel)}
+  .pw{font-family:var(--mono);font-size:9.5px;color:var(--ink-soft);letter-spacing:.04em}
+
   .highlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:9px;margin-bottom:8px}
   .hl{background:var(--chamber-deep);border:1px solid var(--chamber-line);border-radius:2px;
     padding:13px 14px;position:relative;overflow:hidden}
@@ -629,8 +672,8 @@ function strip(){
   document.getElementById('sessPts').textContent=S.events.reduce((a,e)=>a+e.points,0);
 }
 function buildTabs(){
-  const pub=[['board','Standings'],['cttee','Committees'],['awards','Term awards'],['rules','Scoring']];
-  const adm=[['board','Standings'],['cttee','Committees'],['log','Log points'],['roster','Roster'],
+  const pub=[['board','Standings'],['cttee','Committees'],['stats','Statistics'],['awards','Term awards'],['rules','Scoring']];
+  const adm=[['board','Standings'],['cttee','Committees'],['stats','Statistics'],['log','Log points'],['roster','Roster'],
              ['awards','Term awards'],['rules','Scoring'],['publish','Publish']];
   document.getElementById('tabs').innerHTML=(ADMIN?adm:pub)
     .map(([k,l])=>`<button class="tab" role="tab" data-tab="${k}">${l}</button>`).join('');
@@ -640,7 +683,7 @@ function buildTabs(){
 function render(){
   banner(); strip();
   document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));
-  const views={board:vBoard,cttee:vCommittees,awards:vAwards,rules:vRules,
+  const views={board:vBoard,cttee:vCommittees,stats:vStats,awards:vAwards,rules:vRules,
                log:vLog,roster:vRoster,publish:vPublish};
   if(!ADMIN&&['log','roster','publish'].includes(tab)) tab='board';
   document.getElementById('panel').innerHTML=views[tab]();
@@ -877,6 +920,133 @@ function vCommittees(){
     <p class="sub">Teams and countries run week by week. Points earned still feed the term leaderboard.</p>
     <div class="picker">${weekBtns}</div>
     ${editBar}${body}${upHtml}`;
+}
+
+
+/* ============================ STATISTICS ============================ */
+const CATS=[
+  {k:'speaking', l:'Speaking',  acts:['speech'],                                c:'var(--t1)'},
+  {k:'questions',l:'Questions', acts:['poi','poiAns'],                          c:'var(--t2)'},
+  {k:'drafting', l:'Drafting',  acts:['amendSub','amendPass','paper'],          c:'var(--t3)'},
+  {k:'honours',  l:'Honours',   acts:['bestDel','honourable','chair'],          c:'var(--t5)'},
+  {k:'service',  l:'Service',   acts:['recruit','external','extAward','tksmun'],c:'var(--warn)'},
+  {k:'presence', l:'Presence',  acts:['attend'],                                c:'var(--ink-soft)'}
+];
+const LINE=['#4A9FD8','#C8A44D','#3E9C74','#C86A4D','#8A7BC8','#E8C86A'];
+
+function livedSessions(){
+  return S.sessions.filter(s=>S.events.some(e=>e.sessionId===s.id));
+}
+function ptsIn(id,sid){
+  return S.events.filter(e=>e.memberId===id&&e.sessionId===sid).reduce((a,e)=>a+e.points,0);
+}
+function cumulative(id,sess){
+  let run=0; return sess.map(s=>(run+=ptsIn(id,s.id)));
+}
+/* Growth = points gained in the most recent sitting a delegate could have played in. */
+function momentum(){
+  const sess=livedSessions(); if(!sess.length) return [];
+  const last=sess[sess.length-1].id, prev=sess.length>1?sess[sess.length-2].id:null;
+  return delegates().map(m=>({
+    m, gain:ptsIn(m.id,last), before:prev?ptsIn(m.id,prev):0, total:total(m.id)
+  })).filter(r=>r.gain>0).sort((a,b)=>b.gain-a.gain||a.m.name.localeCompare(b.m.name));
+}
+function catTotals(id){
+  const o={}; CATS.forEach(c=>o[c.k]=totalIn(id,c.acts)); return o;
+}
+function clubPulse(){
+  return livedSessions().map(s=>({
+    label:s.label,
+    pts:S.events.filter(e=>e.sessionId===s.id).reduce((a,e)=>a+e.points,0),
+    who:new Set(S.events.filter(e=>e.sessionId===s.id).map(e=>e.memberId)).size,
+    speeches:S.events.filter(e=>e.sessionId===s.id&&e.action==='speech').length
+  }));
+}
+
+/* ---- svg helpers ---- */
+function growthChart(sess,rows){
+  const W=720,H=280,L=42,R=14,T=16,B=34;
+  const maxY=Math.max(4,...rows.map(r=>r.vals[r.vals.length-1]));
+  const x=i=>L+(sess.length<2?0:i*(W-L-R)/(sess.length-1));
+  const y=v=>H-B-(v/maxY)*(H-T-B);
+  const ticks=[0,Math.round(maxY/2),maxY].filter((v,i,a)=>a.indexOf(v)===i);
+  let g='';
+  ticks.forEach(t=>{g+=`<line x1="${L}" y1="${y(t)}" x2="${W-R}" y2="${y(t)}" stroke="var(--chamber-line)" stroke-width="1"/>`
+    +`<text x="${L-8}" y="${y(t)+4}" text-anchor="end" class="axl">${t}</text>`;});
+  sess.forEach((s,i)=>{g+=`<text x="${x(i)}" y="${H-12}" text-anchor="middle" class="axl">${esc(s.label)}</text>`;});
+  rows.forEach((r,ri)=>{
+    const col=LINE[ri%LINE.length];
+    const d=r.vals.map((v,i)=>`${i?'L':'M'}${x(i)},${y(v)}`).join(' ');
+    g+=`<path d="${d}" fill="none" stroke="${col}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`;
+    r.vals.forEach((v,i)=>{g+=`<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${col}"/>`;});
+    const lastY=y(r.vals[r.vals.length-1]);
+    g+=`<text x="${W-R-2}" y="${lastY-8}" text-anchor="end" class="axn" fill="${col}">${esc(r.name)}</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" class="chart" preserveAspectRatio="xMidYMid meet" role="img"
+    aria-label="Cumulative points by sitting">${g}</svg>`;
+}
+function mixBars(list){
+  return list.map(r=>{
+    const tot=Object.values(r.cats).reduce((a,b)=>a+b,0)||1;
+    const segs=CATS.filter(c=>r.cats[c.k]>0).map(c=>
+      `<span class="seg" style="width:${(r.cats[c.k]/tot*100).toFixed(1)}%;background:${c.c}"
+         title="${c.l}: ${r.cats[c.k]}"></span>`).join('');
+    return `<div class="mixrow"><span class="mixn">${esc(r.name)}</span>
+      <span class="mixbar">${segs}</span><span class="mixt">${tot}</span></div>`;
+  }).join('');
+}
+function pulseBars(p){
+  const max=Math.max(1,...p.map(x=>x.pts));
+  return p.map(s=>`<div class="pulse">
+    <div class="pb"><i style="height:${Math.max(4,s.pts/max*100)}%"></i></div>
+    <div class="pl">${esc(s.label.replace('Week','Wk'))}</div>
+    <div class="pv">${s.pts}</div>
+    <div class="pw">${s.who} active</div></div>`).join('');
+}
+
+function vStats(){
+  const sess=livedSessions();
+  if(!sess.length) return empty('No data yet','Log some points and the statistics will build themselves.');
+
+  const mom=momentum();
+  const board=ranked('all').filter(m=>m.pts>0);
+  const lines=board.slice(0,6).map(m=>({name:m.name.split(' ')[0],vals:cumulative(m.id,sess)}));
+  const mix=board.slice(0,10).map(m=>({name:m.name,cats:catTotals(m.id)}));
+  const pulse=clubPulse();
+  const lastLabel=sess[sess.length-1].label;
+
+  const podium=mom.slice(0,3).map((r,i)=>`<div class="mv${i===0?' lead':''}">
+      <div class="mvr">${i+1}</div>
+      <div><div class="mvn">${esc(r.m.name)}</div>
+        <div class="mvs">${r.total} total · ${tierOf(r.total).n}</div></div>
+      <div class="mvg">+${r.gain}</div></div>`).join('');
+
+  const rest=mom.slice(3,12).map(r=>`<div class="mrow">
+      <span class="mn">${esc(r.m.name)}</span>
+      <span class="mg">+${r.gain}</span></div>`).join('');
+
+  const legend=CATS.map(c=>`<span class="lg"><i style="background:${c.c}"></i>${c.l}</span>`).join('');
+
+  const risers=mom.filter(r=>r.gain>r.before&&r.before>=0).slice(0,1)[0];
+
+  return `
+    <div class="sechead"><h2 class="sec">Momentum</h2><span class="sectag">${esc(lastLabel)}</span></div>
+    <p class="sub">Who moved most in the last sitting. This is the board a new delegate can win — it measures the week, not the term.</p>
+    <div class="movers">${podium||empty('Nothing logged','No points in the last sitting.')}</div>
+    ${rest?`<div class="mlist">${rest}</div>`:''}
+
+    <div class="sechead"><h2 class="sec">Growth curves</h2><span class="sectag">top 6 · cumulative</span></div>
+    <p class="sub">A steep line means a delegate is accelerating. A flat one means they have stopped scoring.</p>
+    ${growthChart(sess,lines)}
+
+    <div class="sechead"><h2 class="sec">How points are earned</h2><span class="sectag">top 10</span></div>
+    <p class="sub">Two delegates on the same score can have completely different games. Long blue means a speaker; long purple means a drafter.</p>
+    <div class="legend">${legend}</div>
+    <div class="mix">${mixBars(mix)}</div>
+
+    <div class="sechead"><h2 class="sec">Club pulse</h2><span class="sectag">${sess.length} ${sess.length===1?'sitting':'sittings'}</span></div>
+    <p class="sub">Points scored and delegates active in each sitting.</p>
+    <div class="pulsewrap">${pulseBars(pulse)}</div>`;
 }
 
 function vAwards(){
