@@ -1,6 +1,6 @@
 {
-  "seq": 311,
-  "currentSession": "w6",
+  "seq": 350,
+  "currentSession": "w7",
   "sessions": [
     {
       "id": "w4",
@@ -1291,6 +1291,310 @@
       "action": "attend",
       "points": 1,
       "ts": 1787872098944
+    },
+    {
+      "id": "e311",
+      "sessionId": "w7",
+      "memberId": "m36",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788473317235
+    },
+    {
+      "id": "e312",
+      "sessionId": "w7",
+      "memberId": "m23",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788473320768
+    },
+    {
+      "id": "e313",
+      "sessionId": "w7",
+      "memberId": "m36",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788473325797
+    },
+    {
+      "id": "e314",
+      "sessionId": "w7",
+      "memberId": "m36",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788473401697
+    },
+    {
+      "id": "e315",
+      "sessionId": "w7",
+      "memberId": "m23",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788473415706
+    },
+    {
+      "id": "e316",
+      "sessionId": "w7",
+      "memberId": "m14",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788473746379
+    },
+    {
+      "id": "e317",
+      "sessionId": "w7",
+      "memberId": "m14",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788473747586
+    },
+    {
+      "id": "e318",
+      "sessionId": "w7",
+      "memberId": "m14",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788474180941
+    },
+    {
+      "id": "e319",
+      "sessionId": "w7",
+      "memberId": "m36",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788474189724
+    },
+    {
+      "id": "e320",
+      "sessionId": "w7",
+      "memberId": "m13",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788474195641
+    },
+    {
+      "id": "e321",
+      "sessionId": "w7",
+      "memberId": "m13",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788474196031
+    },
+    {
+      "id": "e322",
+      "sessionId": "w7",
+      "memberId": "m38",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788474208519
+    },
+    {
+      "id": "e323",
+      "sessionId": "w7",
+      "memberId": "m38",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788474208877
+    },
+    {
+      "id": "e324",
+      "sessionId": "w7",
+      "memberId": "m12",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788476495498
+    },
+    {
+      "id": "e325",
+      "sessionId": "w7",
+      "memberId": "m16",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788476498373
+    },
+    {
+      "id": "e326",
+      "sessionId": "w7",
+      "memberId": "m17",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788476498975
+    },
+    {
+      "id": "e327",
+      "sessionId": "w7",
+      "memberId": "m21",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788476502845
+    },
+    {
+      "id": "e328",
+      "sessionId": "w7",
+      "memberId": "m24",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788476506295
+    },
+    {
+      "id": "e329",
+      "sessionId": "w7",
+      "memberId": "m27",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788476509504
+    },
+    {
+      "id": "e330",
+      "sessionId": "w7",
+      "memberId": "m30",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788476512820
+    },
+    {
+      "id": "e331",
+      "sessionId": "w7",
+      "memberId": "m39",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788476516437
+    },
+    {
+      "id": "e332",
+      "sessionId": "w7",
+      "memberId": "m248",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788476531833
+    },
+    {
+      "id": "e333",
+      "sessionId": "w7",
+      "memberId": "m16",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476540891
+    },
+    {
+      "id": "e334",
+      "sessionId": "w7",
+      "memberId": "m16",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476542283
+    },
+    {
+      "id": "e335",
+      "sessionId": "w7",
+      "memberId": "m21",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476544878
+    },
+    {
+      "id": "e336",
+      "sessionId": "w7",
+      "memberId": "m21",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476547446
+    },
+    {
+      "id": "e337",
+      "sessionId": "w7",
+      "memberId": "m248",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476553687
+    },
+    {
+      "id": "e338",
+      "sessionId": "w7",
+      "memberId": "m248",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476555924
+    },
+    {
+      "id": "e339",
+      "sessionId": "w7",
+      "memberId": "m248",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476561308
+    },
+    {
+      "id": "e340",
+      "sessionId": "w7",
+      "memberId": "m13",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476577337
+    },
+    {
+      "id": "e341",
+      "sessionId": "w7",
+      "memberId": "m21",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476580133
+    },
+    {
+      "id": "e342",
+      "sessionId": "w7",
+      "memberId": "m16",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476581866
+    },
+    {
+      "id": "e343",
+      "sessionId": "w7",
+      "memberId": "m30",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476602066
+    },
+    {
+      "id": "e344",
+      "sessionId": "w7",
+      "memberId": "m30",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788476602382
+    },
+    {
+      "id": "e345",
+      "sessionId": "w7",
+      "memberId": "m30",
+      "action": "poiAns",
+      "points": 1,
+      "ts": 1788476610012
+    },
+    {
+      "id": "e347",
+      "sessionId": "w7",
+      "memberId": "m37",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788479413318
+    },
+    {
+      "id": "e348",
+      "sessionId": "w7",
+      "memberId": "m37",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788479414602
+    },
+    {
+      "id": "e349",
+      "sessionId": "w7",
+      "memberId": "m37",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788479414935
     }
   ],
   "members": [
