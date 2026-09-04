@@ -520,238 +520,174 @@
     ],
     "w7": [
       {
-        "name": "WHO",
-        "topic": "Resolution on Equitable Vaccine Distribution Systems",
+        "name": "Jubilee Debate",
+        "topic": "",
         "teams": [
           {
             "name": "Team Alpha",
-            "line": "Support access, but protect innovation and intellectual property",
+            "line": "",
             "members": [
               {
                 "id": "m30",
-                "country": "United States"
+                "country": ""
               },
               {
                 "id": "m29",
-                "country": "Germany"
+                "country": ""
               },
               {
                 "id": "m35",
-                "country": "Switzerland"
+                "country": ""
               },
               {
                 "id": "m21",
-                "country": "Japan"
+                "country": ""
               },
               {
                 "id": "m39",
-                "country": "Canada"
+                "country": ""
               },
               {
                 "id": "m47",
-                "country": "France"
+                "country": ""
               },
               {
                 "id": "m242",
-                "country": "Netherlands"
+                "country": ""
               },
               {
                 "id": "m243",
-                "country": "Belgium"
+                "country": ""
               },
               {
                 "id": "m244",
-                "country": "Denmark"
-              },
-              {
-                "id": "m6",
-                "country": "Sweden"
-              },
-              {
-                "id": "m7",
-                "country": "Austria"
-              },
-              {
-                "id": "m9",
-                "country": "Finland"
-              },
-              {
-                "id": "m10",
-                "country": "Israel"
+                "country": ""
               },
               {
                 "id": "m350",
-                "country": "Italy"
+                "country": ""
               }
             ]
           },
           {
             "name": "Team Beta",
-            "line": "Manufacturing capacity, not charity — technology transfer",
+            "line": "",
             "members": [
               {
                 "id": "m14",
-                "country": "China"
+                "country": ""
               },
               {
                 "id": "m15",
-                "country": "North Korea"
+                "country": ""
               },
               {
                 "id": "m12",
-                "country": "Brazil"
+                "country": ""
               },
               {
                 "id": "m18",
-                "country": "Russia"
+                "country": ""
               },
               {
                 "id": "m13",
-                "country": "Mexico"
+                "country": ""
               },
               {
                 "id": "m20",
-                "country": "Türkiye"
+                "country": ""
               },
               {
                 "id": "m245",
-                "country": "Cuba"
+                "country": ""
               },
               {
                 "id": "m246",
-                "country": "Iran"
-              },
-              {
-                "id": "m19",
-                "country": "Thailand"
-              },
-              {
-                "id": "m22",
-                "country": "Malaysia"
-              },
-              {
-                "id": "m25",
-                "country": "Algeria"
-              },
-              {
-                "id": "m28",
-                "country": "Venezuela"
+                "country": ""
               }
             ]
           },
           {
             "name": "Team Charlie",
-            "line": "Poorer states should not wait their turn during a pandemic",
+            "line": "",
             "members": [
               {
                 "id": "m38",
-                "country": "South Africa"
+                "country": ""
               },
               {
                 "id": "m11",
-                "country": "Kenya"
+                "country": ""
               },
               {
                 "id": "m24",
-                "country": "Nigeria"
+                "country": ""
               },
               {
                 "id": "m46",
-                "country": "Pakistan"
+                "country": ""
               },
               {
                 "id": "m17",
-                "country": "Egypt"
+                "country": ""
               },
               {
                 "id": "m31",
-                "country": "Philippines"
+                "country": ""
               },
               {
                 "id": "m8",
-                "country": "Vietnam"
+                "country": ""
               },
               {
                 "id": "m247",
-                "country": "Bangladesh"
+                "country": ""
               },
               {
                 "id": "m16",
-                "country": "India"
-              },
-              {
-                "id": "m32",
-                "country": "Ethiopia"
-              },
-              {
-                "id": "m33",
-                "country": "Ghana"
-              },
-              {
-                "id": "m34",
-                "country": "Tanzania"
-              },
-              {
-                "id": "m40",
-                "country": "Peru"
+                "country": ""
               }
             ]
           },
           {
             "name": "Team Delta",
-            "line": "The swing bloc — make the mechanism actually workable",
+            "line": "",
             "members": [
               {
                 "id": "m36",
-                "country": "United Kingdom"
+                "country": ""
               },
               {
                 "id": "m26",
-                "country": "Indonesia"
+                "country": ""
               },
               {
                 "id": "m42",
-                "country": "Australia"
+                "country": ""
               },
               {
                 "id": "m37",
-                "country": "Singapore"
+                "country": ""
               },
               {
                 "id": "m27",
-                "country": "South Korea"
+                "country": ""
               },
               {
                 "id": "m23",
-                "country": "Spain"
+                "country": ""
               },
               {
                 "id": "m248",
-                "country": "New Zealand"
+                "country": ""
               },
               {
                 "id": "m249",
-                "country": "Norway"
+                "country": ""
               },
               {
                 "id": "m250",
-                "country": "Ireland"
-              },
-              {
-                "id": "m41",
-                "country": "Chile"
-              },
-              {
-                "id": "m43",
-                "country": "Portugal"
-              },
-              {
-                "id": "m44",
-                "country": "Qatar"
-              },
-              {
-                "id": "m45",
-                "country": "Colombia"
+                "country": ""
               }
             ]
           }
