@@ -243,6 +243,8 @@
     padding:6px 0;border-top:1px solid rgba(22,57,92,.7)}
   .slot .cty{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
     color:var(--un);flex:0 0 auto}
+  .slot .tierlab{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+    font-weight:600}
   .slot .dg{font-family:var(--display);font-size:15px;letter-spacing:.04em;text-transform:uppercase;
     text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .slot.open .dg{color:var(--warn);font-weight:300}
@@ -891,11 +893,24 @@ function vCommittees(){
   }else{
     body=cs.map((c,ci)=>{
       const teamCards=c.teams.map((t,ti)=>{
-        const slots=t.members.map((s,si)=>{
+        /* No countries this week? Then rank is the useful label, so show the
+           tier on the left and order the bloc by points. */
+        const noCountries=t.members.length&&t.members.every(s=>!(s.country||'').trim());
+        const order=noCountries&&!editing
+          ? t.members.map((s,i)=>({s,i}))
+              .sort((a,b)=>(b.s.id?total(b.s.id):-1)-(a.s.id?total(a.s.id):-1)
+                || (a.s.id&&b.s.id?byId(a.s.id).name.localeCompare(byId(b.s.id).name):0))
+          : t.members.map((s,i)=>({s,i}));
+        const slots=order.map(({s,i:si})=>{
           const m=s.id?byId(s.id):null;
-          if(!editing) return `<div class="slot${m?'':' open'}">
-            <span class="cty">${esc(s.country)}</span>
-            <span class="dg">${m?esc(m.name)+`<span class="p">${total(m.id)}</span>`:'Slot open'}</span></div>`;
+          if(!editing){
+            const label=(s.country||'').trim()
+              ? esc(s.country)
+              : (m?`<span class="tierlab" style="color:${tierOf(total(m.id)).c}">${esc(tierOf(total(m.id)).n)}</span>`:'—');
+            return `<div class="slot${m?'':' open'}">
+              <span class="cty">${label}</span>
+              <span class="dg">${m?esc(m.name)+`<span class="p">${total(m.id)}</span>`:'Slot open'}</span></div>`;
+          }
           const opts=[`<option value="">— empty —</option>`]
             .concat(up.map(u=>`<option value="${u.id}">${esc(u.name)}</option>`));
           if(m) opts.splice(1,0,`<option value="${m.id}" selected>${esc(m.name)}</option>`);
