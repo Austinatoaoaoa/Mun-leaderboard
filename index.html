@@ -245,6 +245,10 @@
     color:var(--un);flex:0 0 auto}
   .slot .tierlab{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
     font-weight:600}
+  .slot.gone{opacity:.62}
+  .slot.gone .cty{color:var(--ink-soft)}
+  .slot.gone .dg{font-family:var(--body);font-size:12px;text-transform:none;
+    letter-spacing:0;color:var(--placard-dim);font-weight:400}
   .slot .dg{font-family:var(--display);font-size:15px;letter-spacing:.04em;text-transform:uppercase;
     text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .slot.open .dg{color:var(--warn);font-weight:300}
@@ -595,6 +599,33 @@ function teamTermPoints(name){
   })));
   return total;
 }
+/* What a delegate has contributed to one bloc across the term: only points
+   earned in weeks where he actually sat in it. Sums exactly to the bloc total. */
+function blocContribution(memberId,name){
+  let t=0;
+  S.sessions.forEach(s=>weekCommittees(s.id).forEach(c=>c.teams.forEach(tm=>{
+    if(tm.name.trim()!==name) return;
+    if(!tm.members.some(x=>x.id===memberId)) return;
+    t+=S.events.filter(e=>e.memberId===memberId&&e.sessionId===s.id)
+               .reduce((a,e)=>a+e.points,0);
+  })));
+  return t;
+}
+/* Points a bloc earned from delegates who have since left it. */
+function blocDeparted(team,name){
+  const here=new Set(team.members.map(s=>s.id).filter(Boolean));
+  const out={};
+  S.sessions.forEach(s=>weekCommittees(s.id).forEach(c=>c.teams.forEach(tm=>{
+    if(tm.name.trim()!==name) return;
+    tm.members.forEach(x=>{
+      if(!x.id||here.has(x.id)) return;
+      const p=S.events.filter(e=>e.memberId===x.id&&e.sessionId===s.id)
+                      .reduce((a,e)=>a+e.points,0);
+      if(p) out[x.id]=(out[x.id]||0)+p;
+    });
+  })));
+  return out;
+}
 function allTeamNames(){
   const set=new Set();
   S.sessions.forEach(s=>weekCommittees(s.id).forEach(c=>c.teams.forEach(t=>set.add(t.name.trim()))));
@@ -896,9 +927,11 @@ function vCommittees(){
         /* No countries this week? Then rank is the useful label, so show the
            tier on the left and order the bloc by points. */
         const noCountries=t.members.length&&t.members.every(s=>!(s.country||'').trim());
+        const tname=t.name.trim();
+        const contrib=id=>id?blocContribution(id,tname):0;
         const order=noCountries&&!editing
           ? t.members.map((s,i)=>({s,i}))
-              .sort((a,b)=>(b.s.id?total(b.s.id):-1)-(a.s.id?total(a.s.id):-1)
+              .sort((a,b)=>contrib(b.s.id)-contrib(a.s.id)
                 || (a.s.id&&b.s.id?byId(a.s.id).name.localeCompare(byId(b.s.id).name):0))
           : t.members.map((s,i)=>({s,i}));
         const slots=order.map(({s,i:si})=>{
@@ -909,7 +942,7 @@ function vCommittees(){
               : (m?`<span class="tierlab" style="color:${tierOf(total(m.id)).c}">${esc(tierOf(total(m.id)).n)}</span>`:'—');
             return `<div class="slot${m?'':' open'}">
               <span class="cty">${label}</span>
-              <span class="dg">${m?esc(m.name)+`<span class="p">${total(m.id)}</span>`:'Slot open'}</span></div>`;
+              <span class="dg">${m?esc(m.name)+`<span class="p" title="Earned for this bloc">${contrib(m.id)}</span>`:'Slot open'}</span></div>`;
           }
           const opts=[`<option value="">— empty —</option>`]
             .concat(up.map(u=>`<option value="${u.id}">${esc(u.name)}</option>`));
@@ -927,7 +960,13 @@ function vCommittees(){
              <span class="tpts">+${teamWeekPoints(t,sid)}<small>wk</small>
                <b>${teamTermPoints(t.name.trim())}</b><small>term</small></span></div>
              <div class="tline">${esc(t.line||'')}</div>`;
-        return `<div class="team">${head}${slots}
+        const gone=editing?{}:blocDeparted(t,tname);
+        const goneTot=Object.values(gone).reduce((a,b)=>a+b,0);
+        const goneRow=goneTot?`<div class="slot gone">
+            <span class="cty">MOVED ON</span>
+            <span class="dg">${Object.keys(gone).map(id=>esc(byId(id)?byId(id).name:'—')).join(', ')}
+              <span class="p">${goneTot}</span></span></div>`:'';
+        return `<div class="team">${head}${slots}${goneRow}
           ${editing?`<div class="footer-actions" style="margin:10px 0 0;border:0;padding:0">
             <button class="btn ghost" data-slotadd="${ci}-${ti}">Add country</button></div>`:''}</div>`;
       }).join('');
@@ -950,7 +989,7 @@ function vCommittees(){
   const logging=curSession();
   return `<div class="sechead"><h2 class="sec">Committees</h2>
       ${logging&&logging.id!==sid?`<span class="sectag">points are logging to ${esc(logging.label)}</span>`:''}</div>
-    <p class="sub">Teams and countries run week by week. Points earned still feed the term leaderboard.</p>
+    <p class="sub">Teams run week by week. The number beside each delegate is what he has earned <em>for this bloc</em>, so the column adds up to the bloc's term total. His own leaderboard score may be higher if he has sat in another bloc.</p>
     <div class="picker">${weekBtns}</div>
     ${editBar}${body}${upHtml}`;
 }
