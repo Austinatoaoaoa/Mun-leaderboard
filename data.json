@@ -1,5 +1,5 @@
 {
-  "seq": 351,
+  "seq": 357,
   "currentSession": "w7",
   "sessions": [
     {
@@ -1770,6 +1770,54 @@
       "action": "speech",
       "points": 2,
       "ts": 1788479414935
+    },
+    {
+      "id": "e351",
+      "sessionId": "w7",
+      "memberId": "m350",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788480918433
+    },
+    {
+      "id": "e352",
+      "sessionId": "w7",
+      "memberId": "m350",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788480919025
+    },
+    {
+      "id": "e353",
+      "sessionId": "w7",
+      "memberId": "m350",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788480919183
+    },
+    {
+      "id": "e354",
+      "sessionId": "w7",
+      "memberId": "m350",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788480919341
+    },
+    {
+      "id": "e355",
+      "sessionId": "w7",
+      "memberId": "m35",
+      "action": "attend",
+      "points": 1,
+      "ts": 1788480935237
+    },
+    {
+      "id": "e356",
+      "sessionId": "w7",
+      "memberId": "m35",
+      "action": "speech",
+      "points": 2,
+      "ts": 1788480939250
     }
   ],
   "members": [
