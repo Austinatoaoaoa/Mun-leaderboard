@@ -735,7 +735,182 @@
         ]
       }
     ],
-    "t4w1": [],
+    "t4w1": [
+      {
+        "name": "Term 4 Teams",
+        "topic": "",
+        "teams": [
+          {
+            "name": "Team Alpha",
+            "line": "",
+            "members": [
+              {
+                "id": "m30",
+                "country": ""
+              },
+              {
+                "id": "m29",
+                "country": ""
+              },
+              {
+                "id": "m35",
+                "country": ""
+              },
+              {
+                "id": "m21",
+                "country": ""
+              },
+              {
+                "id": "m39",
+                "country": ""
+              },
+              {
+                "id": "m47",
+                "country": ""
+              },
+              {
+                "id": "m242",
+                "country": ""
+              },
+              {
+                "id": "m243",
+                "country": ""
+              },
+              {
+                "id": "m244",
+                "country": ""
+              },
+              {
+                "id": "m350",
+                "country": ""
+              }
+            ]
+          },
+          {
+            "name": "Team Beta",
+            "line": "",
+            "members": [
+              {
+                "id": "m14",
+                "country": ""
+              },
+              {
+                "id": "m15",
+                "country": ""
+              },
+              {
+                "id": "m12",
+                "country": ""
+              },
+              {
+                "id": "m18",
+                "country": ""
+              },
+              {
+                "id": "m13",
+                "country": ""
+              },
+              {
+                "id": "m20",
+                "country": ""
+              },
+              {
+                "id": "m245",
+                "country": ""
+              },
+              {
+                "id": "m246",
+                "country": ""
+              }
+            ]
+          },
+          {
+            "name": "Team Charlie",
+            "line": "",
+            "members": [
+              {
+                "id": "m38",
+                "country": ""
+              },
+              {
+                "id": "m11",
+                "country": ""
+              },
+              {
+                "id": "m24",
+                "country": ""
+              },
+              {
+                "id": "m46",
+                "country": ""
+              },
+              {
+                "id": "m17",
+                "country": ""
+              },
+              {
+                "id": "m31",
+                "country": ""
+              },
+              {
+                "id": "m8",
+                "country": ""
+              },
+              {
+                "id": "m247",
+                "country": ""
+              },
+              {
+                "id": "m16",
+                "country": ""
+              }
+            ]
+          },
+          {
+            "name": "Team Delta",
+            "line": "",
+            "members": [
+              {
+                "id": "m36",
+                "country": ""
+              },
+              {
+                "id": "m26",
+                "country": ""
+              },
+              {
+                "id": "m42",
+                "country": ""
+              },
+              {
+                "id": "m37",
+                "country": ""
+              },
+              {
+                "id": "m27",
+                "country": ""
+              },
+              {
+                "id": "m23",
+                "country": ""
+              },
+              {
+                "id": "m248",
+                "country": ""
+              },
+              {
+                "id": "m249",
+                "country": ""
+              },
+              {
+                "id": "m250",
+                "country": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "t4w2": [
       {
         "name": "Term 4 Teams",
