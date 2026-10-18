@@ -579,10 +579,16 @@ function latestAssignedWeek(term){
   if(!term||term===curTerm()) return S.currentSession;
   return list.length?list[0].id:S.currentSession;
 }
+/* The current term opens on the week you are up to; an earlier term opens on
+   its last week with teams. */
+function defaultWeek(t){
+  if(t===curTerm()&&termSessions(t).some(s=>s.id===S.currentSession)) return S.currentSession;
+  return latestAssignedWeek(t);
+}
 function committeeWeek(){
   const t=committeeTerm();
   if(ctWeek&&termSessions(t).some(s=>s.id===ctWeek)) return ctWeek;
-  return latestAssignedWeek(t);
+  return defaultWeek(t);
 }
 function assignmentFor(memberId,sid){
   for(const c of weekCommittees(sid))
@@ -1327,7 +1333,7 @@ function wire(){
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 
   $$('.tab').forEach(b=>b.onclick=()=>{
-    if(b.dataset.tab==='cttee'&&tab!=='cttee'){ctTerm=curTerm();ctWeek=latestAssignedWeek(ctTerm);editing=false}
+    if(b.dataset.tab==='cttee'&&tab!=='cttee'){ctTerm=curTerm();ctWeek=defaultWeek(ctTerm);editing=false}
     tab=b.dataset.tab;q='';qr='';render()});
   $$('#divSeg button').forEach(b=>b.onclick=()=>{division=b.dataset.div;render()});
 
