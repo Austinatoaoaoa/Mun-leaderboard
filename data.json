@@ -32,14 +32,14 @@
       "label": "Week 1",
       "term": "Term 4",
       "date": "16 Oct",
-      "chairId": null
+      "chairId": "m1"
     },
     {
       "id": "t4w2",
       "label": "Week 2",
       "term": "Term 4",
       "date": "23 Oct",
-      "chairId": "m1"
+      "chairId": null
     },
     {
       "id": "t4w3",
@@ -3267,7 +3267,7 @@
     },
     {
       "id": "e357",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m248",
       "action": "attend",
       "points": 1,
@@ -3275,7 +3275,7 @@
     },
     {
       "id": "e358",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m36",
       "action": "attend",
       "points": 1,
@@ -3283,7 +3283,7 @@
     },
     {
       "id": "e359",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m37",
       "action": "attend",
       "points": 1,
@@ -3291,7 +3291,7 @@
     },
     {
       "id": "e360",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m16",
       "action": "attend",
       "points": 1,
@@ -3299,7 +3299,7 @@
     },
     {
       "id": "e361",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m17",
       "action": "attend",
       "points": 1,
@@ -3307,7 +3307,7 @@
     },
     {
       "id": "e362",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m14",
       "action": "attend",
       "points": 1,
@@ -3315,7 +3315,7 @@
     },
     {
       "id": "e363",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m23",
       "action": "attend",
       "points": 1,
@@ -3323,7 +3323,7 @@
     },
     {
       "id": "e364",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m35",
       "action": "attend",
       "points": 1,
@@ -3331,7 +3331,7 @@
     },
     {
       "id": "e365",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m249",
       "action": "attend",
       "points": 1,
@@ -3339,7 +3339,7 @@
     },
     {
       "id": "e366",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m350",
       "action": "attend",
       "points": 1,
@@ -3347,7 +3347,7 @@
     },
     {
       "id": "e367",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m38",
       "action": "attend",
       "points": 1,
@@ -3355,7 +3355,7 @@
     },
     {
       "id": "e368",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m42",
       "action": "attend",
       "points": 1,
@@ -3363,7 +3363,7 @@
     },
     {
       "id": "e369",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m16",
       "action": "speech",
       "points": 2,
@@ -3371,7 +3371,7 @@
     },
     {
       "id": "e370",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m16",
       "action": "poi",
       "points": 1,
@@ -3379,7 +3379,7 @@
     },
     {
       "id": "e371",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m16",
       "action": "poiAns",
       "points": 1,
@@ -3387,7 +3387,7 @@
     },
     {
       "id": "e372",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m16",
       "action": "poiAns",
       "points": 1,
@@ -3395,7 +3395,7 @@
     },
     {
       "id": "e373",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m13",
       "action": "attend",
       "points": 1,
@@ -3403,7 +3403,7 @@
     },
     {
       "id": "e374",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m13",
       "action": "speech",
       "points": 2,
@@ -3411,7 +3411,7 @@
     },
     {
       "id": "e375",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m13",
       "action": "poi",
       "points": 1,
@@ -3419,7 +3419,7 @@
     },
     {
       "id": "e376",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m13",
       "action": "poi",
       "points": 1,
@@ -3427,7 +3427,7 @@
     },
     {
       "id": "e377",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m38",
       "action": "speech",
       "points": 2,
@@ -3435,7 +3435,7 @@
     },
     {
       "id": "e378",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m38",
       "action": "poiAns",
       "points": 1,
@@ -3443,7 +3443,7 @@
     },
     {
       "id": "e379",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m350",
       "action": "speech",
       "points": 2,
@@ -3451,7 +3451,7 @@
     },
     {
       "id": "e381",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m350",
       "action": "poiAns",
       "points": 1,
@@ -3459,7 +3459,7 @@
     },
     {
       "id": "e383",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m17",
       "action": "speech",
       "points": 2,
@@ -3467,7 +3467,7 @@
     },
     {
       "id": "e384",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m17",
       "action": "poi",
       "points": 1,
@@ -3475,7 +3475,7 @@
     },
     {
       "id": "e385",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m17",
       "action": "poiAns",
       "points": 1,
@@ -3483,7 +3483,7 @@
     },
     {
       "id": "e386",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m17",
       "action": "poiAns",
       "points": 1,
@@ -3491,7 +3491,7 @@
     },
     {
       "id": "e387",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m248",
       "action": "speech",
       "points": 2,
@@ -3499,7 +3499,7 @@
     },
     {
       "id": "e388",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m248",
       "action": "poi",
       "points": 1,
@@ -3507,7 +3507,7 @@
     },
     {
       "id": "e389",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m248",
       "action": "poi",
       "points": 1,
@@ -3515,7 +3515,7 @@
     },
     {
       "id": "e390",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m248",
       "action": "poiAns",
       "points": 1,
@@ -3523,7 +3523,7 @@
     },
     {
       "id": "e391",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m30",
       "action": "attend",
       "points": 1,
@@ -3531,7 +3531,7 @@
     },
     {
       "id": "e392",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m30",
       "action": "poi",
       "points": 1,
@@ -3539,7 +3539,7 @@
     },
     {
       "id": "e393",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m42",
       "action": "poi",
       "points": 1,
@@ -3547,7 +3547,7 @@
     },
     {
       "id": "e394",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m38",
       "action": "poiAns",
       "points": 1,
@@ -3555,7 +3555,7 @@
     },
     {
       "id": "e395",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m35",
       "action": "speech",
       "points": 2,
@@ -3563,7 +3563,7 @@
     },
     {
       "id": "e396",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m35",
       "action": "poi",
       "points": 1,
@@ -3571,7 +3571,7 @@
     },
     {
       "id": "e397",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m35",
       "action": "poiAns",
       "points": 1,
@@ -3579,7 +3579,7 @@
     },
     {
       "id": "e398",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m35",
       "action": "poiAns",
       "points": 1,
@@ -3587,7 +3587,7 @@
     },
     {
       "id": "e399",
-      "sessionId": "t4w2",
+      "sessionId": "t4w1",
       "memberId": "m16",
       "action": "poiAns",
       "points": 1,
