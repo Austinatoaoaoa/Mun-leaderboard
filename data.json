@@ -1,1825 +1,68 @@
 {
   "seq": 357,
-  "currentSession": "w7",
+  "term": "Term 4",
+  "currentSession": "t4w2",
   "sessions": [
     {
-      "id": "w4",
+      "id": "t4w1",
+      "label": "Week 1",
+      "date": "16 Oct",
+      "chairId": null
+    },
+    {
+      "id": "t4w2",
+      "label": "Week 2",
+      "date": "23 Oct",
+      "chairId": null
+    },
+    {
+      "id": "t4w3",
+      "label": "Week 3",
+      "date": "30 Oct",
+      "chairId": null
+    },
+    {
+      "id": "t4w4",
       "label": "Week 4",
-      "chairId": "m1"
+      "date": "6 Nov",
+      "chairId": null
     },
     {
-      "id": "w5",
+      "id": "t4w5",
       "label": "Week 5",
+      "date": "13 Nov",
       "chairId": null
     },
     {
-      "id": "w6",
+      "id": "t4w6",
       "label": "Week 6",
-      "chairId": "m1"
+      "date": "20 Nov",
+      "chairId": null
     },
     {
-      "id": "w7",
+      "id": "t4w7",
       "label": "Week 7",
+      "date": "27 Nov",
       "chairId": null
     },
     {
-      "id": "w8",
+      "id": "t4w8",
       "label": "Week 8",
-      "chairId": null
-    },
-    {
-      "id": "w9",
-      "label": "Week 9",
-      "chairId": null
-    },
-    {
-      "id": "w10",
-      "label": "Week 10",
-      "chairId": null
-    },
-    {
-      "id": "s200",
-      "label": "Sitting 8",
+      "date": "4 Dec",
       "chairId": null
     }
   ],
   "committees": {
-    "w4": [
-      {
-        "name": "DISEC",
-        "topic": "Global Autonomous Incursion",
-        "teams": [
-          {
-            "name": "Team Alpha",
-            "line": "Coordinated international action, AI cooperation, a strong UCTF",
-            "members": [
-              {
-                "id": "m21",
-                "country": "United States"
-              },
-              {
-                "id": "m39",
-                "country": "Australia"
-              },
-              {
-                "id": "m47",
-                "country": "Japan"
-              }
-            ]
-          },
-          {
-            "name": "Team Beta",
-            "line": "Defeat the Constructs, but resist Western control of the UCTF",
-            "members": [
-              {
-                "id": "m18",
-                "country": "China"
-              },
-              {
-                "id": "m13",
-                "country": "Russia"
-              },
-              {
-                "id": "m20",
-                "country": "Iran"
-              }
-            ]
-          },
-          {
-            "name": "Team Charlie",
-            "line": "Civilian protection, human control, no nuclear escalation",
-            "members": [
-              {
-                "id": "m46",
-                "country": "France"
-              },
-              {
-                "id": "m17",
-                "country": "Brazil"
-              },
-              {
-                "id": "m31",
-                "country": "Mexico"
-              },
-              {
-                "id": "m8",
-                "country": "canada"
-              }
-            ]
-          },
-          {
-            "name": "Team Delta",
-            "line": "Occupied states must have real power over the response",
-            "members": [
-              {
-                "id": "m37",
-                "country": "India"
-              },
-              {
-                "id": "m27",
-                "country": "Nigeria"
-              },
-              {
-                "id": "m23",
-                "country": "South Africa"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "WHO",
-        "topic": "Equitable Vaccine Distribution Systems",
-        "teams": [
-          {
-            "name": "Team Alpha",
-            "line": "Support access, but protect innovation and intellectual property",
-            "members": [
-              {
-                "id": "m30",
-                "country": "United States"
-              },
-              {
-                "id": "m29",
-                "country": "Germany"
-              },
-              {
-                "id": "m35",
-                "country": "Switzerland"
-              }
-            ]
-          },
-          {
-            "name": "Team Beta",
-            "line": "Manufacturing capacity, not charity — technology transfer",
-            "members": [
-              {
-                "id": "m16",
-                "country": "India"
-              },
-              {
-                "id": "m14",
-                "country": "China"
-              },
-              {
-                "id": "m15",
-                "country": "North Korea"
-              },
-              {
-                "id": "m12",
-                "country": "Brazil"
-              }
-            ]
-          },
-          {
-            "name": "Team Charlie",
-            "line": "Poorer states should not wait their turn during a pandemic",
-            "members": [
-              {
-                "id": "m38",
-                "country": "South Africa"
-              },
-              {
-                "id": "m11",
-                "country": "Kenya"
-              },
-              {
-                "id": "m24",
-                "country": "Nigeria"
-              }
-            ]
-          },
-          {
-            "name": "Team Delta",
-            "line": "The swing bloc — make the mechanism actually workable",
-            "members": [
-              {
-                "id": "m36",
-                "country": "United Kingdom"
-              },
-              {
-                "id": "m26",
-                "country": "Indonesia"
-              },
-              {
-                "id": "m42",
-                "country": "Australia"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "w5": [
-      {
-        "name": "WHO",
-        "topic": "Resolution on Equitable Vaccine Distribution Systems",
-        "teams": [
-          {
-            "name": "Team Alpha",
-            "line": "Support access, but protect innovation and intellectual property",
-            "members": [
-              {
-                "id": "m30",
-                "country": "United States"
-              },
-              {
-                "id": "m29",
-                "country": "Germany"
-              },
-              {
-                "id": "m35",
-                "country": "Switzerland"
-              },
-              {
-                "id": "m21",
-                "country": "Japan"
-              },
-              {
-                "id": "m39",
-                "country": "Canada"
-              },
-              {
-                "id": "m47",
-                "country": "France"
-              }
-            ]
-          },
-          {
-            "name": "Team Beta",
-            "line": "Manufacturing capacity, not charity — technology transfer",
-            "members": [
-              {
-                "id": "m16",
-                "country": "India"
-              },
-              {
-                "id": "m14",
-                "country": "China"
-              },
-              {
-                "id": "m15",
-                "country": "North Korea"
-              },
-              {
-                "id": "m12",
-                "country": "Brazil"
-              },
-              {
-                "id": "m18",
-                "country": "Russia"
-              },
-              {
-                "id": "m13",
-                "country": "Mexico"
-              },
-              {
-                "id": "m20",
-                "country": "Türkiye"
-              }
-            ]
-          },
-          {
-            "name": "Team Charlie",
-            "line": "Poorer states should not wait their turn during a pandemic",
-            "members": [
-              {
-                "id": "m38",
-                "country": "South Africa"
-              },
-              {
-                "id": "m11",
-                "country": "Kenya"
-              },
-              {
-                "id": "m24",
-                "country": "Nigeria"
-              },
-              {
-                "id": "m46",
-                "country": "Pakistan"
-              },
-              {
-                "id": "m17",
-                "country": "Egypt"
-              },
-              {
-                "id": "m31",
-                "country": "Philippines"
-              },
-              {
-                "id": "m8",
-                "country": "Vietnam"
-              }
-            ]
-          },
-          {
-            "name": "Team Delta",
-            "line": "The swing bloc — make the mechanism actually workable",
-            "members": [
-              {
-                "id": "m36",
-                "country": "United Kingdom"
-              },
-              {
-                "id": "m26",
-                "country": "Indonesia"
-              },
-              {
-                "id": "m42",
-                "country": "Australia"
-              },
-              {
-                "id": "m37",
-                "country": "Singapore"
-              },
-              {
-                "id": "m27",
-                "country": "South Korea"
-              },
-              {
-                "id": "m23",
-                "country": "Spain"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "w6": [
-      {
-        "name": "WHO",
-        "topic": "Resolution on Equitable Vaccine Distribution Systems",
-        "teams": [
-          {
-            "name": "Team Alpha",
-            "line": "Support access, but protect innovation and intellectual property",
-            "members": [
-              {
-                "id": "m30",
-                "country": "United States"
-              },
-              {
-                "id": "m29",
-                "country": "Germany"
-              },
-              {
-                "id": "m35",
-                "country": "Switzerland"
-              },
-              {
-                "id": "m21",
-                "country": "Japan"
-              },
-              {
-                "id": "m39",
-                "country": "Canada"
-              },
-              {
-                "id": "m47",
-                "country": "France"
-              },
-              {
-                "id": "m242",
-                "country": "Netherlands"
-              },
-              {
-                "id": "m243",
-                "country": "Belgium"
-              },
-              {
-                "id": "m244",
-                "country": "Denmark"
-              }
-            ]
-          },
-          {
-            "name": "Team Beta",
-            "line": "Manufacturing capacity, not charity — technology transfer",
-            "members": [
-              {
-                "id": "m14",
-                "country": "China"
-              },
-              {
-                "id": "m15",
-                "country": "North Korea"
-              },
-              {
-                "id": "m12",
-                "country": "Brazil"
-              },
-              {
-                "id": "m18",
-                "country": "Russia"
-              },
-              {
-                "id": "m13",
-                "country": "Mexico"
-              },
-              {
-                "id": "m20",
-                "country": "Türkiye"
-              },
-              {
-                "id": "m245",
-                "country": "Cuba"
-              },
-              {
-                "id": "m246",
-                "country": "Iran"
-              }
-            ]
-          },
-          {
-            "name": "Team Charlie",
-            "line": "Poorer states should not wait their turn during a pandemic",
-            "members": [
-              {
-                "id": "m38",
-                "country": "South Africa"
-              },
-              {
-                "id": "m11",
-                "country": "Kenya"
-              },
-              {
-                "id": "m24",
-                "country": "Nigeria"
-              },
-              {
-                "id": "m46",
-                "country": "Pakistan"
-              },
-              {
-                "id": "m17",
-                "country": "Egypt"
-              },
-              {
-                "id": "m31",
-                "country": "Philippines"
-              },
-              {
-                "id": "m8",
-                "country": "Vietnam"
-              },
-              {
-                "id": "m247",
-                "country": "Bangladesh"
-              },
-              {
-                "id": "m16",
-                "country": "India"
-              }
-            ]
-          },
-          {
-            "name": "Team Delta",
-            "line": "The swing bloc — make the mechanism actually workable",
-            "members": [
-              {
-                "id": "m36",
-                "country": "United Kingdom"
-              },
-              {
-                "id": "m26",
-                "country": "Indonesia"
-              },
-              {
-                "id": "m42",
-                "country": "Australia"
-              },
-              {
-                "id": "m37",
-                "country": "Singapore"
-              },
-              {
-                "id": "m27",
-                "country": "South Korea"
-              },
-              {
-                "id": "m23",
-                "country": "Spain"
-              },
-              {
-                "id": "m248",
-                "country": "New Zealand"
-              },
-              {
-                "id": "m249",
-                "country": "Norway"
-              },
-              {
-                "id": "m250",
-                "country": "Ireland"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "w7": [
-      {
-        "name": "Jubilee Debate",
-        "topic": "",
-        "teams": [
-          {
-            "name": "Team Alpha",
-            "line": "",
-            "members": [
-              {
-                "id": "m30",
-                "country": ""
-              },
-              {
-                "id": "m29",
-                "country": ""
-              },
-              {
-                "id": "m35",
-                "country": ""
-              },
-              {
-                "id": "m21",
-                "country": ""
-              },
-              {
-                "id": "m39",
-                "country": ""
-              },
-              {
-                "id": "m47",
-                "country": ""
-              },
-              {
-                "id": "m242",
-                "country": ""
-              },
-              {
-                "id": "m243",
-                "country": ""
-              },
-              {
-                "id": "m244",
-                "country": ""
-              },
-              {
-                "id": "m350",
-                "country": ""
-              }
-            ]
-          },
-          {
-            "name": "Team Beta",
-            "line": "",
-            "members": [
-              {
-                "id": "m14",
-                "country": ""
-              },
-              {
-                "id": "m15",
-                "country": ""
-              },
-              {
-                "id": "m12",
-                "country": ""
-              },
-              {
-                "id": "m18",
-                "country": ""
-              },
-              {
-                "id": "m13",
-                "country": ""
-              },
-              {
-                "id": "m20",
-                "country": ""
-              },
-              {
-                "id": "m245",
-                "country": ""
-              },
-              {
-                "id": "m246",
-                "country": ""
-              }
-            ]
-          },
-          {
-            "name": "Team Charlie",
-            "line": "",
-            "members": [
-              {
-                "id": "m38",
-                "country": ""
-              },
-              {
-                "id": "m11",
-                "country": ""
-              },
-              {
-                "id": "m24",
-                "country": ""
-              },
-              {
-                "id": "m46",
-                "country": ""
-              },
-              {
-                "id": "m17",
-                "country": ""
-              },
-              {
-                "id": "m31",
-                "country": ""
-              },
-              {
-                "id": "m8",
-                "country": ""
-              },
-              {
-                "id": "m247",
-                "country": ""
-              },
-              {
-                "id": "m16",
-                "country": ""
-              }
-            ]
-          },
-          {
-            "name": "Team Delta",
-            "line": "",
-            "members": [
-              {
-                "id": "m36",
-                "country": ""
-              },
-              {
-                "id": "m26",
-                "country": ""
-              },
-              {
-                "id": "m42",
-                "country": ""
-              },
-              {
-                "id": "m37",
-                "country": ""
-              },
-              {
-                "id": "m27",
-                "country": ""
-              },
-              {
-                "id": "m23",
-                "country": ""
-              },
-              {
-                "id": "m248",
-                "country": ""
-              },
-              {
-                "id": "m249",
-                "country": ""
-              },
-              {
-                "id": "m250",
-                "country": ""
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "w8": [],
-    "w9": [],
-    "w10": []
+    "t4w1": [],
+    "t4w2": [],
+    "t4w3": [],
+    "t4w4": [],
+    "t4w5": [],
+    "t4w6": [],
+    "t4w7": [],
+    "t4w8": []
   },
-  "events": [
-    {
-      "id": "e201",
-      "sessionId": "w4",
-      "memberId": "m21",
-      "action": "attend",
-      "points": 1,
-      "ts": 1786659465742
-    },
-    {
-      "id": "e202",
-      "sessionId": "w4",
-      "memberId": "m21",
-      "action": "speech",
-      "points": 2,
-      "ts": 1786659471583
-    },
-    {
-      "id": "e203",
-      "sessionId": "w4",
-      "memberId": "m35",
-      "action": "attend",
-      "points": 1,
-      "ts": 1786659511363
-    },
-    {
-      "id": "e204",
-      "sessionId": "w4",
-      "memberId": "m35",
-      "action": "poi",
-      "points": 1,
-      "ts": 1786659515555
-    },
-    {
-      "id": "e205",
-      "sessionId": "w4",
-      "memberId": "m21",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1786659562377
-    },
-    {
-      "id": "e206",
-      "sessionId": "w4",
-      "memberId": "m8",
-      "action": "attend",
-      "points": 1,
-      "ts": 1786659616874
-    },
-    {
-      "id": "e207",
-      "sessionId": "w4",
-      "memberId": "m8",
-      "action": "speech",
-      "points": 2,
-      "ts": 1786659617433
-    },
-    {
-      "id": "e208",
-      "sessionId": "w4",
-      "memberId": "m13",
-      "action": "amendSub",
-      "points": 1,
-      "ts": 1786659776213
-    },
-    {
-      "id": "e209",
-      "sessionId": "w4",
-      "memberId": "m13",
-      "action": "speech",
-      "points": 2,
-      "ts": 1786659778703
-    },
-    {
-      "id": "e210",
-      "sessionId": "w4",
-      "memberId": "m13",
-      "action": "attend",
-      "points": 1,
-      "ts": 1786659780224
-    },
-    {
-      "id": "e211",
-      "sessionId": "w4",
-      "memberId": "m29",
-      "action": "poi",
-      "points": 1,
-      "ts": 1786659851151
-    },
-    {
-      "id": "e212",
-      "sessionId": "w4",
-      "memberId": "m13",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1786659862150
-    },
-    {
-      "id": "e213",
-      "sessionId": "w4",
-      "memberId": "m13",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1786659950109
-    },
-    {
-      "id": "e214",
-      "sessionId": "w4",
-      "memberId": "m21",
-      "action": "speech",
-      "points": 2,
-      "ts": 1786660027950
-    },
-    {
-      "id": "e215",
-      "sessionId": "w4",
-      "memberId": "m21",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1786660098303
-    },
-    {
-      "id": "e216",
-      "sessionId": "w4",
-      "memberId": "m37",
-      "action": "speech",
-      "points": 2,
-      "ts": 1786660339074
-    },
-    {
-      "id": "e217",
-      "sessionId": "w4",
-      "memberId": "m37",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1786660340066
-    },
-    {
-      "id": "e218",
-      "sessionId": "w4",
-      "memberId": "m37",
-      "action": "attend",
-      "points": 1,
-      "ts": 1786660341923
-    },
-    {
-      "id": "e219",
-      "sessionId": "w4",
-      "memberId": "m35",
-      "action": "poi",
-      "points": 1,
-      "ts": 1786660356554
-    },
-    {
-      "id": "e220",
-      "sessionId": "w4",
-      "memberId": "m37",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1786660393253
-    },
-    {
-      "id": "e221",
-      "sessionId": "w4",
-      "memberId": "m16",
-      "action": "attend",
-      "points": 1,
-      "ts": 1786660486402
-    },
-    {
-      "id": "e222",
-      "sessionId": "w4",
-      "memberId": "m16",
-      "action": "speech",
-      "points": 2,
-      "ts": 1786660487219
-    },
-    {
-      "id": "e223",
-      "sessionId": "w4",
-      "memberId": "m13",
-      "action": "poi",
-      "points": 1,
-      "ts": 1786660495885
-    },
-    {
-      "id": "e224",
-      "sessionId": "w4",
-      "memberId": "m16",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1786660508994
-    },
-    {
-      "id": "e225",
-      "sessionId": "w4",
-      "memberId": "m29",
-      "action": "poi",
-      "points": 1,
-      "ts": 1786660587402
-    },
-    {
-      "id": "e226",
-      "sessionId": "w4",
-      "memberId": "m16",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1786660629632
-    },
-    {
-      "id": "e227",
-      "sessionId": "w4",
-      "memberId": "m36",
-      "action": "attend",
-      "points": 1,
-      "ts": 1786660650181
-    },
-    {
-      "id": "e228",
-      "sessionId": "w4",
-      "memberId": "m38",
-      "action": "attend",
-      "points": 1,
-      "ts": 1786660655056
-    },
-    {
-      "id": "e229",
-      "sessionId": "w4",
-      "memberId": "m23",
-      "action": "amendSub",
-      "points": 1,
-      "ts": 1786660736864
-    },
-    {
-      "id": "e230",
-      "sessionId": "w4",
-      "memberId": "m23",
-      "action": "attend",
-      "points": 1,
-      "ts": 1786660738132
-    },
-    {
-      "id": "e231",
-      "sessionId": "w4",
-      "memberId": "m23",
-      "action": "speech",
-      "points": 2,
-      "ts": 1786660798226
-    },
-    {
-      "id": "e232",
-      "sessionId": "w4",
-      "memberId": "m36",
-      "action": "poi",
-      "points": 1,
-      "ts": 1786660839100
-    },
-    {
-      "id": "e233",
-      "sessionId": "w4",
-      "memberId": "m13",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1786660921677
-    },
-    {
-      "id": "e234",
-      "sessionId": "w4",
-      "memberId": "m18",
-      "action": "attend",
-      "points": 1,
-      "ts": 1786661005282
-    },
-    {
-      "id": "e236",
-      "sessionId": "w5",
-      "memberId": "m13",
-      "action": "recruit",
-      "points": 2,
-      "ts": 1786928520553
-    },
-    {
-      "id": "e238",
-      "sessionId": "w5",
-      "memberId": "m37",
-      "action": "recruit",
-      "points": 2,
-      "ts": 1786928553217
-    },
-    {
-      "id": "e239",
-      "sessionId": "w5",
-      "memberId": "m37",
-      "action": "recruit",
-      "points": 2,
-      "ts": 1786928553449
-    },
-    {
-      "id": "e241",
-      "sessionId": "w4",
-      "memberId": "m13",
-      "action": "bestDel",
-      "points": 5,
-      "ts": 1786928938874
-    },
-    {
-      "id": "e251",
-      "sessionId": "w6",
-      "memberId": "m38",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787869068834
-    },
-    {
-      "id": "e252",
-      "sessionId": "w6",
-      "memberId": "m27",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787869086053
-    },
-    {
-      "id": "e253",
-      "sessionId": "w6",
-      "memberId": "m27",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869087570
-    },
-    {
-      "id": "e255",
-      "sessionId": "w6",
-      "memberId": "m38",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869110554
-    },
-    {
-      "id": "e256",
-      "sessionId": "w6",
-      "memberId": "m36",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787869138034
-    },
-    {
-      "id": "e257",
-      "sessionId": "w6",
-      "memberId": "m36",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787869139733
-    },
-    {
-      "id": "e258",
-      "sessionId": "w6",
-      "memberId": "m36",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869142241
-    },
-    {
-      "id": "e259",
-      "sessionId": "w6",
-      "memberId": "m14",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787869148790
-    },
-    {
-      "id": "e260",
-      "sessionId": "w6",
-      "memberId": "m13",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787869154570
-    },
-    {
-      "id": "e261",
-      "sessionId": "w6",
-      "memberId": "m13",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787869158146
-    },
-    {
-      "id": "e262",
-      "sessionId": "w6",
-      "memberId": "m13",
-      "action": "amendSub",
-      "points": 1,
-      "ts": 1787869159350
-    },
-    {
-      "id": "e263",
-      "sessionId": "w6",
-      "memberId": "m13",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869162104
-    },
-    {
-      "id": "e264",
-      "sessionId": "w6",
-      "memberId": "m21",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787869239938
-    },
-    {
-      "id": "e265",
-      "sessionId": "w6",
-      "memberId": "m21",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869241394
-    },
-    {
-      "id": "e266",
-      "sessionId": "w6",
-      "memberId": "m35",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787869283711
-    },
-    {
-      "id": "e267",
-      "sessionId": "w6",
-      "memberId": "m13",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787869300898
-    },
-    {
-      "id": "e268",
-      "sessionId": "w6",
-      "memberId": "m6",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787869312248
-    },
-    {
-      "id": "e269",
-      "sessionId": "w6",
-      "memberId": "m14",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869321954
-    },
-    {
-      "id": "e270",
-      "sessionId": "w6",
-      "memberId": "m14",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869322212
-    },
-    {
-      "id": "e271",
-      "sessionId": "w6",
-      "memberId": "m16",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787869363056
-    },
-    {
-      "id": "e272",
-      "sessionId": "w6",
-      "memberId": "m16",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787869365815
-    },
-    {
-      "id": "e273",
-      "sessionId": "w6",
-      "memberId": "m16",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787869369503
-    },
-    {
-      "id": "e274",
-      "sessionId": "w6",
-      "memberId": "m23",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787869475572
-    },
-    {
-      "id": "e275",
-      "sessionId": "w6",
-      "memberId": "m23",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869478385
-    },
-    {
-      "id": "e276",
-      "sessionId": "w6",
-      "memberId": "m23",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869478628
-    },
-    {
-      "id": "e277",
-      "sessionId": "w6",
-      "memberId": "m16",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1787869486298
-    },
-    {
-      "id": "e278",
-      "sessionId": "w6",
-      "memberId": "m16",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1787869537739
-    },
-    {
-      "id": "e279",
-      "sessionId": "w6",
-      "memberId": "m248",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787869557530
-    },
-    {
-      "id": "e281",
-      "sessionId": "w6",
-      "memberId": "m248",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869563203
-    },
-    {
-      "id": "e282",
-      "sessionId": "w6",
-      "memberId": "m248",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869605665
-    },
-    {
-      "id": "e283",
-      "sessionId": "w6",
-      "memberId": "m16",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1787869641735
-    },
-    {
-      "id": "e284",
-      "sessionId": "w6",
-      "memberId": "m13",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869691607
-    },
-    {
-      "id": "e285",
-      "sessionId": "w6",
-      "memberId": "m13",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1787869694926
-    },
-    {
-      "id": "e286",
-      "sessionId": "w6",
-      "memberId": "m36",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787869705197
-    },
-    {
-      "id": "e287",
-      "sessionId": "w6",
-      "memberId": "m36",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869707324
-    },
-    {
-      "id": "e288",
-      "sessionId": "w6",
-      "memberId": "m36",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1787869709378
-    },
-    {
-      "id": "e289",
-      "sessionId": "w6",
-      "memberId": "m14",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787869798230
-    },
-    {
-      "id": "e290",
-      "sessionId": "w6",
-      "memberId": "m14",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1787869870450
-    },
-    {
-      "id": "e291",
-      "sessionId": "w6",
-      "memberId": "m13",
-      "action": "amendPass",
-      "points": 3,
-      "ts": 1787869957305
-    },
-    {
-      "id": "e292",
-      "sessionId": "w6",
-      "memberId": "m21",
-      "action": "amendSub",
-      "points": 1,
-      "ts": 1787869977574
-    },
-    {
-      "id": "e293",
-      "sessionId": "w6",
-      "memberId": "m21",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787869990215
-    },
-    {
-      "id": "e294",
-      "sessionId": "w6",
-      "memberId": "m35",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787870083167
-    },
-    {
-      "id": "e295",
-      "sessionId": "w6",
-      "memberId": "m23",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787870290248
-    },
-    {
-      "id": "e296",
-      "sessionId": "w6",
-      "memberId": "m16",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787870300142
-    },
-    {
-      "id": "e297",
-      "sessionId": "w6",
-      "memberId": "m16",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787870307525
-    },
-    {
-      "id": "e298",
-      "sessionId": "w6",
-      "memberId": "m8",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787870412921
-    },
-    {
-      "id": "e299",
-      "sessionId": "w6",
-      "memberId": "m8",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787870414305
-    },
-    {
-      "id": "e300",
-      "sessionId": "w6",
-      "memberId": "m8",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787870415338
-    },
-    {
-      "id": "e301",
-      "sessionId": "w6",
-      "memberId": "m38",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787870422593
-    },
-    {
-      "id": "e302",
-      "sessionId": "w6",
-      "memberId": "m38",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787870445382
-    },
-    {
-      "id": "e303",
-      "sessionId": "w6",
-      "memberId": "m38",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1787870447338
-    },
-    {
-      "id": "e304",
-      "sessionId": "w6",
-      "memberId": "m37",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787870455388
-    },
-    {
-      "id": "e305",
-      "sessionId": "w6",
-      "memberId": "m36",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787870512635
-    },
-    {
-      "id": "e306",
-      "sessionId": "w6",
-      "memberId": "m18",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787870519030
-    },
-    {
-      "id": "e307",
-      "sessionId": "w6",
-      "memberId": "m36",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1787870549862
-    },
-    {
-      "id": "e308",
-      "sessionId": "w6",
-      "memberId": "m35",
-      "action": "speech",
-      "points": 2,
-      "ts": 1787870595134
-    },
-    {
-      "id": "e309",
-      "sessionId": "w6",
-      "memberId": "m21",
-      "action": "poi",
-      "points": 1,
-      "ts": 1787870691170
-    },
-    {
-      "id": "e310",
-      "sessionId": "w6",
-      "memberId": "m245",
-      "action": "attend",
-      "points": 1,
-      "ts": 1787872098944
-    },
-    {
-      "id": "e311",
-      "sessionId": "w7",
-      "memberId": "m36",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788473317235
-    },
-    {
-      "id": "e312",
-      "sessionId": "w7",
-      "memberId": "m23",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788473320768
-    },
-    {
-      "id": "e313",
-      "sessionId": "w7",
-      "memberId": "m36",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788473325797
-    },
-    {
-      "id": "e314",
-      "sessionId": "w7",
-      "memberId": "m36",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788473401697
-    },
-    {
-      "id": "e315",
-      "sessionId": "w7",
-      "memberId": "m23",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788473415706
-    },
-    {
-      "id": "e316",
-      "sessionId": "w7",
-      "memberId": "m14",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788473746379
-    },
-    {
-      "id": "e317",
-      "sessionId": "w7",
-      "memberId": "m14",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788473747586
-    },
-    {
-      "id": "e318",
-      "sessionId": "w7",
-      "memberId": "m14",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788474180941
-    },
-    {
-      "id": "e319",
-      "sessionId": "w7",
-      "memberId": "m36",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788474189724
-    },
-    {
-      "id": "e320",
-      "sessionId": "w7",
-      "memberId": "m13",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788474195641
-    },
-    {
-      "id": "e321",
-      "sessionId": "w7",
-      "memberId": "m13",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788474196031
-    },
-    {
-      "id": "e322",
-      "sessionId": "w7",
-      "memberId": "m38",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788474208519
-    },
-    {
-      "id": "e323",
-      "sessionId": "w7",
-      "memberId": "m38",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788474208877
-    },
-    {
-      "id": "e324",
-      "sessionId": "w7",
-      "memberId": "m12",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788476495498
-    },
-    {
-      "id": "e325",
-      "sessionId": "w7",
-      "memberId": "m16",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788476498373
-    },
-    {
-      "id": "e326",
-      "sessionId": "w7",
-      "memberId": "m17",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788476498975
-    },
-    {
-      "id": "e327",
-      "sessionId": "w7",
-      "memberId": "m21",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788476502845
-    },
-    {
-      "id": "e328",
-      "sessionId": "w7",
-      "memberId": "m24",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788476506295
-    },
-    {
-      "id": "e329",
-      "sessionId": "w7",
-      "memberId": "m27",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788476509504
-    },
-    {
-      "id": "e330",
-      "sessionId": "w7",
-      "memberId": "m30",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788476512820
-    },
-    {
-      "id": "e331",
-      "sessionId": "w7",
-      "memberId": "m39",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788476516437
-    },
-    {
-      "id": "e332",
-      "sessionId": "w7",
-      "memberId": "m248",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788476531833
-    },
-    {
-      "id": "e333",
-      "sessionId": "w7",
-      "memberId": "m16",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476540891
-    },
-    {
-      "id": "e334",
-      "sessionId": "w7",
-      "memberId": "m16",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476542283
-    },
-    {
-      "id": "e335",
-      "sessionId": "w7",
-      "memberId": "m21",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476544878
-    },
-    {
-      "id": "e336",
-      "sessionId": "w7",
-      "memberId": "m21",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476547446
-    },
-    {
-      "id": "e337",
-      "sessionId": "w7",
-      "memberId": "m248",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476553687
-    },
-    {
-      "id": "e338",
-      "sessionId": "w7",
-      "memberId": "m248",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476555924
-    },
-    {
-      "id": "e339",
-      "sessionId": "w7",
-      "memberId": "m248",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476561308
-    },
-    {
-      "id": "e340",
-      "sessionId": "w7",
-      "memberId": "m13",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476577337
-    },
-    {
-      "id": "e341",
-      "sessionId": "w7",
-      "memberId": "m21",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476580133
-    },
-    {
-      "id": "e342",
-      "sessionId": "w7",
-      "memberId": "m16",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476581866
-    },
-    {
-      "id": "e343",
-      "sessionId": "w7",
-      "memberId": "m30",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476602066
-    },
-    {
-      "id": "e344",
-      "sessionId": "w7",
-      "memberId": "m30",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788476602382
-    },
-    {
-      "id": "e345",
-      "sessionId": "w7",
-      "memberId": "m30",
-      "action": "poiAns",
-      "points": 1,
-      "ts": 1788476610012
-    },
-    {
-      "id": "e347",
-      "sessionId": "w7",
-      "memberId": "m37",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788479413318
-    },
-    {
-      "id": "e348",
-      "sessionId": "w7",
-      "memberId": "m37",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788479414602
-    },
-    {
-      "id": "e349",
-      "sessionId": "w7",
-      "memberId": "m37",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788479414935
-    },
-    {
-      "id": "e351",
-      "sessionId": "w7",
-      "memberId": "m350",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788480918433
-    },
-    {
-      "id": "e352",
-      "sessionId": "w7",
-      "memberId": "m350",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788480919025
-    },
-    {
-      "id": "e353",
-      "sessionId": "w7",
-      "memberId": "m350",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788480919183
-    },
-    {
-      "id": "e354",
-      "sessionId": "w7",
-      "memberId": "m350",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788480919341
-    },
-    {
-      "id": "e355",
-      "sessionId": "w7",
-      "memberId": "m35",
-      "action": "attend",
-      "points": 1,
-      "ts": 1788480935237
-    },
-    {
-      "id": "e356",
-      "sessionId": "w7",
-      "memberId": "m35",
-      "action": "speech",
-      "points": 2,
-      "ts": 1788480939250
-    }
-  ],
+  "events": [],
   "members": [
     {
       "id": "m1",
@@ -2276,6 +519,1832 @@
       "division": "novice",
       "role": "delegate",
       "team": ""
+    }
+  ],
+  "archive": [
+    {
+      "id": "t3",
+      "label": "Term 3",
+      "currentSession": "w7",
+      "sessions": [
+        {
+          "id": "w4",
+          "label": "Week 4",
+          "chairId": "m1"
+        },
+        {
+          "id": "w5",
+          "label": "Week 5",
+          "chairId": null
+        },
+        {
+          "id": "w6",
+          "label": "Week 6",
+          "chairId": "m1"
+        },
+        {
+          "id": "w7",
+          "label": "Week 7",
+          "chairId": null
+        },
+        {
+          "id": "w8",
+          "label": "Week 8",
+          "chairId": null
+        },
+        {
+          "id": "w9",
+          "label": "Week 9",
+          "chairId": null
+        },
+        {
+          "id": "w10",
+          "label": "Week 10",
+          "chairId": null
+        },
+        {
+          "id": "s200",
+          "label": "Sitting 8",
+          "chairId": null
+        }
+      ],
+      "committees": {
+        "w4": [
+          {
+            "name": "DISEC",
+            "topic": "Global Autonomous Incursion",
+            "teams": [
+              {
+                "name": "Team Alpha",
+                "line": "Coordinated international action, AI cooperation, a strong UCTF",
+                "members": [
+                  {
+                    "id": "m21",
+                    "country": "United States"
+                  },
+                  {
+                    "id": "m39",
+                    "country": "Australia"
+                  },
+                  {
+                    "id": "m47",
+                    "country": "Japan"
+                  }
+                ]
+              },
+              {
+                "name": "Team Beta",
+                "line": "Defeat the Constructs, but resist Western control of the UCTF",
+                "members": [
+                  {
+                    "id": "m18",
+                    "country": "China"
+                  },
+                  {
+                    "id": "m13",
+                    "country": "Russia"
+                  },
+                  {
+                    "id": "m20",
+                    "country": "Iran"
+                  }
+                ]
+              },
+              {
+                "name": "Team Charlie",
+                "line": "Civilian protection, human control, no nuclear escalation",
+                "members": [
+                  {
+                    "id": "m46",
+                    "country": "France"
+                  },
+                  {
+                    "id": "m17",
+                    "country": "Brazil"
+                  },
+                  {
+                    "id": "m31",
+                    "country": "Mexico"
+                  },
+                  {
+                    "id": "m8",
+                    "country": "canada"
+                  }
+                ]
+              },
+              {
+                "name": "Team Delta",
+                "line": "Occupied states must have real power over the response",
+                "members": [
+                  {
+                    "id": "m37",
+                    "country": "India"
+                  },
+                  {
+                    "id": "m27",
+                    "country": "Nigeria"
+                  },
+                  {
+                    "id": "m23",
+                    "country": "South Africa"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "WHO",
+            "topic": "Equitable Vaccine Distribution Systems",
+            "teams": [
+              {
+                "name": "Team Alpha",
+                "line": "Support access, but protect innovation and intellectual property",
+                "members": [
+                  {
+                    "id": "m30",
+                    "country": "United States"
+                  },
+                  {
+                    "id": "m29",
+                    "country": "Germany"
+                  },
+                  {
+                    "id": "m35",
+                    "country": "Switzerland"
+                  }
+                ]
+              },
+              {
+                "name": "Team Beta",
+                "line": "Manufacturing capacity, not charity — technology transfer",
+                "members": [
+                  {
+                    "id": "m16",
+                    "country": "India"
+                  },
+                  {
+                    "id": "m14",
+                    "country": "China"
+                  },
+                  {
+                    "id": "m15",
+                    "country": "North Korea"
+                  },
+                  {
+                    "id": "m12",
+                    "country": "Brazil"
+                  }
+                ]
+              },
+              {
+                "name": "Team Charlie",
+                "line": "Poorer states should not wait their turn during a pandemic",
+                "members": [
+                  {
+                    "id": "m38",
+                    "country": "South Africa"
+                  },
+                  {
+                    "id": "m11",
+                    "country": "Kenya"
+                  },
+                  {
+                    "id": "m24",
+                    "country": "Nigeria"
+                  }
+                ]
+              },
+              {
+                "name": "Team Delta",
+                "line": "The swing bloc — make the mechanism actually workable",
+                "members": [
+                  {
+                    "id": "m36",
+                    "country": "United Kingdom"
+                  },
+                  {
+                    "id": "m26",
+                    "country": "Indonesia"
+                  },
+                  {
+                    "id": "m42",
+                    "country": "Australia"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "w5": [
+          {
+            "name": "WHO",
+            "topic": "Resolution on Equitable Vaccine Distribution Systems",
+            "teams": [
+              {
+                "name": "Team Alpha",
+                "line": "Support access, but protect innovation and intellectual property",
+                "members": [
+                  {
+                    "id": "m30",
+                    "country": "United States"
+                  },
+                  {
+                    "id": "m29",
+                    "country": "Germany"
+                  },
+                  {
+                    "id": "m35",
+                    "country": "Switzerland"
+                  },
+                  {
+                    "id": "m21",
+                    "country": "Japan"
+                  },
+                  {
+                    "id": "m39",
+                    "country": "Canada"
+                  },
+                  {
+                    "id": "m47",
+                    "country": "France"
+                  }
+                ]
+              },
+              {
+                "name": "Team Beta",
+                "line": "Manufacturing capacity, not charity — technology transfer",
+                "members": [
+                  {
+                    "id": "m16",
+                    "country": "India"
+                  },
+                  {
+                    "id": "m14",
+                    "country": "China"
+                  },
+                  {
+                    "id": "m15",
+                    "country": "North Korea"
+                  },
+                  {
+                    "id": "m12",
+                    "country": "Brazil"
+                  },
+                  {
+                    "id": "m18",
+                    "country": "Russia"
+                  },
+                  {
+                    "id": "m13",
+                    "country": "Mexico"
+                  },
+                  {
+                    "id": "m20",
+                    "country": "Türkiye"
+                  }
+                ]
+              },
+              {
+                "name": "Team Charlie",
+                "line": "Poorer states should not wait their turn during a pandemic",
+                "members": [
+                  {
+                    "id": "m38",
+                    "country": "South Africa"
+                  },
+                  {
+                    "id": "m11",
+                    "country": "Kenya"
+                  },
+                  {
+                    "id": "m24",
+                    "country": "Nigeria"
+                  },
+                  {
+                    "id": "m46",
+                    "country": "Pakistan"
+                  },
+                  {
+                    "id": "m17",
+                    "country": "Egypt"
+                  },
+                  {
+                    "id": "m31",
+                    "country": "Philippines"
+                  },
+                  {
+                    "id": "m8",
+                    "country": "Vietnam"
+                  }
+                ]
+              },
+              {
+                "name": "Team Delta",
+                "line": "The swing bloc — make the mechanism actually workable",
+                "members": [
+                  {
+                    "id": "m36",
+                    "country": "United Kingdom"
+                  },
+                  {
+                    "id": "m26",
+                    "country": "Indonesia"
+                  },
+                  {
+                    "id": "m42",
+                    "country": "Australia"
+                  },
+                  {
+                    "id": "m37",
+                    "country": "Singapore"
+                  },
+                  {
+                    "id": "m27",
+                    "country": "South Korea"
+                  },
+                  {
+                    "id": "m23",
+                    "country": "Spain"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "w6": [
+          {
+            "name": "WHO",
+            "topic": "Resolution on Equitable Vaccine Distribution Systems",
+            "teams": [
+              {
+                "name": "Team Alpha",
+                "line": "Support access, but protect innovation and intellectual property",
+                "members": [
+                  {
+                    "id": "m30",
+                    "country": "United States"
+                  },
+                  {
+                    "id": "m29",
+                    "country": "Germany"
+                  },
+                  {
+                    "id": "m35",
+                    "country": "Switzerland"
+                  },
+                  {
+                    "id": "m21",
+                    "country": "Japan"
+                  },
+                  {
+                    "id": "m39",
+                    "country": "Canada"
+                  },
+                  {
+                    "id": "m47",
+                    "country": "France"
+                  },
+                  {
+                    "id": "m242",
+                    "country": "Netherlands"
+                  },
+                  {
+                    "id": "m243",
+                    "country": "Belgium"
+                  },
+                  {
+                    "id": "m244",
+                    "country": "Denmark"
+                  }
+                ]
+              },
+              {
+                "name": "Team Beta",
+                "line": "Manufacturing capacity, not charity — technology transfer",
+                "members": [
+                  {
+                    "id": "m14",
+                    "country": "China"
+                  },
+                  {
+                    "id": "m15",
+                    "country": "North Korea"
+                  },
+                  {
+                    "id": "m12",
+                    "country": "Brazil"
+                  },
+                  {
+                    "id": "m18",
+                    "country": "Russia"
+                  },
+                  {
+                    "id": "m13",
+                    "country": "Mexico"
+                  },
+                  {
+                    "id": "m20",
+                    "country": "Türkiye"
+                  },
+                  {
+                    "id": "m245",
+                    "country": "Cuba"
+                  },
+                  {
+                    "id": "m246",
+                    "country": "Iran"
+                  }
+                ]
+              },
+              {
+                "name": "Team Charlie",
+                "line": "Poorer states should not wait their turn during a pandemic",
+                "members": [
+                  {
+                    "id": "m38",
+                    "country": "South Africa"
+                  },
+                  {
+                    "id": "m11",
+                    "country": "Kenya"
+                  },
+                  {
+                    "id": "m24",
+                    "country": "Nigeria"
+                  },
+                  {
+                    "id": "m46",
+                    "country": "Pakistan"
+                  },
+                  {
+                    "id": "m17",
+                    "country": "Egypt"
+                  },
+                  {
+                    "id": "m31",
+                    "country": "Philippines"
+                  },
+                  {
+                    "id": "m8",
+                    "country": "Vietnam"
+                  },
+                  {
+                    "id": "m247",
+                    "country": "Bangladesh"
+                  },
+                  {
+                    "id": "m16",
+                    "country": "India"
+                  }
+                ]
+              },
+              {
+                "name": "Team Delta",
+                "line": "The swing bloc — make the mechanism actually workable",
+                "members": [
+                  {
+                    "id": "m36",
+                    "country": "United Kingdom"
+                  },
+                  {
+                    "id": "m26",
+                    "country": "Indonesia"
+                  },
+                  {
+                    "id": "m42",
+                    "country": "Australia"
+                  },
+                  {
+                    "id": "m37",
+                    "country": "Singapore"
+                  },
+                  {
+                    "id": "m27",
+                    "country": "South Korea"
+                  },
+                  {
+                    "id": "m23",
+                    "country": "Spain"
+                  },
+                  {
+                    "id": "m248",
+                    "country": "New Zealand"
+                  },
+                  {
+                    "id": "m249",
+                    "country": "Norway"
+                  },
+                  {
+                    "id": "m250",
+                    "country": "Ireland"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "w7": [
+          {
+            "name": "Jubilee Debate",
+            "topic": "",
+            "teams": [
+              {
+                "name": "Team Alpha",
+                "line": "",
+                "members": [
+                  {
+                    "id": "m30",
+                    "country": ""
+                  },
+                  {
+                    "id": "m29",
+                    "country": ""
+                  },
+                  {
+                    "id": "m35",
+                    "country": ""
+                  },
+                  {
+                    "id": "m21",
+                    "country": ""
+                  },
+                  {
+                    "id": "m39",
+                    "country": ""
+                  },
+                  {
+                    "id": "m47",
+                    "country": ""
+                  },
+                  {
+                    "id": "m242",
+                    "country": ""
+                  },
+                  {
+                    "id": "m243",
+                    "country": ""
+                  },
+                  {
+                    "id": "m244",
+                    "country": ""
+                  },
+                  {
+                    "id": "m350",
+                    "country": ""
+                  }
+                ]
+              },
+              {
+                "name": "Team Beta",
+                "line": "",
+                "members": [
+                  {
+                    "id": "m14",
+                    "country": ""
+                  },
+                  {
+                    "id": "m15",
+                    "country": ""
+                  },
+                  {
+                    "id": "m12",
+                    "country": ""
+                  },
+                  {
+                    "id": "m18",
+                    "country": ""
+                  },
+                  {
+                    "id": "m13",
+                    "country": ""
+                  },
+                  {
+                    "id": "m20",
+                    "country": ""
+                  },
+                  {
+                    "id": "m245",
+                    "country": ""
+                  },
+                  {
+                    "id": "m246",
+                    "country": ""
+                  }
+                ]
+              },
+              {
+                "name": "Team Charlie",
+                "line": "",
+                "members": [
+                  {
+                    "id": "m38",
+                    "country": ""
+                  },
+                  {
+                    "id": "m11",
+                    "country": ""
+                  },
+                  {
+                    "id": "m24",
+                    "country": ""
+                  },
+                  {
+                    "id": "m46",
+                    "country": ""
+                  },
+                  {
+                    "id": "m17",
+                    "country": ""
+                  },
+                  {
+                    "id": "m31",
+                    "country": ""
+                  },
+                  {
+                    "id": "m8",
+                    "country": ""
+                  },
+                  {
+                    "id": "m247",
+                    "country": ""
+                  },
+                  {
+                    "id": "m16",
+                    "country": ""
+                  }
+                ]
+              },
+              {
+                "name": "Team Delta",
+                "line": "",
+                "members": [
+                  {
+                    "id": "m36",
+                    "country": ""
+                  },
+                  {
+                    "id": "m26",
+                    "country": ""
+                  },
+                  {
+                    "id": "m42",
+                    "country": ""
+                  },
+                  {
+                    "id": "m37",
+                    "country": ""
+                  },
+                  {
+                    "id": "m27",
+                    "country": ""
+                  },
+                  {
+                    "id": "m23",
+                    "country": ""
+                  },
+                  {
+                    "id": "m248",
+                    "country": ""
+                  },
+                  {
+                    "id": "m249",
+                    "country": ""
+                  },
+                  {
+                    "id": "m250",
+                    "country": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "w8": [],
+        "w9": [],
+        "w10": []
+      },
+      "events": [
+        {
+          "id": "e201",
+          "sessionId": "w4",
+          "memberId": "m21",
+          "action": "attend",
+          "points": 1,
+          "ts": 1786659465742
+        },
+        {
+          "id": "e202",
+          "sessionId": "w4",
+          "memberId": "m21",
+          "action": "speech",
+          "points": 2,
+          "ts": 1786659471583
+        },
+        {
+          "id": "e203",
+          "sessionId": "w4",
+          "memberId": "m35",
+          "action": "attend",
+          "points": 1,
+          "ts": 1786659511363
+        },
+        {
+          "id": "e204",
+          "sessionId": "w4",
+          "memberId": "m35",
+          "action": "poi",
+          "points": 1,
+          "ts": 1786659515555
+        },
+        {
+          "id": "e205",
+          "sessionId": "w4",
+          "memberId": "m21",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1786659562377
+        },
+        {
+          "id": "e206",
+          "sessionId": "w4",
+          "memberId": "m8",
+          "action": "attend",
+          "points": 1,
+          "ts": 1786659616874
+        },
+        {
+          "id": "e207",
+          "sessionId": "w4",
+          "memberId": "m8",
+          "action": "speech",
+          "points": 2,
+          "ts": 1786659617433
+        },
+        {
+          "id": "e208",
+          "sessionId": "w4",
+          "memberId": "m13",
+          "action": "amendSub",
+          "points": 1,
+          "ts": 1786659776213
+        },
+        {
+          "id": "e209",
+          "sessionId": "w4",
+          "memberId": "m13",
+          "action": "speech",
+          "points": 2,
+          "ts": 1786659778703
+        },
+        {
+          "id": "e210",
+          "sessionId": "w4",
+          "memberId": "m13",
+          "action": "attend",
+          "points": 1,
+          "ts": 1786659780224
+        },
+        {
+          "id": "e211",
+          "sessionId": "w4",
+          "memberId": "m29",
+          "action": "poi",
+          "points": 1,
+          "ts": 1786659851151
+        },
+        {
+          "id": "e212",
+          "sessionId": "w4",
+          "memberId": "m13",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1786659862150
+        },
+        {
+          "id": "e213",
+          "sessionId": "w4",
+          "memberId": "m13",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1786659950109
+        },
+        {
+          "id": "e214",
+          "sessionId": "w4",
+          "memberId": "m21",
+          "action": "speech",
+          "points": 2,
+          "ts": 1786660027950
+        },
+        {
+          "id": "e215",
+          "sessionId": "w4",
+          "memberId": "m21",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1786660098303
+        },
+        {
+          "id": "e216",
+          "sessionId": "w4",
+          "memberId": "m37",
+          "action": "speech",
+          "points": 2,
+          "ts": 1786660339074
+        },
+        {
+          "id": "e217",
+          "sessionId": "w4",
+          "memberId": "m37",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1786660340066
+        },
+        {
+          "id": "e218",
+          "sessionId": "w4",
+          "memberId": "m37",
+          "action": "attend",
+          "points": 1,
+          "ts": 1786660341923
+        },
+        {
+          "id": "e219",
+          "sessionId": "w4",
+          "memberId": "m35",
+          "action": "poi",
+          "points": 1,
+          "ts": 1786660356554
+        },
+        {
+          "id": "e220",
+          "sessionId": "w4",
+          "memberId": "m37",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1786660393253
+        },
+        {
+          "id": "e221",
+          "sessionId": "w4",
+          "memberId": "m16",
+          "action": "attend",
+          "points": 1,
+          "ts": 1786660486402
+        },
+        {
+          "id": "e222",
+          "sessionId": "w4",
+          "memberId": "m16",
+          "action": "speech",
+          "points": 2,
+          "ts": 1786660487219
+        },
+        {
+          "id": "e223",
+          "sessionId": "w4",
+          "memberId": "m13",
+          "action": "poi",
+          "points": 1,
+          "ts": 1786660495885
+        },
+        {
+          "id": "e224",
+          "sessionId": "w4",
+          "memberId": "m16",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1786660508994
+        },
+        {
+          "id": "e225",
+          "sessionId": "w4",
+          "memberId": "m29",
+          "action": "poi",
+          "points": 1,
+          "ts": 1786660587402
+        },
+        {
+          "id": "e226",
+          "sessionId": "w4",
+          "memberId": "m16",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1786660629632
+        },
+        {
+          "id": "e227",
+          "sessionId": "w4",
+          "memberId": "m36",
+          "action": "attend",
+          "points": 1,
+          "ts": 1786660650181
+        },
+        {
+          "id": "e228",
+          "sessionId": "w4",
+          "memberId": "m38",
+          "action": "attend",
+          "points": 1,
+          "ts": 1786660655056
+        },
+        {
+          "id": "e229",
+          "sessionId": "w4",
+          "memberId": "m23",
+          "action": "amendSub",
+          "points": 1,
+          "ts": 1786660736864
+        },
+        {
+          "id": "e230",
+          "sessionId": "w4",
+          "memberId": "m23",
+          "action": "attend",
+          "points": 1,
+          "ts": 1786660738132
+        },
+        {
+          "id": "e231",
+          "sessionId": "w4",
+          "memberId": "m23",
+          "action": "speech",
+          "points": 2,
+          "ts": 1786660798226
+        },
+        {
+          "id": "e232",
+          "sessionId": "w4",
+          "memberId": "m36",
+          "action": "poi",
+          "points": 1,
+          "ts": 1786660839100
+        },
+        {
+          "id": "e233",
+          "sessionId": "w4",
+          "memberId": "m13",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1786660921677
+        },
+        {
+          "id": "e234",
+          "sessionId": "w4",
+          "memberId": "m18",
+          "action": "attend",
+          "points": 1,
+          "ts": 1786661005282
+        },
+        {
+          "id": "e236",
+          "sessionId": "w5",
+          "memberId": "m13",
+          "action": "recruit",
+          "points": 2,
+          "ts": 1786928520553
+        },
+        {
+          "id": "e238",
+          "sessionId": "w5",
+          "memberId": "m37",
+          "action": "recruit",
+          "points": 2,
+          "ts": 1786928553217
+        },
+        {
+          "id": "e239",
+          "sessionId": "w5",
+          "memberId": "m37",
+          "action": "recruit",
+          "points": 2,
+          "ts": 1786928553449
+        },
+        {
+          "id": "e241",
+          "sessionId": "w4",
+          "memberId": "m13",
+          "action": "bestDel",
+          "points": 5,
+          "ts": 1786928938874
+        },
+        {
+          "id": "e251",
+          "sessionId": "w6",
+          "memberId": "m38",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787869068834
+        },
+        {
+          "id": "e252",
+          "sessionId": "w6",
+          "memberId": "m27",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787869086053
+        },
+        {
+          "id": "e253",
+          "sessionId": "w6",
+          "memberId": "m27",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869087570
+        },
+        {
+          "id": "e255",
+          "sessionId": "w6",
+          "memberId": "m38",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869110554
+        },
+        {
+          "id": "e256",
+          "sessionId": "w6",
+          "memberId": "m36",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787869138034
+        },
+        {
+          "id": "e257",
+          "sessionId": "w6",
+          "memberId": "m36",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787869139733
+        },
+        {
+          "id": "e258",
+          "sessionId": "w6",
+          "memberId": "m36",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869142241
+        },
+        {
+          "id": "e259",
+          "sessionId": "w6",
+          "memberId": "m14",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787869148790
+        },
+        {
+          "id": "e260",
+          "sessionId": "w6",
+          "memberId": "m13",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787869154570
+        },
+        {
+          "id": "e261",
+          "sessionId": "w6",
+          "memberId": "m13",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787869158146
+        },
+        {
+          "id": "e262",
+          "sessionId": "w6",
+          "memberId": "m13",
+          "action": "amendSub",
+          "points": 1,
+          "ts": 1787869159350
+        },
+        {
+          "id": "e263",
+          "sessionId": "w6",
+          "memberId": "m13",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869162104
+        },
+        {
+          "id": "e264",
+          "sessionId": "w6",
+          "memberId": "m21",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787869239938
+        },
+        {
+          "id": "e265",
+          "sessionId": "w6",
+          "memberId": "m21",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869241394
+        },
+        {
+          "id": "e266",
+          "sessionId": "w6",
+          "memberId": "m35",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787869283711
+        },
+        {
+          "id": "e267",
+          "sessionId": "w6",
+          "memberId": "m13",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787869300898
+        },
+        {
+          "id": "e268",
+          "sessionId": "w6",
+          "memberId": "m6",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787869312248
+        },
+        {
+          "id": "e269",
+          "sessionId": "w6",
+          "memberId": "m14",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869321954
+        },
+        {
+          "id": "e270",
+          "sessionId": "w6",
+          "memberId": "m14",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869322212
+        },
+        {
+          "id": "e271",
+          "sessionId": "w6",
+          "memberId": "m16",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787869363056
+        },
+        {
+          "id": "e272",
+          "sessionId": "w6",
+          "memberId": "m16",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787869365815
+        },
+        {
+          "id": "e273",
+          "sessionId": "w6",
+          "memberId": "m16",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787869369503
+        },
+        {
+          "id": "e274",
+          "sessionId": "w6",
+          "memberId": "m23",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787869475572
+        },
+        {
+          "id": "e275",
+          "sessionId": "w6",
+          "memberId": "m23",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869478385
+        },
+        {
+          "id": "e276",
+          "sessionId": "w6",
+          "memberId": "m23",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869478628
+        },
+        {
+          "id": "e277",
+          "sessionId": "w6",
+          "memberId": "m16",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1787869486298
+        },
+        {
+          "id": "e278",
+          "sessionId": "w6",
+          "memberId": "m16",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1787869537739
+        },
+        {
+          "id": "e279",
+          "sessionId": "w6",
+          "memberId": "m248",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787869557530
+        },
+        {
+          "id": "e281",
+          "sessionId": "w6",
+          "memberId": "m248",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869563203
+        },
+        {
+          "id": "e282",
+          "sessionId": "w6",
+          "memberId": "m248",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869605665
+        },
+        {
+          "id": "e283",
+          "sessionId": "w6",
+          "memberId": "m16",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1787869641735
+        },
+        {
+          "id": "e284",
+          "sessionId": "w6",
+          "memberId": "m13",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869691607
+        },
+        {
+          "id": "e285",
+          "sessionId": "w6",
+          "memberId": "m13",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1787869694926
+        },
+        {
+          "id": "e286",
+          "sessionId": "w6",
+          "memberId": "m36",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787869705197
+        },
+        {
+          "id": "e287",
+          "sessionId": "w6",
+          "memberId": "m36",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869707324
+        },
+        {
+          "id": "e288",
+          "sessionId": "w6",
+          "memberId": "m36",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1787869709378
+        },
+        {
+          "id": "e289",
+          "sessionId": "w6",
+          "memberId": "m14",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787869798230
+        },
+        {
+          "id": "e290",
+          "sessionId": "w6",
+          "memberId": "m14",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1787869870450
+        },
+        {
+          "id": "e291",
+          "sessionId": "w6",
+          "memberId": "m13",
+          "action": "amendPass",
+          "points": 3,
+          "ts": 1787869957305
+        },
+        {
+          "id": "e292",
+          "sessionId": "w6",
+          "memberId": "m21",
+          "action": "amendSub",
+          "points": 1,
+          "ts": 1787869977574
+        },
+        {
+          "id": "e293",
+          "sessionId": "w6",
+          "memberId": "m21",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787869990215
+        },
+        {
+          "id": "e294",
+          "sessionId": "w6",
+          "memberId": "m35",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787870083167
+        },
+        {
+          "id": "e295",
+          "sessionId": "w6",
+          "memberId": "m23",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787870290248
+        },
+        {
+          "id": "e296",
+          "sessionId": "w6",
+          "memberId": "m16",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787870300142
+        },
+        {
+          "id": "e297",
+          "sessionId": "w6",
+          "memberId": "m16",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787870307525
+        },
+        {
+          "id": "e298",
+          "sessionId": "w6",
+          "memberId": "m8",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787870412921
+        },
+        {
+          "id": "e299",
+          "sessionId": "w6",
+          "memberId": "m8",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787870414305
+        },
+        {
+          "id": "e300",
+          "sessionId": "w6",
+          "memberId": "m8",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787870415338
+        },
+        {
+          "id": "e301",
+          "sessionId": "w6",
+          "memberId": "m38",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787870422593
+        },
+        {
+          "id": "e302",
+          "sessionId": "w6",
+          "memberId": "m38",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787870445382
+        },
+        {
+          "id": "e303",
+          "sessionId": "w6",
+          "memberId": "m38",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1787870447338
+        },
+        {
+          "id": "e304",
+          "sessionId": "w6",
+          "memberId": "m37",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787870455388
+        },
+        {
+          "id": "e305",
+          "sessionId": "w6",
+          "memberId": "m36",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787870512635
+        },
+        {
+          "id": "e306",
+          "sessionId": "w6",
+          "memberId": "m18",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787870519030
+        },
+        {
+          "id": "e307",
+          "sessionId": "w6",
+          "memberId": "m36",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1787870549862
+        },
+        {
+          "id": "e308",
+          "sessionId": "w6",
+          "memberId": "m35",
+          "action": "speech",
+          "points": 2,
+          "ts": 1787870595134
+        },
+        {
+          "id": "e309",
+          "sessionId": "w6",
+          "memberId": "m21",
+          "action": "poi",
+          "points": 1,
+          "ts": 1787870691170
+        },
+        {
+          "id": "e310",
+          "sessionId": "w6",
+          "memberId": "m245",
+          "action": "attend",
+          "points": 1,
+          "ts": 1787872098944
+        },
+        {
+          "id": "e311",
+          "sessionId": "w7",
+          "memberId": "m36",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788473317235
+        },
+        {
+          "id": "e312",
+          "sessionId": "w7",
+          "memberId": "m23",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788473320768
+        },
+        {
+          "id": "e313",
+          "sessionId": "w7",
+          "memberId": "m36",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788473325797
+        },
+        {
+          "id": "e314",
+          "sessionId": "w7",
+          "memberId": "m36",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788473401697
+        },
+        {
+          "id": "e315",
+          "sessionId": "w7",
+          "memberId": "m23",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788473415706
+        },
+        {
+          "id": "e316",
+          "sessionId": "w7",
+          "memberId": "m14",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788473746379
+        },
+        {
+          "id": "e317",
+          "sessionId": "w7",
+          "memberId": "m14",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788473747586
+        },
+        {
+          "id": "e318",
+          "sessionId": "w7",
+          "memberId": "m14",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788474180941
+        },
+        {
+          "id": "e319",
+          "sessionId": "w7",
+          "memberId": "m36",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788474189724
+        },
+        {
+          "id": "e320",
+          "sessionId": "w7",
+          "memberId": "m13",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788474195641
+        },
+        {
+          "id": "e321",
+          "sessionId": "w7",
+          "memberId": "m13",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788474196031
+        },
+        {
+          "id": "e322",
+          "sessionId": "w7",
+          "memberId": "m38",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788474208519
+        },
+        {
+          "id": "e323",
+          "sessionId": "w7",
+          "memberId": "m38",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788474208877
+        },
+        {
+          "id": "e324",
+          "sessionId": "w7",
+          "memberId": "m12",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788476495498
+        },
+        {
+          "id": "e325",
+          "sessionId": "w7",
+          "memberId": "m16",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788476498373
+        },
+        {
+          "id": "e326",
+          "sessionId": "w7",
+          "memberId": "m17",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788476498975
+        },
+        {
+          "id": "e327",
+          "sessionId": "w7",
+          "memberId": "m21",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788476502845
+        },
+        {
+          "id": "e328",
+          "sessionId": "w7",
+          "memberId": "m24",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788476506295
+        },
+        {
+          "id": "e329",
+          "sessionId": "w7",
+          "memberId": "m27",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788476509504
+        },
+        {
+          "id": "e330",
+          "sessionId": "w7",
+          "memberId": "m30",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788476512820
+        },
+        {
+          "id": "e331",
+          "sessionId": "w7",
+          "memberId": "m39",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788476516437
+        },
+        {
+          "id": "e332",
+          "sessionId": "w7",
+          "memberId": "m248",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788476531833
+        },
+        {
+          "id": "e333",
+          "sessionId": "w7",
+          "memberId": "m16",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476540891
+        },
+        {
+          "id": "e334",
+          "sessionId": "w7",
+          "memberId": "m16",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476542283
+        },
+        {
+          "id": "e335",
+          "sessionId": "w7",
+          "memberId": "m21",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476544878
+        },
+        {
+          "id": "e336",
+          "sessionId": "w7",
+          "memberId": "m21",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476547446
+        },
+        {
+          "id": "e337",
+          "sessionId": "w7",
+          "memberId": "m248",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476553687
+        },
+        {
+          "id": "e338",
+          "sessionId": "w7",
+          "memberId": "m248",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476555924
+        },
+        {
+          "id": "e339",
+          "sessionId": "w7",
+          "memberId": "m248",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476561308
+        },
+        {
+          "id": "e340",
+          "sessionId": "w7",
+          "memberId": "m13",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476577337
+        },
+        {
+          "id": "e341",
+          "sessionId": "w7",
+          "memberId": "m21",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476580133
+        },
+        {
+          "id": "e342",
+          "sessionId": "w7",
+          "memberId": "m16",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476581866
+        },
+        {
+          "id": "e343",
+          "sessionId": "w7",
+          "memberId": "m30",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476602066
+        },
+        {
+          "id": "e344",
+          "sessionId": "w7",
+          "memberId": "m30",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788476602382
+        },
+        {
+          "id": "e345",
+          "sessionId": "w7",
+          "memberId": "m30",
+          "action": "poiAns",
+          "points": 1,
+          "ts": 1788476610012
+        },
+        {
+          "id": "e347",
+          "sessionId": "w7",
+          "memberId": "m37",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788479413318
+        },
+        {
+          "id": "e348",
+          "sessionId": "w7",
+          "memberId": "m37",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788479414602
+        },
+        {
+          "id": "e349",
+          "sessionId": "w7",
+          "memberId": "m37",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788479414935
+        },
+        {
+          "id": "e351",
+          "sessionId": "w7",
+          "memberId": "m350",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788480918433
+        },
+        {
+          "id": "e352",
+          "sessionId": "w7",
+          "memberId": "m350",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788480919025
+        },
+        {
+          "id": "e353",
+          "sessionId": "w7",
+          "memberId": "m350",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788480919183
+        },
+        {
+          "id": "e354",
+          "sessionId": "w7",
+          "memberId": "m350",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788480919341
+        },
+        {
+          "id": "e355",
+          "sessionId": "w7",
+          "memberId": "m35",
+          "action": "attend",
+          "points": 1,
+          "ts": 1788480935237
+        },
+        {
+          "id": "e356",
+          "sessionId": "w7",
+          "memberId": "m35",
+          "action": "speech",
+          "points": 2,
+          "ts": 1788480939250
+        }
+      ]
     }
   ]
 }
