@@ -1,5 +1,5 @@
 {
-  "seq": 399,
+  "seq": 400,
   "term": "Term 4",
   "currentSession": "t4w2",
   "sessions": [
@@ -3584,6 +3584,14 @@
       "action": "poiAns",
       "points": 1,
       "ts": 1792307576470
+    },
+    {
+      "id": "e399",
+      "sessionId": "t4w2",
+      "memberId": "m16",
+      "action": "poiAns",
+      "points": 1,
+      "ts": 1792307731349
     }
   ],
   "members": [
