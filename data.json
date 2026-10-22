@@ -1,5 +1,5 @@
 {
-  "seq": 400,
+  "seq": 403,
   "term": "Term 4",
   "currentSession": "t4w2",
   "sessions": [
@@ -4046,6 +4046,30 @@
     {
       "id": "m350",
       "name": "Arjun Vignesh",
+      "year": "",
+      "division": "novice",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m400",
+      "name": "Jerry Shen",
+      "year": "",
+      "division": "novice",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m401",
+      "name": "Lorence Hampartzoumian",
+      "year": "",
+      "division": "novice",
+      "role": "delegate",
+      "team": ""
+    },
+    {
+      "id": "m402",
+      "name": "Brendan Armstrong",
       "year": "",
       "division": "novice",
       "role": "delegate",
