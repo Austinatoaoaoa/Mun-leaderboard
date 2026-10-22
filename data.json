@@ -1,5 +1,5 @@
 {
-  "seq": 403,
+  "seq": 452,
   "term": "Term 4",
   "currentSession": "t4w2",
   "sessions": [
@@ -3592,6 +3592,390 @@
       "action": "poiAns",
       "points": 1,
       "ts": 1792307731349
+    },
+    {
+      "id": "e403",
+      "sessionId": "t4w2",
+      "memberId": "m401",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704181295
+    },
+    {
+      "id": "e404",
+      "sessionId": "t4w2",
+      "memberId": "m400",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704181712
+    },
+    {
+      "id": "e405",
+      "sessionId": "t4w2",
+      "memberId": "m402",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704182703
+    },
+    {
+      "id": "e406",
+      "sessionId": "t4w2",
+      "memberId": "m350",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704183370
+    },
+    {
+      "id": "e407",
+      "sessionId": "t4w2",
+      "memberId": "m38",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704186408
+    },
+    {
+      "id": "e408",
+      "sessionId": "t4w2",
+      "memberId": "m248",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704200224
+    },
+    {
+      "id": "e409",
+      "sessionId": "t4w2",
+      "memberId": "m247",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704205099
+    },
+    {
+      "id": "e410",
+      "sessionId": "t4w2",
+      "memberId": "m243",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704210474
+    },
+    {
+      "id": "e411",
+      "sessionId": "t4w2",
+      "memberId": "m42",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704213873
+    },
+    {
+      "id": "e412",
+      "sessionId": "t4w2",
+      "memberId": "m37",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704218090
+    },
+    {
+      "id": "e413",
+      "sessionId": "t4w2",
+      "memberId": "m36",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704218890
+    },
+    {
+      "id": "e414",
+      "sessionId": "t4w2",
+      "memberId": "m35",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704223703
+    },
+    {
+      "id": "e415",
+      "sessionId": "t4w2",
+      "memberId": "m30",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704226798
+    },
+    {
+      "id": "e416",
+      "sessionId": "t4w2",
+      "memberId": "m21",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704233690
+    },
+    {
+      "id": "e417",
+      "sessionId": "t4w2",
+      "memberId": "m23",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704242788
+    },
+    {
+      "id": "e419",
+      "sessionId": "t4w2",
+      "memberId": "m16",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704256332
+    },
+    {
+      "id": "e420",
+      "sessionId": "t4w2",
+      "memberId": "m7",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704259587
+    },
+    {
+      "id": "e421",
+      "sessionId": "t4w2",
+      "memberId": "m8",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704266579
+    },
+    {
+      "id": "e422",
+      "sessionId": "t4w2",
+      "memberId": "m13",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704274648
+    },
+    {
+      "id": "e423",
+      "sessionId": "t4w2",
+      "memberId": "m14",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792704318486
+    },
+    {
+      "id": "e424",
+      "sessionId": "t4w2",
+      "memberId": "m14",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792704322711
+    },
+    {
+      "id": "e425",
+      "sessionId": "t4w2",
+      "memberId": "m23",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792704330178
+    },
+    {
+      "id": "e426",
+      "sessionId": "t4w2",
+      "memberId": "m8",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792704336115
+    },
+    {
+      "id": "e427",
+      "sessionId": "t4w2",
+      "memberId": "m13",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792704341644
+    },
+    {
+      "id": "e428",
+      "sessionId": "t4w2",
+      "memberId": "m21",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792704890595
+    },
+    {
+      "id": "e429",
+      "sessionId": "t4w2",
+      "memberId": "m402",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706216327
+    },
+    {
+      "id": "e430",
+      "sessionId": "t4w2",
+      "memberId": "m402",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706216468
+    },
+    {
+      "id": "e431",
+      "sessionId": "t4w2",
+      "memberId": "m402",
+      "action": "poi",
+      "points": 1,
+      "ts": 1792706219310
+    },
+    {
+      "id": "e432",
+      "sessionId": "t4w2",
+      "memberId": "m401",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706238864
+    },
+    {
+      "id": "e433",
+      "sessionId": "t4w2",
+      "memberId": "m401",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706239547
+    },
+    {
+      "id": "e434",
+      "sessionId": "t4w2",
+      "memberId": "m14",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706243997
+    },
+    {
+      "id": "e435",
+      "sessionId": "t4w2",
+      "memberId": "m14",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706245364
+    },
+    {
+      "id": "e436",
+      "sessionId": "t4w2",
+      "memberId": "m16",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706251560
+    },
+    {
+      "id": "e437",
+      "sessionId": "t4w2",
+      "memberId": "m21",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706269439
+    },
+    {
+      "id": "e438",
+      "sessionId": "t4w2",
+      "memberId": "m21",
+      "action": "poi",
+      "points": 1,
+      "ts": 1792706272269
+    },
+    {
+      "id": "e439",
+      "sessionId": "t4w2",
+      "memberId": "m23",
+      "action": "poi",
+      "points": 1,
+      "ts": 1792706278052
+    },
+    {
+      "id": "e440",
+      "sessionId": "t4w2",
+      "memberId": "m30",
+      "action": "poi",
+      "points": 1,
+      "ts": 1792706286139
+    },
+    {
+      "id": "e441",
+      "sessionId": "t4w2",
+      "memberId": "m35",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706293198
+    },
+    {
+      "id": "e442",
+      "sessionId": "t4w2",
+      "memberId": "m36",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706297585
+    },
+    {
+      "id": "e443",
+      "sessionId": "t4w2",
+      "memberId": "m37",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706303072
+    },
+    {
+      "id": "e444",
+      "sessionId": "t4w2",
+      "memberId": "m38",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706308214
+    },
+    {
+      "id": "e445",
+      "sessionId": "t4w2",
+      "memberId": "m42",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706314302
+    },
+    {
+      "id": "e446",
+      "sessionId": "t4w2",
+      "memberId": "m42",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706314777
+    },
+    {
+      "id": "e447",
+      "sessionId": "t4w2",
+      "memberId": "m42",
+      "action": "poi",
+      "points": 1,
+      "ts": 1792706315301
+    },
+    {
+      "id": "e448",
+      "sessionId": "t4w2",
+      "memberId": "m245",
+      "action": "attend",
+      "points": 1,
+      "ts": 1792706334939
+    },
+    {
+      "id": "e449",
+      "sessionId": "t4w2",
+      "memberId": "m248",
+      "action": "speech",
+      "points": 2,
+      "ts": 1792706344722
+    },
+    {
+      "id": "e450",
+      "sessionId": "t4w2",
+      "memberId": "m248",
+      "action": "poi",
+      "points": 1,
+      "ts": 1792706346814
+    },
+    {
+      "id": "e451",
+      "sessionId": "t4w2",
+      "memberId": "m350",
+      "action": "poi",
+      "points": 1,
+      "ts": 1792706352201
     }
   ],
   "members": [
