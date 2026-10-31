@@ -1,5 +1,5 @@
 {
-  "seq": 495,
+  "seq": 496,
   "term": "Term 4",
   "currentSession": "t4w3",
   "sessions": [
@@ -4320,6 +4320,14 @@
       "action": "amendSub",
       "points": 1,
       "ts": 1793438215377
+    },
+    {
+      "id": "e495",
+      "sessionId": "t4w3",
+      "memberId": "m24",
+      "action": "amendSub",
+      "points": 1,
+      "ts": 1793438587013
     }
   ],
   "members": [
